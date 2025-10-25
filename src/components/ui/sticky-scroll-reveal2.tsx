@@ -21,7 +21,7 @@ export const StickyScroll = ({
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
     const isScrollingProgrammatically = useRef(false);
     const lastScrollTime = useRef(0);
-    const scrollTimeout = useRef<NodeJS.Timeout>();
+    const scrollTimeout = useRef<NodeJS.Timeout>(4 as unknown as NodeJS.Timeout);
 
     const { scrollYProgress } = useScroll({
         // uncomment line 22 and comment line 23 if you DONT want the overflow container and want to have it change on the entire page scroll
