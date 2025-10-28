@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <footer className="border-t border-white/10 mt-20">
@@ -12,15 +14,15 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-sm mb-4">Product</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Data Collection</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Data Integration</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Data Sharing</a></li>
+              <li><Link href="/data/collection" className="hover:text-white transition-colors">Data Collection</Link></li>
+              <li><Link href="/data/integration" className="hover:text-white transition-colors">Data Integration</Link></li>
+              <li><Link href="/data/sharing" className="hover:text-white transition-colors">Data Sharing</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-sm mb-4">Company</h4>
             <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">About</a></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
               <li><a href="#" className="hover:text-white transition-colors">Case Studies</a></li>
               <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
             </ul>

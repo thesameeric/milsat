@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowRight } from 'lucide-react';
 
 export default function DataCollection() {
     return <div>
@@ -10,6 +12,12 @@ export default function DataCollection() {
                         We turn every corner of Africa into actionable intelligence.
                         From Lagos traffic patterns to Nairobi agricultural yields—we capture what others miss
                     </p>
+                </span>
+                <span className="flex pt-10">
+                    <Link className="border flex items-center px-6 py-3 text-sm group" href={'/contact'}>
+                        Talk to an expert
+                        <ArrowRight className="h-5 w-5 ml-3 transition-transform group-hover:translate-x-1 group-hover:-rotate-12" />
+                    </Link>
                 </span>
             </div>
             <div className="">

@@ -83,7 +83,7 @@ export default function Header() {
                 </li>
                 <ListItem href="/data/collection" title="Collection">
                 </ListItem>
-                <ListItem href="/" title="Integration">
+                <ListItem href="/data/integration" title="Integration">
                 </ListItem>
                 <ListItem href="/" title="Sharing">
                 </ListItem>
