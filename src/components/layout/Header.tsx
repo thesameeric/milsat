@@ -57,7 +57,9 @@ export default function Header() {
   return (
     <header className="container mx-auto flex justify-between items-center py-5">
       <div>
-        <Logo />
+        <Link href={'/'}>
+          <Logo />
+        </Link>
       </div>
       <NavigationMenu>
         <NavigationMenuList className="flex-wrap">

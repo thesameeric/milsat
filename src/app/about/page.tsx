@@ -5,7 +5,7 @@ export default function AboutPage() {
     return (
         <div className="container mx-auto flex flex-col items-center justify-center p-6">
             <section className="mt-40">
-                <h1 className="font-bold text-4xl md:text-7xl">By Africans,<br></br> For Africa</h1>
+                <h1 className="font-bold text-4xl md:text-7xl"><p className="text-gray-400 m-0 pb-5">By Africans</p>For Africa</h1>
                 <span className="md:w-7/12 inline-block mt-10">
                     <p>
                         The world has spent decades trying to understand Africa from the outside looking in. Satellite images from space. Reports written in distant offices. Data collected by people who&apos;ve never walked our streets or spoken our languages.
