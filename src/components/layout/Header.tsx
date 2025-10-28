@@ -55,7 +55,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function Header() {
   return (
-    <header className="flex justify-between items-center py-5">
+    <header className="container mx-auto flex justify-between items-center py-5">
       <div>
         <Logo />
       </div>
@@ -90,7 +90,7 @@ export default function Header() {
           </NavigationMenuItem>
           <NavigationMenuItem>
             <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-              <Link href="/docs">Company</Link>
+              <Link href="/about">Company</Link>
             </NavigationMenuLink>
           </NavigationMenuItem>
           <NavigationMenuItem className="hidden md:block">

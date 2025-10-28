@@ -114,7 +114,6 @@ export default function Home() {
       <ReadyToStart />
       <TestimonialsSection autoplay={true} testimonials={testimonials} />
       <CaseStudiesSection usecases={usecases} />
-      <Footer />
     </div>
   );
 }
