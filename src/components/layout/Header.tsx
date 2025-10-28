@@ -81,7 +81,7 @@ export default function Header() {
                     </p>
                   </NavigationMenuLink>
                 </li>
-                <ListItem href="/" title="Collection">
+                <ListItem href="/data/collection" title="Collection">
                 </ListItem>
                 <ListItem href="/" title="Integration">
                 </ListItem>
