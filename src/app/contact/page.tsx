@@ -29,10 +29,10 @@ const formSchema = z.object({
     email: z.string().email("Invalid email address"),
     phone: z.string().min(10, "Phone number must be at least 10 digits"),
     meetingDate: z.date({
-        required_error: "Please select a date and time for the meeting",
+        message: "Please select a date and time for the meeting",
     }),
     meetingTime: z.string({
-        required_error: "Please select a time for the meeting",
+        message: "Please select a time for the meeting",
     }),
 });
 
