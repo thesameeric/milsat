@@ -1,5 +1,7 @@
 'use client'
 import WordFlipper from './wordFlippers';
+import TalkToAnExpert from './TalkToAnExpert';
+import Link from 'next/link';
 export default function HeroSection() {
   return (
     <section className="relative flex flex-col items-center justify-center mx-auto min-h-screen px-8 pt-32 pb-20 text-center overflow-hidden">
@@ -31,18 +33,13 @@ export default function HeroSection() {
         </h1>
         <WordFlipper />
         <div className="flex gap-4 justify-center items-center flex-wrap mt-10">
-          <a
-            href="#how-it-works"
-            className="px-6 py-3 text-sm rounded-md bg-white text-slate-900 font-medium hover:underline hover:bg-gray-200 transition-colors"
+          <Link
+            href="/try"
+            className="px-6 py-3 text-sm bg-white rounded-md text-slate-900 font-medium hover:underline hover:bg-gray-200 transition-colors"
           >
             See how it works
-          </a>
-          <a
-            href="#learn-more"
-            className="px-6 py-3 border border-white text-sm rounded-md text-white font-medium hover:bg-white hover:text-slate-900 transition-all"
-          >
-            Learn more
-          </a>
+          </Link>
+          <TalkToAnExpert link={'/contact'} />
         </div>
       </div>
     </section>

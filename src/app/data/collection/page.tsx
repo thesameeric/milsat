@@ -1,6 +1,5 @@
 import Image from "next/image";
-import Link from "next/link";
-import { ArrowRight } from 'lucide-react';
+import TalkToAnExpert from "@/components/TalkToAnExpert";
 
 export default function DataCollection() {
     return <div>
@@ -14,10 +13,7 @@ export default function DataCollection() {
                     </p>
                 </span>
                 <span className="flex pt-10">
-                    <Link className="border flex items-center px-6 py-3 text-sm group" href={'/contact'}>
-                        Talk to an expert
-                        <ArrowRight className="h-5 w-5 ml-3 transition-transform group-hover:translate-x-1 group-hover:-rotate-12" />
-                    </Link>
+                    <TalkToAnExpert link="/contact" />
                 </span>
             </div>
             <div className="">
