@@ -9,6 +9,7 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "@editorjs/editorjs": "^2.31.0",
     "@hookform/resolvers": "^5.2.2",
     "@icons-pack/react-simple-icons": "^13.8.0",
     "@radix-ui/react-label": "^2.1.7",
@@ -38,6 +39,7 @@
     "rehype-katex": "^7.0.1",
     "remark-gfm": "^4.0.1",
     "remark-math": "^6.0.0",
+    "sass": "^1.93.2",
     "shiki": "^3.14.0",
     "tailwind-merge": "^3.3.1",
     "use-stick-to-bottom": "^1.1.1",

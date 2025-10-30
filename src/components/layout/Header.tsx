@@ -101,7 +101,7 @@ export default function Header() {
               <ul className="grid w-[300px] gap-4">
                 <li>
                   <NavigationMenuLink asChild>
-                    <Link href="#">
+                    <Link href="/blog">
                       <div className="font-medium">Blog</div>
                     </Link>
                   </NavigationMenuLink>
