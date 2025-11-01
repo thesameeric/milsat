@@ -18,9 +18,8 @@ export default function PublicationPage() {
                     {pub.authors.map((name, i) => <p key={i}>{name}</p>)}
                 </span>
             </div>
-
         </section>
-        <section className="mt-10">
+        <section className="mt-40">
             <div className="flex flex-col md:flex-row md:justify-between md:gap-x-10">
                 <div className="md:w-8/12">
                     <h2 className="mb-10 ">Abstract</h2>

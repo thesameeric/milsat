@@ -2,7 +2,6 @@
 
 import * as React from "react"
 import Link from "next/link"
-import { CircleCheckIcon, CircleHelpIcon, CircleIcon } from "lucide-react"
 import { Logo } from '../logo';
 
 import {
@@ -55,7 +54,7 @@ const components: { title: string; href: string; description: string }[] = [
 
 export default function Header() {
   return (
-    <header className="container mx-auto flex justify-between items-center py-5">
+    <header className="container sticky top-0 left-0 bg-black mx-auto flex justify-between items-center py-5 z-[999]">
       <div>
         <Link href={'/'}>
           <Logo />
@@ -85,7 +84,7 @@ export default function Header() {
                 </ListItem>
                 <ListItem href="/data/integration" title="Integration">
                 </ListItem>
-                <ListItem href="/" title="Sharing">
+                <ListItem href="/data/intelligence" title="Intelligence">
                 </ListItem>
               </ul>
             </NavigationMenuContent>
