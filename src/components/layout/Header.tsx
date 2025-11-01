@@ -106,12 +106,7 @@ export default function Header() {
                     </Link>
                   </NavigationMenuLink>
                   <NavigationMenuLink asChild>
-                    <Link href="#">
-                      <div className="font-medium">Articles</div>
-                    </Link>
-                  </NavigationMenuLink>
-                  <NavigationMenuLink asChild>
-                    <Link href="#">
+                    <Link href="/publications">
                       <div className="font-medium">Papers</div>
                     </Link>
                   </NavigationMenuLink>
