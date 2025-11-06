@@ -11,6 +11,14 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'i.pravatar.cc',
       },
+      {
+        protocol: 'https',
+        hostname: 'factorialenergy.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.doormart.co',
+      },
     ],
   },
 };

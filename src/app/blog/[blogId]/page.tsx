@@ -1,204 +1,153 @@
+"use client"
+
 import { parseEditorJS, extractHeaders } from "@/lib/editorjs-parser"
 import TableOfContents from "@/components/TableOfContents"
-import './blog.scss';
+import { SDKProvider, usePosts } from "@/lib/sdk"
+import { useEffect, useState } from "react"
+import { Post } from "@/lib/sdk/collections"
+import { useParams } from "next/navigation"
+import Link from "next/link"
+import './blog.scss'
+import { ArrowLeft } from 'lucide-react';
+
+function BlogPostContent() {
+  const params = useParams()
+  const blogId = params.blogId as string
+  const posts = usePosts()
+  const [post, setPost] = useState<Post | null>(null)
+  const [isLoading, setIsLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    async function fetchPost() {
+      try {
+        // Try to fetch by slug first, if that fails try by ID
+        const fetchedPost = await posts.getBySlug(blogId).catch(() => posts.get(blogId))
+        setPost(fetchedPost)
+      } catch (err: any) {
+        setError(err.message || "Failed to load post")
+        console.error("Error fetching post:", err)
+      } finally {
+        setIsLoading(false)
+      }
+    }
+    fetchPost()
+  }, [blogId, posts])
+
+  if (isLoading) {
+    return (
+      <div className="container mx-auto py-20">
+        <div className="max-w-4xl mx-auto">
+          <div className="animate-pulse space-y-4">
+            <div className="h-12 bg-gray-200 rounded w-3/4" />
+            <div className="h-4 bg-gray-200 rounded w-1/4" />
+            <div className="space-y-3 mt-8">
+              <div className="h-4 bg-gray-200 rounded" />
+              <div className="h-4 bg-gray-200 rounded" />
+              <div className="h-4 bg-gray-200 rounded w-5/6" />
+            </div>
+          </div>
+        </div>
+      </div>
+    )
+  }
+
+  if (error || !post) {
+    return (
+      <div className="container mx-auto py-20">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
+          <p className="text-gray-600 mb-8">
+            {error || "The blog post you're looking for doesn't exist."}
+          </p>
+          <Link
+            href="/blog"
+            className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            ← Back to Blog
+          </Link>
+        </div>
+      </div>
+    )
+  }
+
+  // Parse the content (could be stored as string or object)
+  let parsedContent
+  let headers: any[] = []
+
+  try {
+    const contentData = typeof post.content === "string"
+      ? JSON.parse(post.content)
+      : post.parsed || post.content
+
+    if (contentData) {
+      headers = extractHeaders(contentData)
+      parsedContent = parseEditorJS(contentData)
+    }
+  } catch (err) {
+    console.error("Error parsing content:", err)
+    parsedContent = post.content
+  }
+
+  return (
+    <div className="container mx-auto py-20">
+
+      {/* Content with TOC */}
+      <div className="blog-layout">
+        {headers.length > 0 && (
+          <aside className="toc-sidebar">
+            <TableOfContents headers={headers} />
+          </aside>
+        )}
+        <div>
+          {/* Header */}
+          <div className="max-w-4xl mx-auto mb-12">
+            <Link
+              href="/blog"
+              className="inline-flex text-[16px] items-center text-gray-400 hover:text-gray-500 mb-6"
+            >
+              <ArrowLeft /> Back to Blog
+            </Link>
+
+            <div className="space-y-4">
+              <h1 className="text-[2.5rem]">{post.title}</h1>
+
+              <div className="flex items-center text-sm text-gray-400">
+                <span className="uppercase font-medium tracking-wider">
+                  {new Date(post.published_at || post.created_at).toLocaleDateString("en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
+                  })}
+                </span>
+              </div>
+            </div>
+          </div>
+          <article className="blog_post">
+            {parsedContent ? (
+              <div dangerouslySetInnerHTML={{ __html: parsedContent }} />
+            ) : (
+              <div className="prose prose-lg max-w-none">
+                <p>Content not available</p>
+              </div>
+            )}
+          </article>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 export default function BlogPost() {
-    const post = {
-        "time": 1698667200000,
-        "blocks": [
-            {
-                "id": "header-1",
-                "type": "header",
-                "data": {
-                    "text": "Transforming African Communities Through GIS and Data Collection",
-                    "level": 1
-                }
-            },
-            {
-                "id": "paragraph-1",
-                "type": "paragraph",
-                "data": {
-                    "text": "Geographic Information Systems (GIS) and modern data collection methods are revolutionizing how African nations approach development, conservation, and urban planning. From the bustling cities of Lagos to the remote villages of the Sahel, technology is empowering communities to map their world and make data-driven decisions."
-                }
-            },
-            {
-                "id": "image-1",
-                "type": "image",
-                "data": {
-                    "file": {
-                        "url": "https://images.unsplash.com/photo-1588702547919-26089e690ecc"
-                    },
-                    "caption": "Satellite view of African urban development",
-                    "withBorder": false,
-                    "stretched": false,
-                    "withBackground": false
-                }
-            },
-            {
-                "id": "header-2",
-                "type": "header",
-                "data": {
-                    "text": "The Rise of Mobile Data Collection",
-                    "level": 2
-                }
-            },
-            {
-                "id": "paragraph-2",
-                "type": "paragraph",
-                "data": {
-                    "text": "Mobile technology has democratized data collection across the continent. Tools like KoBoToolbox, ODK, and Survey123 enable field workers to collect accurate geospatial data even in areas with limited connectivity. This has proven invaluable for:"
-                }
-            },
-            {
-                "id": "list-1",
-                "type": "list",
-                "data": {
-                    "style": "unordered",
-                    "items": [
-                        "Healthcare facility mapping and service delivery tracking",
-                        "Agricultural land use surveys and crop monitoring",
-                        "Infrastructure assessments for water and sanitation",
-                        "Wildlife conservation and anti-poaching efforts",
-                        "Electoral boundary demarcation and voter registration"
-                    ]
-                }
-            },
-            {
-                "id": "header-3",
-                "type": "header",
-                "data": {
-                    "text": "Community Mapping Initiatives",
-                    "level": 2
-                }
-            },
-            {
-                "id": "paragraph-3",
-                "type": "paragraph",
-                "data": {
-                    "text": "Participatory mapping projects are empowering local communities to document their own environments. In Nairobi's informal settlements, residents have mapped over 100,000 structures using smartphones and GPS devices, creating detailed datasets that inform urban planning decisions."
-                }
-            },
-            {
-                "id": "quote-1",
-                "type": "quote",
-                "data": {
-                    "text": "When communities control their own data, they control their own narrative. GIS technology gives us the power to tell our stories with precision and authority.",
-                    "caption": "Dr. Chiamaka Eze, Geospatial Researcher",
-                    "alignment": "left"
-                }
-            },
-            {
-                "id": "header-4",
-                "type": "header",
-                "data": {
-                    "text": "Drone Technology and Remote Sensing",
-                    "level": 2
-                }
-            },
-            {
-                "id": "paragraph-4",
-                "type": "paragraph",
-                "data": {
-                    "text": "Unmanned Aerial Vehicles (UAVs) are transforming how we collect spatial data across Africa. Drones equipped with high-resolution cameras and multispectral sensors can:"
-                }
-            },
-            {
-                "id": "list-2",
-                "type": "list",
-                "data": {
-                    "style": "ordered",
-                    "items": [
-                        "Survey large agricultural areas in hours instead of weeks",
-                        "Create detailed 3D models of terrain for infrastructure planning",
-                        "Monitor environmental changes and deforestation",
-                        "Assess disaster damage for rapid emergency response",
-                        "Document cultural heritage sites for preservation"
-                    ]
-                }
-            },
-            {
-                "id": "image-2",
-                "type": "image",
-                "data": {
-                    "file": {
-                        "url": "https://images.unsplash.com/photo-1473968512647-3e447244af8f"
-                    },
-                    "caption": "Drone-based mapping in rural Africa",
-                    "withBorder": true,
-                    "stretched": false,
-                    "withBackground": false
-                }
-            },
-            {
-                "id": "header-5",
-                "type": "header",
-                "data": {
-                    "text": "Challenges and Opportunities",
-                    "level": 2
-                }
-            },
-            {
-                "id": "paragraph-5",
-                "type": "paragraph",
-                "data": {
-                    "text": "Despite remarkable progress, challenges remain. Limited internet connectivity, lack of trained personnel, and inadequate funding continue to hinder widespread GIS adoption. However, innovative solutions are emerging:"
-                }
-            },
-            {
-                "id": "table-1",
-                "type": "table",
-                "data": {
-                    "withHeadings": true,
-                    "content": [
-                        ["Challenge", "Solution", "Impact"],
-                        ["Limited connectivity", "Offline-first mobile apps", "Data collection in remote areas"],
-                        ["Skills gap", "University GIS programs & online training", "Growing workforce capacity"],
-                        ["Data silos", "Open data platforms & APIs", "Improved collaboration"],
-                        ["Hardware costs", "Smartphone-based solutions", "Reduced barriers to entry"]
-                    ]
-                }
-            },
-            {
-                "id": "header-6",
-                "type": "header",
-                "data": {
-                    "text": "The Road Ahead",
-                    "level": 2
-                }
-            },
-            {
-                "id": "paragraph-6",
-                "type": "paragraph",
-                "data": {
-                    "text": "As Africa continues to embrace digital transformation, GIS and spatial data will play an increasingly critical role in achieving sustainable development goals. From smart cities to precision agriculture, the applications are limitless. The key to success lies in ensuring that technology serves the needs of local communities and that data sovereignty remains in African hands."
-                }
-            },
-            {
-                "id": "delimiter-1",
-                "type": "delimiter",
-                "data": {}
-            },
-            {
-                "id": "paragraph-7",
-                "type": "paragraph",
-                "data": {
-                    "text": "<b>About the Author:</b> Amara Okonkwo is a geospatial analyst specializing in African urban development and community mapping initiatives. She has worked with organizations across 15 African countries to implement participatory GIS projects."
-                }
-            }
-        ],
-        "version": "2.28.0"
-    }
-    const headers = extractHeaders(post);
+  const sdkConfig = {
+    apiUrl: "http://localhost:8080",
+    organizationId: "69061b402f28f82ad0e678c1",
+    apiKey: 'gol_4c4c7a31118ff97c301eb8989fc563109bf5746807f7a912a2785e590485a730', // Optional: Only needed for authenticated API routes
+  }
 
-    return <div className="container mx-auto py-20">
-        <div className="blog-layout">
-            <aside className="toc-sidebar">
-                <TableOfContents headers={headers} />
-            </aside>
-            <article className="blog_post">
-                <div dangerouslySetInnerHTML={{ __html: parseEditorJS(post) }}>
-                </div>
-            </article>
-        </div>
-    </div>
+  return (
+    <SDKProvider config={sdkConfig}>
+      <BlogPostContent />
+    </SDKProvider>
+  )
 }
