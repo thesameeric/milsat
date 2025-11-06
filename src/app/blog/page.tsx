@@ -71,14 +71,14 @@ function BlogList() {
           <h2 className='py-10 uppercase tracking-widest text-sm text-gray-400'>Latest Articles</h2>
         </div>
         <ul className="grid gap-10 md:grid-cols-1 lg:grid-cols-3">
-          {blogPosts.map((post, index) => <li className='flex py-10 border-dashed border-[#27272a] border-b last:border-b-0' key={index}>
+          {blogPosts.map((post, index) => <li className='flex py-10' key={index}>
             <div className='w-full'>
               {post.header_image && <Image src={post?.header_image} objectFit="contain" width={100} height={150} alt={post.title} className='rounded-sm w-full h-[250px] object-cover overflow-hidden' />}
               <span className='flex items-center gap-x-5 text-sm py-3'>
                 <p className='text-xs text-gray-300 uppercase tracking-widest'>{dayjs(post.created_at).format('MMMM DD, YYYY')}</p>
                 <p className='text-xs text-[#08C4DE] hover:underline'>Gis</p>
               </span>
-              <Link className='inline-block font-semibold hover:text-[#08C4DE] hover:underline text-2xl pb-5' href={`/blog/${post.slug}`}>{post.title}</Link>
+              <Link className='inline-block font-semibold hover:text-[#08C4DE] hover:underline text-xl pb-5' href={`/blog/${post.slug}`}>{post.title}</Link>
               <span>
                 <p className='text-[16px] pb-5 text-gray-400 truncate'>{post.excerpt}</p>
               </span>
