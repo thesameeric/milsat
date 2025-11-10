@@ -5,8 +5,6 @@ import CustomersSection from "@/components/CustomersSection";
 import HowWeDoItSection from "@/components/HowWeDoItSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
-import Footer from "@/components/Footer";
-import { image } from "motion/react-client";
 import ReadyToStart from "@/components/ReadyToStart";
 
 export default function Home() {
