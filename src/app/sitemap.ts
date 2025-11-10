@@ -1,4 +1,12 @@
 import { MetadataRoute } from 'next'
+import { createDataCollectionSDK } from '@/lib/sdk'
+
+// Create SDK instance for server-side use
+const sdk = createDataCollectionSDK({
+  apiUrl: "http://localhost:8080",
+  organizationId: "690fa6b7173674214101016b",
+  apiKey: 'gol_15f04352ccc6e6de5ff8a8bc7fa33d6ed40946e36b921edecfd722f91fe7c99d',
+})
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://milsat.africa'
@@ -67,39 +75,33 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
   ]
 
-  // // Fetch dynamic blog posts
-  // let blogPosts: MetadataRoute.Sitemap = []
-  // try {
-  //   const response = await fetch(`http://localhost:8080/api/v1/organizations/690fa6b7173674214101016b/posts?page=1&limit=100`)
-  //   if (response.ok) {
-  //     const data = await response.json()
-  //     blogPosts = data.posts.map((post: any) => ({
-  //       url: `${baseUrl}/blog/${post.slug}`,
-  //       lastModified: new Date(post.updated_at || post.created_at),
-  //       changeFrequency: 'weekly' as const,
-  //       priority: 0.7,
-  //     }))
-  //   }
-  // } catch (error) {
-  //   console.error('Error fetching blog posts for sitemap:', error)
-  // }
+  // Fetch dynamic blog posts using SDK
+  let blogPosts: MetadataRoute.Sitemap = []
+  try {
+    const data = await sdk.posts.list(1, 100)
+    blogPosts = data.posts.map((post: any) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.updated_at || post.created_at),
+      changeFrequency: 'weekly' as const,
+      priority: 0.7,
+    }))
+  } catch (error) {
+    console.error('Error fetching blog posts for sitemap:', error)
+  }
 
-  // // Fetch dynamic publications
-  // let publications: MetadataRoute.Sitemap = []
-  // try {
-  //   const response = await fetch(`http://localhost:8080/api/v1/organizations/690fa6b7173674214101016b/data/publications/entries?page=1&limit=100`)
-  //   if (response.ok) {
-  //     const data = await response.json()
-  //     publications = data.entries.map((entry: any) => ({
-  //       url: `${baseUrl}/publications/${entry.id}`,
-  //       lastModified: new Date(entry.created_at),
-  //       changeFrequency: 'monthly' as const,
-  //       priority: 0.6,
-  //     }))
-  //   }
-  // } catch (error) {
-  //   console.error('Error fetching publications for sitemap:', error)
-  // }
+  // Fetch dynamic publications using SDK
+  let publications: MetadataRoute.Sitemap = []
+  try {
+    const publicationsData = await sdk.collection('publications').list(1, 100)
+    publications = publicationsData.data.map((entry: any) => ({
+      url: `${baseUrl}/publications/${entry.id}`,
+      lastModified: new Date(entry.created_at),
+      changeFrequency: 'monthly' as const,
+      priority: 0.6,
+    }))
+  } catch (error) {
+    console.error('Error fetching publications for sitemap:', error)
+  }
 
-  return [...staticRoutes]
+  return [...staticRoutes, ...blogPosts, ...publications]
 }
