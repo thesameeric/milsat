@@ -338,15 +338,21 @@ class CollectionAPI {
   constructor(
     private collectionName: string,
     private request: <T>(endpoint: string, options?: RequestInit) => Promise<T>,
-    private organizationId: string
+    private organizationId: string,
+    private useApiRoute: boolean = false
   ) {}
+
+  private getEndpoint(path: string): string {
+    const base = this.useApiRoute ? "/api/v1/api" : "/api/v1"
+    return `${base}/organizations/${this.organizationId}/data/${this.collectionName}${path}`
+  }
 
   /**
    * Add data to the collection
    */
   async add(data: Record<string, any>): Promise<DataEntry> {
     return this.request<DataEntry>(
-      `/api/v1/organizations/${this.organizationId}/data/${this.collectionName}`,
+      this.getEndpoint(""),
       {
         method: "POST",
         body: JSON.stringify({ data }),
@@ -360,9 +366,9 @@ class CollectionAPI {
   async list(
     page: number = 1,
     limit: number = 10
-  ): Promise<{ entries: DataEntry[]; total: number; page: number; limit: number }> {
+  ): Promise<{ data: Record<string, any>[]; total: number; page: number; limit: number }> {
     return this.request(
-      `/api/v1/organizations/${this.organizationId}/data/${this.collectionName}/entries?page=${page}&limit=${limit}`
+      this.getEndpoint(`/entries?page=${page}&limit=${limit}`)
     )
   }
 
@@ -371,7 +377,7 @@ class CollectionAPI {
    */
   async get(entryId: string): Promise<DataEntry> {
     return this.request<DataEntry>(
-      `/api/v1/organizations/${this.organizationId}/data/${this.collectionName}/entries/${entryId}`
+      this.getEndpoint(`/entries/${entryId}`)
     )
   }
 
@@ -438,6 +444,9 @@ export class DataCollectionSDK {
       },
     })
 
+    console.log(this.getHeaders());
+    
+
     if (!response.ok) {
       const error = await response.json().catch(() => ({ error: "Request failed" }))
       throw new Error(error.error || `HTTP ${response.status}`)
@@ -450,7 +459,7 @@ export class DataCollectionSDK {
    * Access a specific collection
    */
   collection(name: string): CollectionAPI {
-    return new CollectionAPI(name, this.request.bind(this), this.organizationId)
+    return new CollectionAPI(name, this.request.bind(this), this.organizationId, !!this.apiKey)
   }
 
   /**
@@ -480,7 +489,7 @@ export class DataCollectionSDK {
     collectionName: string,
     page: number = 1,
     limit: number = 10
-  ): Promise<{ entries: DataEntry[]; total: number; page: number; limit: number }> {
+  ): Promise<{ data: Record<string, any>[]; total: number; page: number; limit: number }> {
     return this.collection(collectionName).list(page, limit)
   }
 

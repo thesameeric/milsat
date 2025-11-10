@@ -1,6 +1,6 @@
 "use client"
 
-import { SDKProvider, usePosts } from "@/lib/sdk"
+import { usePosts } from "@/lib/sdk"
 import { useEffect, useState } from "react"
 import { Post } from "@/lib/sdk/collections"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
@@ -99,20 +99,14 @@ function BlogList() {
 
 export default function BlogPage() {
   return (
-    <SDKProvider config={{
-      apiUrl: "http://localhost:8080",
-      organizationId: "69061b402f28f82ad0e678c1",
-      apiKey: 'gol_4c4c7a31118ff97c301eb8989fc563109bf5746807f7a912a2785e590485a730', // Optional: Only needed for authenticated API routes
-    }}>
-      <div className="container mx-auto py-12 px-4">
-        <div className="max-w-6xl mx-auto space-y-8">
-          <div className="text-center space-y-4">
-            <h1 className="text-4xl font-bold">Blog</h1>
-            <p className="text-lg text-muted-foreground">Latest articles and updates</p>
-          </div>
-          <BlogList />
+    <div className="container mx-auto py-12 px-4">
+      <div className="max-w-6xl mx-auto space-y-8">
+        <div className="text-center space-y-4">
+          <h1 className="text-4xl font-bold">Blog</h1>
+          <p className="text-lg text-muted-foreground">Latest articles and updates</p>
         </div>
+        <BlogList />
       </div>
-    </SDKProvider>
+    </div>
   )
 }

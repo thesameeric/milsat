@@ -3,7 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import WhyWeExistSection from "@/components/WhyWeExistSection";
 import CustomersSection from "@/components/CustomersSection";
 import HowWeDoItSection from "@/components/HowWeDoItSection";
-import TestimonialsSection, { Testimonial } from "@/components/TestimonialsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import Footer from "@/components/Footer";
 import { image } from "motion/react-client";
@@ -59,36 +59,6 @@ export default function Home() {
     },
   ];
 
-  const testimonials: Testimonial[] = [
-    {
-      quote: `We aimed to go digital by gathering information on the locations of all veterinary clinics in Nigeria
-          and their practitioners. Our goal was to create a single platform that would connect everyone and
-          facilitate payments. Milsat managed the entire process, mapped our locations, and developed a robust
-          platform for us, which significantly improved our due and license payment collection.`,
-      name: 'another one',
-      designation: 'Principal Engineer',
-      src: ""
-    },
-    {
-      quote: `We aimed to go digital by gathering information on the locations of all veterinary clinics in Nigeria
-          and their practitioners. Our goal was to create a single platform that would connect everyone and
-          facilitate payments. Milsat managed the entire process, mapped our locations, and developed a robust
-          platform for us, which significantly improved our due and license payment collection.`,
-      name: 'another one',
-      designation: 'Principal Engineer',
-      src: ""
-    },
-    {
-      quote: `We aimed to go digital by gathering information on the locations of all veterinary clinics in Nigeria
-          and their practitioners. Our goal was to create a single platform that would connect everyone and
-          facilitate payments. Milsat managed the entire process, mapped our locations, and developed a robust
-          platform for us, which significantly improved our due and license payment collection.`,
-      name: 'another one',
-      designation: 'Principal Engineer',
-      src: ""
-    }
-  ]
-
   const usecases = [
     {
       description: `We aimed to go digital by gathering information on the locations of all veterinary clinics in
@@ -112,7 +82,7 @@ export default function Home() {
       <CustomersSection />
       <HowWeDoItSection />
       <ReadyToStart />
-      <TestimonialsSection autoplay={true} testimonials={testimonials} />
+      <TestimonialsSection autoplay={true} />
       <CaseStudiesSection usecases={usecases} />
     </div>
   );

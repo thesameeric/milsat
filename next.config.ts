@@ -19,6 +19,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'media.doormart.co',
       },
+      {
+        protocol: 'https',
+        hostname: 'd3htjribhyrfpy.cloudfront.net',
+      },
     ],
   },
 };

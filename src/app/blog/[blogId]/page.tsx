@@ -2,7 +2,7 @@
 
 import { parseEditorJS, extractHeaders } from "@/lib/editorjs-parser"
 import TableOfContents from "@/components/TableOfContents"
-import { SDKProvider, usePosts } from "@/lib/sdk"
+import { usePosts } from "@/lib/sdk"
 import { useEffect, useState } from "react"
 import { Post } from "@/lib/sdk/collections"
 import { useParams } from "next/navigation"
@@ -139,15 +139,5 @@ function BlogPostContent() {
 }
 
 export default function BlogPost() {
-  const sdkConfig = {
-    apiUrl: "http://localhost:8080",
-    organizationId: "69061b402f28f82ad0e678c1",
-    apiKey: 'gol_4c4c7a31118ff97c301eb8989fc563109bf5746807f7a912a2785e590485a730', // Optional: Only needed for authenticated API routes
-  }
-
-  return (
-    <SDKProvider config={sdkConfig}>
-      <BlogPostContent />
-    </SDKProvider>
-  )
+  return <BlogPostContent />
 }
