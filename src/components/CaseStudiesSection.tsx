@@ -3,16 +3,36 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import Image from 'next/image';
+import { useCollection } from "@/lib/sdk";
 
-type Testimonial = {
-  quote: string;
-  name: string;
-  designation: string;
-  src: string;
+type CaseStudy = {
+  content: string;
+  logo: string;
 };
 
-export default function CaseStudiesSection({ usecases, autoplay = false }: { usecases: any[]; autoplay?: boolean }) {
+export default function CaseStudiesSection({ autoplay = false }: { autoplay?: boolean }) {
+  const caseStudiesCollection = useCollection("case_study");
+  const [usecases, setUsecases] = useState<CaseStudy[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    async function fetchCaseStudies() {
+      try {
+        const result = await caseStudiesCollection.list(1, 50);
+        const mappedCaseStudies = result.data.map((entry: any) => ({
+          content: entry.content || "",
+          logo: entry.logo?.url || "",
+        }));
+        setUsecases(mappedCaseStudies);
+      } catch (err) {
+        console.error("Error fetching case studies:", err);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    fetchCaseStudies();
+  }, [caseStudiesCollection]);
 
   const handleNext = () => {
     setActive((prev) => (prev + 1) % usecases.length);
@@ -27,15 +47,33 @@ export default function CaseStudiesSection({ usecases, autoplay = false }: { use
   };
 
   useEffect(() => {
-    if (autoplay) {
+    if (autoplay && usecases.length > 0) {
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-  }, [autoplay]);
+  }, [autoplay, usecases.length]);
 
   const randomRotateY = () => {
     return Math.floor(Math.random() * 21) - 10;
   };
+
+  if (isLoading) {
+    return (
+      <section className="container mx-auto px-8 py-20">
+        <h2 className="text-4xl md:text-5xl mb-12">
+          Case Studies
+        </h2>
+        <div className="bg-[#150040] rounded-lg p-20 flex justify-center items-center">
+          <div className="animate-pulse text-gray-400">Loading case studies...</div>
+        </div>
+      </section>
+    );
+  }
+
+  if (usecases.length === 0) {
+    return null;
+  }
+
   return (
     <section className="container mx-auto px-8 py-20">
       <h2 className="text-4xl md:text-5xl mb-12">
@@ -63,9 +101,10 @@ export default function CaseStudiesSection({ usecases, autoplay = false }: { use
             </div>
             <motion.div>
               <p className="text-xl mb-8 leading-relaxed">
-                {usecases[active].description}
+                {usecases[active].content.split(' ').slice(0, 50).join(' ')}
+                {usecases[active].content.split(' ').length > 50 ? '...' : ''}
               </p>
-              <div className="grid grid-cols-3 gap-8 mb-15">
+              {/* <div className="grid grid-cols-3 gap-8 mb-15">
                 <div>
                   <div className="text-4xl font-bold mb-1">5K+</div>
                   <div className="text-sm text-gray-200">Field Agents</div>
@@ -78,7 +117,7 @@ export default function CaseStudiesSection({ usecases, autoplay = false }: { use
                   <div className="text-4xl font-bold mb-1">100%</div>
                   <div className="text-sm text-gray-200">Accuracy</div>
                 </div>
-              </div>
+              </div> */}
               <a href="#" className="bg-white text-sm text-slate-900 px-6 py-2 rounded-lg inline-block font-medium hover:bg-white/70 transition-colors">
                 View Case Study
               </a>
@@ -121,7 +160,7 @@ export default function CaseStudiesSection({ usecases, autoplay = false }: { use
                 </defs>
               </svg>
               <span className="text-8xl z-100 -ml-10">
-                <Image src={usecases[active].image} width={250} height={250} alt={"usecase"}></Image>
+                <Image src={usecases[active].logo} width={250} height={250} alt={"usecase"}></Image>
               </span>
             </div>
           </div>

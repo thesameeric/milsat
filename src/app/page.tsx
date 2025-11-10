@@ -59,22 +59,6 @@ export default function Home() {
     },
   ];
 
-  const usecases = [
-    {
-      description: `We aimed to go digital by gathering information on the locations of all veterinary clinics in
-          Nigeria and their practitioners. Our goal was to create a single platform that would connect everyone
-          and facilitate payments. Milsat managed the entire process, mapped our locations, and developed a robust
-          platform for us, which significantly improved our due and license payment collection.&quot;`,
-      image: '/clients/npc.png'
-    },
-    {
-      description: `another one. We aimed to go digital by gathering information on the locations of all veterinary clinics in
-          Nigeria and their practitioners. Our goal was to create a single platform that would connect everyone
-          and facilitate payments. Milsat managed the entire process, mapped our locations, and developed a robust
-          platform for us, which significantly improved our due and license payment collection.&quot; `,
-      image: '/clients/nipost2.jpg'
-    },
-  ];
   return (
     <div className="min-h-screen text-white">
       <HeroSection />
@@ -83,7 +67,7 @@ export default function Home() {
       <HowWeDoItSection />
       <ReadyToStart />
       <TestimonialsSection autoplay={true} />
-      <CaseStudiesSection usecases={usecases} />
+      <CaseStudiesSection autoplay={true} />
     </div>
   );
 }

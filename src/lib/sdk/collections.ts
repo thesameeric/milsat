@@ -28,15 +28,9 @@ export interface DataSchema {
   require_auth: boolean
 }
 
-export interface DataEntry {
+export interface DataEntry extends Record<string, any> {
   id: string
   created_at: string
-  organization_id: string
-  collection_name: string
-  data: Record<string, any>
-  submitted_by?: string
-  ip_address?: string
-  user_agent?: string
 }
 
 export interface CreateSchemaOptions {
