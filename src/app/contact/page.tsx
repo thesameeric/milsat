@@ -23,10 +23,12 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { useState } from "react";
+import { useCollection } from "@/lib/sdk";
+import { toast } from "sonner";
 
 const formSchema = z.object({
     fullName: z.string().min(2, "Full name must be at least 2 characters"),
-    email: z.string().email("Invalid email address"),
+    email: z.email("Invalid email address"),
     phone: z.string().min(10, "Phone number must be at least 10 digits"),
     meetingDate: z.date({
         message: "Please select a date and time for the meeting",
@@ -50,6 +52,8 @@ const availableTimes = [
 
 export default function ContactUs() {
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const contactCollection = useCollection("contact_us");
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -60,8 +64,30 @@ export default function ContactUs() {
         },
     });
 
-    function onSubmit(values: z.infer<typeof formSchema>) {
-        console.log(values);
+    async function onSubmit(values: z.infer<typeof formSchema>) {
+        setIsSubmitting(true);
+        try {
+            await contactCollection.add({
+                full_name: values.fullName,
+                email: values.email,
+                phone: values.phone,
+                meeting_date: values.meetingDate.toISOString(),
+                meeting_time: values.meetingTime,
+            });
+
+            toast.success("Meeting Request Submitted", {
+                description: "We'll get back to you soon to confirm your meeting.",
+            });
+
+            form.reset();
+            setSelectedDate(undefined);
+        } catch (error: any) {
+            toast.error("Submission Failed", {
+                description: error.message || "Failed to submit your meeting request. Please try again.",
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
     }
 
     return <div>
@@ -200,7 +226,9 @@ export default function ContactUs() {
                             )}
                         </div>
                         <div className="mt-10">
-                            <Button type="submit" className="px-6 py-3">Schedule Meeting</Button>
+                            <Button type="submit" className="px-6 py-3" disabled={isSubmitting}>
+                                {isSubmitting ? "Submitting..." : "Schedule Meeting"}
+                            </Button>
                         </div>
                     </form>
                 </Form>
