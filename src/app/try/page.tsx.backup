@@ -4,13 +4,13 @@ import Image from "next/image";
 import { FormEventHandler, useRef, useState } from "react";
 import { AiInput, AiInputRef } from "@/components/AiInput";
 import { createRAGQuerySDK, type TokenUsage } from "@/lib/sdk";
-import { Streamdown } from 'streamdown';
-
+import * as marked from 'marked';
+import './ai-response.scss';
 
 // Configuration - replace with your values
 const RAG_CONFIG = {
-    apiUrl: process.env.NEXT_PUBLIC_API_URL ?? 'https://api.letterhead.cloud',
-    apiKey: process.env.NEXT_PUBLIC_LETTERHEAD_API ?? '',
+    apiUrl: 'http://localhost:8080',
+    apiKey: 'gol_2cb752632902fcc32a0aca1c37558ad28fc2336ebf9f6bc835dea664cd66e0b0',
 };
 
 type Message = {
@@ -70,8 +70,6 @@ export default function Try() {
                     },
                     onContent: (content, accumulated) => {
                         assistantMessage = accumulated;
-                        console.log('LOGGGG: :::::::::', assistantMessage);
-
                         setMessages(prev => {
                             const newMessages = [...prev];
                             const lastMessage = newMessages[newMessages.length - 1];
@@ -137,10 +135,10 @@ export default function Try() {
                                 >
                                     <div
                                         className={`max-w-[80%] rounded-lg p-2 ${message.role === 'user'
-                                            ? 'bg-[#212121]'
-                                            : message.error
-                                                ? 'bg-red-100 dark:bg-red-900'
-                                                : 'bg-[#212121]'
+                                                ? 'bg-[#212121]'
+                                                : message.error
+                                                    ? 'bg-red-100 dark:bg-red-900'
+                                                    : 'bg-[#212121]'
                                             }`}
                                     >
                                         {message.error ? (
@@ -152,7 +150,10 @@ export default function Try() {
                                                 {message.content}
                                             </div>
                                         ) : (
-                                            <Streamdown key={index}>{message.content}</Streamdown>
+                                            <div
+                                                className='chat-response'
+                                                dangerouslySetInnerHTML={{ __html: marked.parse(message.content) as string }}
+                                            />
                                         )}
                                     </div>
                                 </div>
@@ -177,7 +178,7 @@ export default function Try() {
                         <form onSubmit={handleSubmit}>
                             <AiInput
                                 ref={inputRef}
-                                onSubmit={()=> handleSubmit}
+                                onSubmit={handleSubmit}
                                 className={'h-[130px] z-[90] w-full'}
                                 placeholder='Ask anything about your documents...'
                                 disabled={isStreaming}
