@@ -22,6 +22,21 @@ export {
   type SubmitDataOptions,
 } from "./collections"
 
+// RAG Query SDK
+export {
+  RAGQuerySDK,
+  createRAGQuerySDK,
+  type RAGConfig,
+  type RAGQueryOptions,
+  type TokenUsage,
+  type RAGMetadata,
+  type RAGContent,
+  type RAGDone,
+  type RAGError,
+  type RAGStreamEvent,
+  type RAGQueryCallbacks,
+} from "./rag"
+
 // React Provider and Hooks
 export {
   SDKProvider,

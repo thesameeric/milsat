@@ -1,0 +1,210 @@
+// Chat Response Styles
+.chat-response {
+    // Reset and base styles
+    line-height: 1.6;
+    font-size: 16px;
+
+    // H3 styles - use higher specificity
+    h3 {
+        font-size: 1.125rem !important; // 18px
+        font-weight: 600 !important;
+        line-height: 1.5 !important;
+        margin: 1rem 0 0.5rem 0 !important;
+        border: none !important;
+        padding: 0 !important;
+
+        &:first-child {
+            margin-top: 0 !important;
+        }
+    }
+
+    // Ordered list styles
+    ol {
+        margin: 0.75rem 0 !important;
+        padding-left: 1.5rem !important;
+        list-style-type: decimal !important;
+
+        li {
+            margin-bottom: 0.5rem !important;
+            padding-left: 0.25rem !important;
+            line-height: 1.5 !important;
+
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+        }
+    }
+
+    // Unordered list styles
+    ul {
+        margin: 1.75rem 0 !important;
+        padding-left: 1.5rem !important;
+        list-style-type: disc !important;
+
+        li {
+            margin-bottom: 0.5rem !important;
+            padding-left: 0.25rem !important;
+            line-height: 1.5 !important;
+
+            &:last-child {
+                margin-bottom: 0 !important;
+            }
+
+            strong {
+                color: var(--strong-color) !important;
+            }
+        }
+    }
+
+    // Paragraph styles
+    p {
+        margin: 0.5rem 0 !important;
+        line-height: 1.6 !important;
+
+        &:first-child {
+            margin-top: 0 !important;
+        }
+
+        &:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    // Other common markdown elements
+    h1,
+    h2 {
+        font-weight: 700 !important;
+        line-height: 1.4 !important;
+        margin: 1.5rem 0 1rem 0 !important;
+
+        &:first-child {
+            margin-top: 0 !important;
+        }
+    }
+
+    h1 {
+        font-size: 1.5rem !important; // 24px
+    }
+
+    h2 {
+        font-size: 1.25rem !important; // 20px
+    }
+
+    h4,
+    h5,
+    h6 {
+        font-weight: 600 !important;
+        line-height: 1.5 !important;
+        margin: 0.75rem 0 0.5rem 0 !important;
+
+        &:first-child {
+            margin-top: 0 !important;
+        }
+    }
+
+    // Code styles
+    code {
+        background-color: #f3f4f6 !important;
+        border-radius: 0.25rem !important;
+        padding: 0.125rem 0.25rem !important;
+        font-size: 0.875rem !important;
+        font-family: 'Courier New', monospace !important;
+        color: #dc2626 !important;
+    }
+
+    pre {
+        background-color: #f9fafb !important;
+        border-radius: 0.5rem !important;
+        padding: 1rem !important;
+        margin: 1rem 0 !important;
+        overflow-x: auto !important;
+
+        code {
+            background-color: transparent !important;
+            padding: 0 !important;
+            color: #374151 !important;
+        }
+    }
+
+    // Blockquotes
+    blockquote {
+        border-left: 4px solid #d1d5db !important;
+        margin: 1rem 0 !important;
+        padding-left: 1rem !important;
+        color: #6b7280 !important;
+        font-style: italic !important;
+    }
+
+    // Tables
+    table {
+        width: 100% !important;
+        border-collapse: collapse !important;
+        margin: 1rem 0 !important;
+
+        th,
+        td {
+            border: 1px solid #d1d5db !important;
+            padding: 0.5rem !important;
+            text-align: left !important;
+        }
+
+        th {
+            background-color: #f9fafb !important;
+            font-weight: 600 !important;
+        }
+    }
+
+    // Links
+    a {
+        color: #3b82f6 !important;
+        text-decoration: underline !important;
+
+        &:hover {
+            color: #1d4ed8 !important;
+        }
+    }
+
+    // Strong and emphasis
+    strong,
+    b {
+        font-weight: 700 !important;
+        // color: #111827 !important;
+    }
+
+    em,
+    i {
+        font-style: italic !important;
+    }
+}
+
+// Alternative approach without !important (if you can control CSS load order)
+.chat-response-clean {
+    h3 {
+        font-size: 1.125rem;
+        font-weight: 600;
+        line-height: 1.5;
+        margin: 1rem 0 0.5rem 0;
+        color: #1f2937;
+    }
+
+    ol,
+    ul {
+        margin: 0.75rem 0;
+        padding-left: 1.5rem;
+
+        li {
+            margin-bottom: 0.5rem;
+            padding-left: 0.25rem;
+            line-height: 1.5;
+            color: #374151;
+        }
+    }
+
+    ol {
+        list-style-type: decimal;
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+}
