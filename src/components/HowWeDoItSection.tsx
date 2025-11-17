@@ -6,7 +6,9 @@ import { cn } from "@/lib/utils";
 import Image from "next/image";
 import { DataCollectionSvg } from "./DataCollectionSvg";
 import { ArrowLeft } from "lucide-react";
-import { DataIntegrationSvg } from "./DataIntegrationSvg";
+import DataIntegrationSvg from "./svg/DataIntegration";
+import DataSharingSvg from "./svg/DataSharing";
+import Link from "next/link";
 
 const screenContent = [
   {
@@ -23,7 +25,7 @@ const screenContent = [
   {
     id: 2,
     title: "Data Integration",
-    image: "/integration.png",
+    image: "/integration.svg",
     description: "Seamlessly connect collected data to your databases and tools",
     sticky: (
       <div className="screen w-full h-full flex flex-col items-center justify-center">
@@ -34,11 +36,11 @@ const screenContent = [
   {
     id: 3,
     title: "Data Intelligence",
-    image: "/sharing.png",
+    image: "/sharing.svg",
     description: "Transform data into revenue & impact assets",
     sticky: (
       <div className="screen w-full h-full flex flex-col items-center justify-center">
-        <DataCollectionSvg />
+        <DataSharingSvg />
       </div>
     )
 
@@ -107,20 +109,20 @@ export default function HowWeDoItSection() {
             </div>
             <h3 className="text-3xl font-medium mb-4">Data Collection</h3>
             <p className={cn(
-              "mb-10 transition-colors duration-300",
-              activeItem === 1 ? "text-gray-300" : "text-gray-600"
+              "mb-10 transition-colors duration-300 text-[18px]",
+              activeItem === 1 ? "text-gray-400" : "text-gray-600"
             )}>
               Multi-modal data acquisition through 5k+ trained field agents, IoT sensors for unreachable areas,
               and AI for smart extrapolation
             </p>
-            <a href="#" className={cn(
-              "py-2 rounded-md inline-block transition-colors duration-300 w-fit",
+            <Link href={'/data/collection'} className={cn(
+              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-[18px]",
               activeItem === 1
                 ? "text-blue-500 hover:underline"
                 : "text-gray-500 border-gray-500"
             )}>
               Learn more <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
-            </a>
+            </Link>
           </div>
 
           <div
@@ -137,20 +139,20 @@ export default function HowWeDoItSection() {
             </div>
             <h3 className="text-3xl font-bold mb-4">Data Integration</h3>
             <p className={cn(
-              "mb-6 transition-colors duration-300",
-              activeItem === 2 ? "text-gray-300" : "text-gray-600"
+              "mb-6 transition-colors duration-300 text-[18px]",
+              activeItem === 2 ? "text-gray-400" : "text-gray-600"
             )}>
               Seamlessly connect collected data to your databases, tools (PowerBI, CRMs), and customer-facing
               platforms for operational value
             </p>
-            <a href="#" className={cn(
-              "py-2 rounded-md inline-block transition-colors duration-300 w-fit",
+            <Link href={'/data/integration'} className={cn(
+              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-[18px]",
               activeItem === 2
                 ? "text-blue-500 hover:underline"
                 : "text-gray-500 border-gray-500"
             )}>
               Learn more <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
-            </a>
+            </Link>
           </div>
 
           <div
@@ -167,20 +169,20 @@ export default function HowWeDoItSection() {
             </div>
             <h3 className="text-3xl font-bold mb-4">Data Intelligence</h3>
             <p className={cn(
-              "mb-6 transition-colors duration-300",
-              activeItem === 3 ? "text-gray-300" : "text-gray-600"
+              "mb-6 transition-colors duration-300 text-[18px]",
+              activeItem === 3 ? "text-gray-400" : "text-gray-600"
             )}>
               Transform data into revenue & impact assets via blockchain-secured sharing for monetization,
               research, and social good
             </p>
-            <a href="#" className={cn(
-              "py-2 rounded-md inline-block transition-colors duration-300 w-fit",
+            <Link href={'/data/intelligence'} className={cn(
+              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-[18px]",
               activeItem === 3
                 ? "text-blue-500 hover:underline"
                 : "text-gray-500 border-gray-500"
             )}>
               Learn more <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
-            </a>
+            </Link>
           </div>
         </div>
 

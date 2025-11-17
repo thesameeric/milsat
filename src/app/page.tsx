@@ -6,6 +6,7 @@ import HowWeDoItSection from "@/components/HowWeDoItSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
 import CaseStudiesSection from "@/components/CaseStudiesSection";
 import ReadyToStart from "@/components/ReadyToStart";
+import NewsletterSection from "@/components/NewsletterSection";
 
 export default function Home() {
   const content = [
@@ -66,6 +67,7 @@ export default function Home() {
       <ReadyToStart />
       <TestimonialsSection autoplay={true} />
       <CaseStudiesSection autoplay={true} />
+      <NewsletterSection />
     </div>
   );
 }

@@ -40,7 +40,7 @@ const AiInput = React.forwardRef<AiInputRef, AiInputProps>(
                 if (textareaRef.current && containerRef.current) {
                     textareaRef.current.value = value;
                     setHasContent(value.trim().length > 0);
-                    
+
                     // Trigger resize to adjust height
                     const target = textareaRef.current;
                     target.style.height = `${MIN_HEIGHT}px`;
@@ -48,14 +48,14 @@ const AiInput = React.forwardRef<AiInputRef, AiInputProps>(
                     const newHeight = Math.min(Math.max(scrollHeight, MIN_HEIGHT), MAX_HEIGHT);
                     target.style.height = `${newHeight}px`;
                     containerRef.current.style.height = `${newHeight}px`;
-                    
+
                     // Handle overflow
                     if (scrollHeight > MAX_HEIGHT) {
                         target.style.overflowY = 'auto';
                     } else {
                         target.style.overflowY = 'hidden';
                     }
-                    
+
                     // Focus the textarea
                     target.focus();
                 }

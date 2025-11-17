@@ -137,10 +137,10 @@ export default function Try() {
                                 >
                                     <div
                                         className={`max-w-[80%] rounded-lg p-2 ${message.role === 'user'
-                                            ? 'bg-[#212121]'
+                                            ? ''
                                             : message.error
                                                 ? 'bg-red-100 dark:bg-red-900'
-                                                : 'bg-[#212121]'
+                                                : ''
                                             }`}
                                     >
                                         {message.error ? (
@@ -148,7 +148,7 @@ export default function Try() {
                                                 <strong>Error:</strong> {message.content}
                                             </div>
                                         ) : message.role === 'user' ? (
-                                            <div className="">
+                                            <div className="bg-[#212121] px-2 rounded-md py-2">
                                                 {message.content}
                                             </div>
                                         ) : (
@@ -177,9 +177,9 @@ export default function Try() {
                         <form onSubmit={handleSubmit}>
                             <AiInput
                                 ref={inputRef}
-                                onSubmit={()=> handleSubmit}
+                                onSubmit={() => handleSubmit}
                                 className={'h-[130px] z-[90] w-full'}
-                                placeholder='Ask anything about your documents...'
+                                placeholder='Ask anything about our data'
                                 disabled={isStreaming}
                                 isStreaming={isStreaming}
                                 onCancelStream={handleCancelStream}
