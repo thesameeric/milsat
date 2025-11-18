@@ -3,7 +3,7 @@
 import { usePosts } from "@/lib/sdk"
 import { useEffect, useState } from "react"
 import { Post } from "@/lib/sdk/collections"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import Link from "next/link"
 import dayjs from "dayjs"
 import Image from "next/image"
@@ -66,44 +66,42 @@ function BlogList() {
 
   return (
     <div>
-      <div className='container mx-auto'>
-        <div>
-          <h2 className='py-10 uppercase tracking-widest text-sm text-gray-400'>Latest Articles</h2>
-        </div>
-        <ul className="grid gap-10 md:grid-cols-1 lg:grid-cols-3">
-          {blogPosts.map((post, index) => <li className='flex py-10' key={index}>
-            <div className='w-full'>
-              {post.header_image && <Image src={post?.header_image} objectFit="contain" width={100} height={150} alt={post.title} className='rounded-sm w-full h-[250px] object-cover overflow-hidden' />}
-              <span className='flex items-center gap-x-5 text-sm py-3'>
-                <p className='text-xs text-gray-300 uppercase tracking-widest'>{dayjs(post.created_at).format('MMMM DD, YYYY')}</p>
-                <p className='text-xs text-[#08C4DE] hover:underline'>Gis</p>
-              </span>
-              <Link className='inline-block font-semibold hover:text-[#08C4DE] hover:underline text-xl pb-5' href={`/blog/${post.slug}`}>{post.title}</Link>
-              <span>
-                <p className='text-[16px] pb-5 text-gray-400 truncate'>{post.excerpt}</p>
-              </span>
-              {/*<span className='flex items-center'>
-                <Image src={post.authorImage} width={30} height={30} alt={post.authorImage} className='rounded-full' />
-                <p className='font-semibold text-[16px] pl-3'>{post.author}</p>
-              </span>*/}
-            </div>
-            <div>
-              {/* <Image objectFit='cover' src={post.image} alt={post.title} width={450} height={300} className='rounded-lg' /> */}
-            </div>
-          </li>)}
-        </ul>
+      <div>
+        <h2 className='py-6 sm:py-10 uppercase tracking-widest text-sm text-gray-400'>Latest Articles</h2>
       </div>
+      <ul className="grid gap-6 sm:gap-10 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {blogPosts.map((post, index) => <li className='flex py-6 sm:py-10' key={index}>
+          <div className='w-full'>
+            {post.header_image && <Image src={post?.header_image} objectFit="contain" width={100} height={150} alt={post.title} className='rounded-sm w-full h-[200px] sm:h-[250px] object-cover overflow-hidden' />}
+            <span className='flex items-center gap-x-3 sm:gap-x-5 text-sm py-3'>
+              <p className='text-xs text-gray-300 uppercase tracking-widest'>{dayjs(post.created_at).format('MMMM DD, YYYY')}</p>
+              <p className='text-xs text-[#08C4DE] hover:underline'>Gis</p>
+            </span>
+            <Link className='inline-block font-semibold hover:text-[#08C4DE] hover:underline text-lg sm:text-xl pb-5 break-words' href={`/blog/${post.slug}`}>{post.title}</Link>
+            <span>
+              <p className='text-sm sm:text-base pb-5 text-gray-400 line-clamp-3'>{post.excerpt}</p>
+            </span>
+            {/*<span className='flex items-center'>
+              <Image src={post.authorImage} width={30} height={30} alt={post.authorImage} className='rounded-full' />
+              <p className='font-semibold text-[16px] pl-3'>{post.author}</p>
+            </span>*/}
+          </div>
+          <div>
+            {/* <Image objectFit='cover' src={post.image} alt={post.title} width={450} height={300} className='rounded-lg' /> */}
+          </div>
+        </li>)}
+      </ul>
     </div>
   )
 }
 
 export default function BlogClient() {
   return (
-    <div className="container mx-auto py-12 px-4">
-      <div className="max-w-6xl mx-auto space-y-8">
-        <div className="text-center space-y-4">
-          <h1 className="text-4xl font-bold">Blog</h1>
-          <p className="text-lg text-muted-foreground">Latest articles and updates</p>
+    <div className="container mx-auto py-8 sm:py-12 px-4 sm:px-6 md:px-8">
+      <div className="max-w-6xl mx-auto space-y-6 sm:space-y-8">
+        <div className="text-center space-y-3 sm:space-y-4">
+          <h1 className="text-3xl sm:text-4xl font-bold">Blog</h1>
+          <p className="text-base sm:text-lg text-muted-foreground">Latest articles and updates</p>
         </div>
         <BlogList />
       </div>

@@ -90,7 +90,7 @@ export default function TestimonialsSection({ autoplay }: {
 
       <div className="flex flex-col justify-center items-center max-w-4xl mx-auto p-6 sm:p-8 md:p-12 mt-8 sm:mt-12 md:mt-20 relative">
         <div className="text-6xl mb-8 absolute top-0 left-0 sm:-left-[30px] opacity-50 sm:opacity-100">
-          <Image width={50} height={65} src={'/quote.png'} alt={'Quote'} className="sm:w-[70px] sm:h-[90px]"></Image>
+          <Image width={50} height={50} src={'/quote.png'} alt={'Quote'}></Image>
         </div>
         <div className="flex flex-col justify-between py-4 w-full">
           <motion.div

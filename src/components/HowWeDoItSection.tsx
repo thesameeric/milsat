@@ -18,7 +18,7 @@ const screenContent = [
     description: "Multi-modal data acquisition through 5k+ trained field agents",
     sticky: (
       <div className="screen w-full h-full flex flex-col items-center justify-center">
-        <DataCollectionSvg />
+        <img width={400} src={'./illustration-01-deploy.svg'} />
       </div>
     )
   },
@@ -29,7 +29,7 @@ const screenContent = [
     description: "Seamlessly connect collected data to your databases and tools",
     sticky: (
       <div className="screen w-full h-full flex flex-col items-center justify-center">
-        <DataIntegrationSvg />
+        <img width={400} src={'./integration.svg'} />
       </div>
     )
   },
@@ -40,7 +40,7 @@ const screenContent = [
     description: "Transform data into revenue & impact assets",
     sticky: (
       <div className="screen w-full h-full flex flex-col items-center justify-center">
-        <img src={'./illustration-04-monitor.svg'} />
+        <img width={400} src={'./illustration-04-monitor.svg'} />
       </div>
     )
 

@@ -3,6 +3,7 @@
 import * as React from "react"
 import Link from "next/link"
 import { Logo } from '../logo';
+import { Menu, X, ArrowRight } from 'lucide-react';
 
 import {
   NavigationMenu,
@@ -53,6 +54,8 @@ const components: { title: string; href: string; description: string }[] = [
 ]
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
   return (
     <header className="sticky top-0 left-0 bg-black w-full z-[999]">
       <div className="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6 md:px-8">
@@ -122,12 +125,89 @@ export default function Header() {
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Mobile menu placeholder - Basic links for mobile */}
-        <div className="flex sm:hidden gap-2 text-sm">
-          <Link href="/about" className="text-white hover:text-gray-300 px-2">Company</Link>
-          <Link href="/contact" className="text-white hover:text-gray-300 px-2">Contact</Link>
-        </div>
+        {/* Mobile menu button */}
+        <button
+          className="sm:hidden text-white p-2"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle mobile menu"
+        >
+          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
       </div>
+
+      {/* Mobile Dropdown Menu */}
+      {mobileMenuOpen && (
+        <div className="sm:hidden bg-black border-t border-[#343434]">
+          <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4 text-[14px]">
+            {/* Data Section */}
+            <div>
+              <div className="text-gray-400 text-xs uppercase font-semibold mb-2">Data</div>
+              <div className="flex flex-col space-y-2 pl-4">
+                <Link
+                  href="/data/collection"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> Collection
+                </Link>
+                <Link
+                  href="/data/integration"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> Integration
+                </Link>
+                <Link
+                  href="/data/intelligence"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> Intelligence
+                </Link>
+              </div>
+            </div>
+
+            {/* Company */}
+            <Link
+              href="/about"
+              className="text-white hover:text-gray-300 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Company
+            </Link>
+
+            {/* Resources Section */}
+            <div>
+              <div className="text-gray-400 text-xs uppercase font-semibold mb-2">Resources</div>
+              <div className="flex flex-col space-y-2 pl-4">
+                <Link
+                  href="/blog"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> Blog
+                </Link>
+                <Link
+                  href="/publications"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> Papers
+                </Link>
+              </div>
+            </div>
+
+            {/* Contact */}
+            <Link
+              href="/contact"
+              className="text-white hover:text-gray-300 py-2"
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Contact us
+            </Link>
+          </nav>
+        </div>
+      )}
     </header>
   )
 }

@@ -110,7 +110,7 @@ function BlogPostContent() {
             </Link>
 
             <div className="space-y-4">
-              <h1 className="text-[2.5rem]">{post.title}</h1>
+              <h1 className="tex-3xl md:text-[2.5rem]">{post.title}</h1>
 
               <div className="flex items-center text-sm text-gray-400">
                 <span className="uppercase font-medium tracking-wider">

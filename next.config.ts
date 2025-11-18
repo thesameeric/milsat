@@ -21,6 +21,10 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'media.letterhead.cloud',
+      },
+      {
+        protocol: 'https',
         hostname: 'd3htjribhyrfpy.cloudfront.net',
       },
     ],

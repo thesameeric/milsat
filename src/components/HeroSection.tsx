@@ -1,30 +1,53 @@
 'use client'
+import { useEffect, useState } from 'react';
 import WordFlipper from './wordFlippers';
 import TalkToAnExpert from './TalkToAnExpert';
 import Link from 'next/link';
-export default function HeroSection() {
-  return (
-    <section className="relative flex flex-col items-center justify-center mx-auto min-h-screen px-4 sm:px-6 md:px-8 pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 text-center overflow-hidden">
-      {/* Background Video */}
-      {/* <video
-        autoPlay
-        loop
-        muted
-        playsInline
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10"
-      >
-        <source src="/bg.mov" type="video/mp4" />
-      </video> */}
-      {/*eslint-disable-next-line @next/next/no-img-element */}
-      <img src="/bg-img.png" className='absolute top-0 left-0 opacity-8 w-full h-full object-cover' alt="" />
-      <div
-        className="absolute top-0 left-0 w-full h-full object-cover -z-10 bg-black/80"
-      >
 
-      </div>
+export default function HeroSection() {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return (
+    <section className="relative flex flex-col items-center justify-center mx-auto min-h-[600px] sm:min-h-[700px] md:min-h-screen px-4 sm:px-6 md:px-8 pt-24 sm:pt-32 md:pt-32 pb-16 sm:pb-20 text-center overflow-hidden">
+      {/* Background Image Layer - Mobile (lower opacity) with parallax */}
+      <div
+        className='absolute top-0 left-0 w-full h-full -z-20 md:hidden'
+        style={{
+          backgroundImage: 'url(/bg-img.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.5,
+          transform: `translateY(${scrollY * 0.5}px)`,
+          willChange: 'transform'
+        }}
+      />
+
+      {/* Background Image Layer - Desktop (higher opacity) with parallax */}
+      <div
+        className='absolute top-0 left-0 w-full h-full -z-20 hidden md:block'
+        style={{
+          backgroundImage: 'url(/bg-img.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          opacity: 0.1,
+          transform: `translateY(${scrollY * 0.5}px)`,
+          willChange: 'transform'
+        }}
+      />
 
       {/* Dark Overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black/50 -z-10"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-black/60 sm:bg-black/50 md:bg-black/30 -z-10"></div>
 
       {/* Content */}
       <div className="relative z-10 container mx-auto">
