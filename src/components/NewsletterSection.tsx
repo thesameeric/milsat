@@ -54,20 +54,20 @@ export default function NewsletterSection() {
   }
 
   return (
-    <section className="w-full py-16 sm:py-20 md:py-24">
+    <section className="w-full flex items-center py-16 sm:py-20 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center max-w-3xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4">
             Stay Updated
           </h2>
-          <p className="text-lg text-gray-400 mb-8 text-[18px]">
+          <p className="text-lg text-gray-400 mb-10 text-[18px]">
             Subscribe to our newsletter for the latest insights on African data intelligence,
             mapping innovations, and industry trends.
           </p>
 
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
-              <div className="border border-[#343333] flex items-center rounded-lg overflow-hidden">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="w-full max-w-md mx-auto">
+              <div className="border border-[#343333] flex flex-col sm:flex-row items-stretch sm:items-center rounded-lg overflow-hidden">
 
                 <FormField
                   control={form.control}
@@ -78,27 +78,24 @@ export default function NewsletterSection() {
                         <Input
                           type="email"
                           placeholder="Enter your email"
-                          className="px-6 py-3 rounded-full bg-background text-foreground placeholder:text-foreground/50 border-0 h-auto"
+                          className="px-4 sm:px-6 py-3 rounded-full bg-background text-foreground placeholder:text-foreground/50 border-0 h-auto text-sm sm:text-base"
                           {...field}
                         />
                       </FormControl>
-                      <FormMessage className="text-background/80 text-left" />
+                      <FormMessage className="text-background/80 text-left px-4 text-xs sm:text-sm" />
                     </FormItem>
                   )}
                 />
                 <Button
                   type="submit"
                   disabled={isSubmitting}
-                  className="px-8 py-3 bg-[#343333] hover:bg-[#252424] cursor-pointer text-foreground transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed h-auto rounded-none"
+                  className="px-6 sm:px-8 py-3 bg-[#343333] hover:bg-[#252424] cursor-pointer text-foreground transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed h-auto rounded-none text-sm sm:text-base"
                 >
                   {isSubmitting ? "Subscribing..." : "Subscribe"}
                 </Button>
               </div>
             </form>
           </Form>
-          <p className="text-sm text-background/60 mt-4">
-            We respect your privacy. Unsubscribe at any time.
-          </p>
         </div>
       </div>
     </section>

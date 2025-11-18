@@ -7,13 +7,13 @@ export default function CustomersSection() {
       value: "Sierra Leone Statistics",
       image: '/clients/sls.png',
       content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl px-10 py-20 text-white"
+        <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
           style={{
             background: '#01191D'
           }}>
-          <p className="text-2xl md:text-4xl">National Census Mapping</p>
-          <span className="inline-block pt-10">
-            <p>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">National Census Mapping</p>
+          <span className="inline-block pt-6 sm:pt-8 md:pt-10">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
               Backbone tool for the digital cartographic mapping for Sierra Leone demographic and households census, ensuring accuracy and completeness at unprecedented scale.
             </p>
           </span>
@@ -25,13 +25,13 @@ export default function CustomersSection() {
       value: "National population Commision",
       image: '/clients/npc.png',
       content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl px-10 py-20 text-white"
+        <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
           style={{
             background: '#01191D'
           }}>
-          <p className="text-2xl md:text-4xl">National Enumeration Area Demarcation</p>
-          <span className="inline-block pt-10">
-            <p>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">National Enumeration Area Demarcation</p>
+          <span className="inline-block pt-6 sm:pt-8 md:pt-10">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
               Deployed to drive the Enumeration Area Demarcation (EAD) — successfully mapping 65M+ properties across 37 states within 9 months, the fastest operation of its kind in Africa.            </p>
           </span>
         </div>
@@ -42,13 +42,13 @@ export default function CustomersSection() {
       value: "Nipost",
       image: '/clients/nipost2.jpg',
       content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl px-10 py-20 text-white"
+        <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
           style={{
             background: '#01191D'
           }}>
-          <p className="text-2xl md:text-4xl">National Addressing & Postcode</p>
-          <span className="inline-block pt-10">
-            <p>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">National Addressing & Postcode</p>
+          <span className="inline-block pt-6 sm:pt-8 md:pt-10">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
               Officially adopted as the certified geo application for countrywide postcode generation and address verification, enabling a digital backbone for addresses nationwide.
             </p>
           </span>
@@ -60,13 +60,13 @@ export default function CustomersSection() {
       value: "UNDP",
       image: '/clients/undp.png',
       content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl px-10 py-20 text-white"
+        <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
           style={{
             background: '#01191D'
           }}>
-          <p className="text-2xl md:text-4xl">Mining and Miners Census</p>
-          <span className="inline-block pt-10">
-            <p>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">Mining and Miners Census</p>
+          <span className="inline-block pt-6 sm:pt-8 md:pt-10">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
               Driving inclusion and innovation across Sub-Saharan Africa with artisanal miners enumeration and geospatial mapping, creating pathways for formalization in the mining sector.            </p>
           </span>
         </div>
@@ -75,11 +75,11 @@ export default function CustomersSection() {
   ];
 
   return (
-    <section className="container mx-auto px-8 pt-20 w-full">
-      <h2 className="text-3xl md:text-5xl mb-12 max-w-4xl">
+    <section className="container mx-auto px-4 sm:px-6 md:px-8 pt-12 sm:pt-16 md:pt-20 w-full">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-8 sm:mb-10 md:mb-12 max-w-4xl">
         Customers using local data for industrial advantage
       </h2>
-      <div className="[perspective:1000px] relative b flex flex-col items-start justify-start my-20">
+      <div className="[perspective:1000px] relative b flex flex-col items-start justify-start my-12 sm:my-16 md:my-20">
         <Tabs tabs={tabs} />
       </div>
     </section>

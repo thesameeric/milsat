@@ -65,12 +65,12 @@ export default function TestimonialsSection({ autoplay }: {
 
   if (isLoading) {
     return (
-      <section className="container mx-auto px-8 py-20">
-        <h2 className="text-4xl md:text-5xl text-center mb-16 max-w-4xl mx-auto">
+      <section className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-12 sm:mb-16 max-w-4xl mx-auto">
           Don&apos;t Just take our words for it;<br></br>
-          <p className="text-gray-400">Our customers says it best</p>
+          <p className="text-gray-400 text-lg sm:text-xl md:text-2xl mt-2">Our customers says it best</p>
         </h2>
-        <div className="flex justify-center items-center py-20">
+        <div className="flex justify-center items-center py-12 sm:py-20">
           <div className="animate-pulse text-gray-400">Loading testimonials...</div>
         </div>
       </section>
@@ -82,15 +82,15 @@ export default function TestimonialsSection({ autoplay }: {
   }
 
   return (
-    <section className="container mx-auto px-8 py-20">
-      <h2 className="text-4xl md:text-5xl text-center mb-16 max-w-4xl mx-auto">
+    <section className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center mb-12 sm:mb-16 max-w-4xl mx-auto">
         Don&apos;t Just take our words for it;<br></br>
-        <p className="text-gray-400">Our customers says it best</p>
+        <p className="text-gray-400 text-lg sm:text-xl md:text-2xl mt-2">Our customers says it best</p>
       </h2>
 
-      <div className="flex flex-col justify-center items-center max-w-4xl mx-auto p-12 mt-20 relative">
-        <div className="text-6xl mb-8 absolute top-0 -left-[30px]">
-          <Image width={70} height={90} src={'/quote.png'} alt={'Quote'} ></Image>
+      <div className="flex flex-col justify-center items-center max-w-4xl mx-auto p-6 sm:p-8 md:p-12 mt-8 sm:mt-12 md:mt-20 relative">
+        <div className="text-6xl mb-8 absolute top-0 left-0 sm:-left-[30px] opacity-50 sm:opacity-100">
+          <Image width={50} height={65} src={'/quote.png'} alt={'Quote'} className="sm:w-[70px] sm:h-[90px]"></Image>
         </div>
         <div className="flex flex-col justify-between py-4 w-full">
           <motion.div
@@ -113,7 +113,7 @@ export default function TestimonialsSection({ autoplay }: {
             }}
             className="flex flex-col justify-center items-center w-full"
           >
-            <motion.p className="text-xl leading-relaxed mb-8 text-center w-full break-words">
+            <motion.p className="text-base sm:text-lg md:text-xl leading-relaxed mb-6 sm:mb-8 text-center w-full break-words px-4 sm:px-0">
               {testimonials[active].message.split(" ").map((word, index) => (
                 <motion.span
                   key={index}
@@ -138,11 +138,11 @@ export default function TestimonialsSection({ autoplay }: {
                 </motion.span>
               ))}
             </motion.p>
-            <div>
-              <h3 className="dark:text-white">
+            <div className="text-center">
+              <h3 className="dark:text-white text-base sm:text-lg font-semibold">
                 {testimonials[active].name}
               </h3>
-              <p className="text-sm text-gray-500 dark:text-neutral-500">
+              <p className="text-xs sm:text-sm text-gray-500 dark:text-neutral-500">
                 {testimonials[active].position}
               </p>
             </div>
@@ -150,11 +150,11 @@ export default function TestimonialsSection({ autoplay }: {
         </div>
       </div>
 
-      <div className="flex justify-center gap-3 mt-8">
+      <div className="flex justify-center gap-2 sm:gap-3 mt-6 sm:mt-8">
         {testimonials.map((x, i) => <div
           key={i}
           onClick={() => setActive(i)}
-          className={cn('w-3 h-3 bg-white rounded-full cursor-pointer', active === i ? 'bg-white' : 'bg-white/30')}></div>
+          className={cn('w-2.5 h-2.5 sm:w-3 sm:h-3 bg-white rounded-full cursor-pointer', active === i ? 'bg-white' : 'bg-white/30')}></div>
         )}
       </div>
     </section>

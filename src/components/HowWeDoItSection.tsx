@@ -40,7 +40,7 @@ const screenContent = [
     description: "Transform data into revenue & impact assets",
     sticky: (
       <div className="screen w-full h-full flex flex-col items-center justify-center">
-        <DataSharingSvg />
+        <img src={'./illustration-04-monitor.svg'} />
       </div>
     )
 
@@ -88,35 +88,35 @@ export default function HowWeDoItSection() {
   const activeContent = screenContent.find(item => item.id === activeItem);
 
   return (
-    <section id="how-it-works" className="container mx-auto px-8 py-20" ref={containerRef}>
-      <h2 className="text-4xl md:text-5xl mt-40">
+    <section id="how-it-works" className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20" ref={containerRef}>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl mt-20 sm:mt-32 md:mt-40">
         How We do it
       </h2>
 
-      <div className="grid md:grid-cols-2 gap-16 mt-40 relative">
-        <div className="w-full md:w-[500px] mt-40">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-12 sm:mt-20 md:mt-40 relative">
+        <div className="w-full lg:w-[500px] mt-12 sm:mt-20 md:mt-40">
           <div
             ref={item1Ref}
             className={cn(
-              "item-1 transition-colors duration-300 min-h-[800px] flex flex-col",
+              "item-1 transition-colors duration-300 min-h-[400px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col",
               activeItem === 1 ? "text-white" : "text-gray-500"
             )}
           >
-            <div className="w-16 h-16 mb-4 flex items-center justify-center">
-              <span className="text-2xl">
-                <Image src={'/collection.png'} width={50} height={50} alt={"collection"}></Image>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 mb-4 flex items-center justify-center">
+              <span className="text-xl sm:text-2xl">
+                <Image src={'/collection.png'} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"collection"}></Image>
               </span>
             </div>
-            <h3 className="text-3xl font-medium mb-4">Data Collection</h3>
+            <h3 className="text-2xl sm:text-3xl font-medium mb-3 sm:mb-4">Data Collection</h3>
             <p className={cn(
-              "mb-10 transition-colors duration-300 text-[18px]",
+              "mb-6 sm:mb-10 transition-colors duration-300 text-base sm:text-lg",
               activeItem === 1 ? "text-gray-400" : "text-gray-600"
             )}>
               Multi-modal data acquisition through 5k+ trained field agents, IoT sensors for unreachable areas,
               and AI for smart extrapolation
             </p>
             <Link href={'/data/collection'} className={cn(
-              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-[18px]",
+              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
               activeItem === 1
                 ? "text-blue-500 hover:underline"
                 : "text-gray-500 border-gray-500"
@@ -128,25 +128,25 @@ export default function HowWeDoItSection() {
           <div
             ref={item2Ref}
             className={cn(
-              "item-2 transition-colors duration-300 min-h-[800px]  flex flex-col justify-start",
+              "item-2 transition-colors duration-300 min-h-[400px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col justify-start",
               activeItem === 2 ? "text-white" : "text-gray-500"
             )}
           >
-            <div className="w-16 h-16 mb-4 flex items-center justify-center">
-              <span className="text-2xl">
-                <Image src={'/integration.png'} width={50} height={50} alt={"integration"}></Image>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 mb-4 flex items-center justify-center">
+              <span className="text-xl sm:text-2xl">
+                <Image src={'/integration.png'} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"integration"}></Image>
               </span>
             </div>
-            <h3 className="text-3xl font-bold mb-4">Data Integration</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Data Integration</h3>
             <p className={cn(
-              "mb-6 transition-colors duration-300 text-[18px]",
+              "mb-6 transition-colors duration-300 text-base sm:text-lg",
               activeItem === 2 ? "text-gray-400" : "text-gray-600"
             )}>
               Seamlessly connect collected data to your databases, tools (PowerBI, CRMs), and customer-facing
               platforms for operational value
             </p>
             <Link href={'/data/integration'} className={cn(
-              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-[18px]",
+              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
               activeItem === 2
                 ? "text-blue-500 hover:underline"
                 : "text-gray-500 border-gray-500"
@@ -158,25 +158,25 @@ export default function HowWeDoItSection() {
           <div
             ref={item3Ref}
             className={cn(
-              "item-3 transition-colors duration-300 min-h-[800px] flex flex-col justify-start",
+              "item-3 transition-colors duration-300 min-h-[400px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col justify-start",
               activeItem === 3 ? "text-white" : "text-gray-500"
             )}
           >
-            <div className="w-16 h-16 mb-4 flex items-center justify-center">
-              <span className="text-2xl">
-                <Image src={'/sharing.png'} width={50} height={50} alt={"sharing"}></Image>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 mb-4 flex items-center justify-center">
+              <span className="text-xl sm:text-2xl">
+                <Image src={'/sharing.png'} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"sharing"}></Image>
               </span>
             </div>
-            <h3 className="text-3xl font-bold mb-4">Data Intelligence</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Data Intelligence</h3>
             <p className={cn(
-              "mb-6 transition-colors duration-300 text-[18px]",
+              "mb-6 transition-colors duration-300 text-base sm:text-lg",
               activeItem === 3 ? "text-gray-400" : "text-gray-600"
             )}>
               Transform data into revenue & impact assets via blockchain-secured sharing for monetization,
               research, and social good
             </p>
             <Link href={'/data/intelligence'} className={cn(
-              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-[18px]",
+              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
               activeItem === 3
                 ? "text-blue-500 hover:underline"
                 : "text-gray-500 border-gray-500"
@@ -187,7 +187,7 @@ export default function HowWeDoItSection() {
         </div>
 
         {/* Sticky Screen - Right Column */}
-        <div className="sticky top-40 h-[600px] flex items-center justify-center">
+        <div className="hidden lg:block sticky top-20 sm:top-32 md:top-40 h-[400px] sm:h-[500px] md:h-[600px] flex items-center justify-center">
           <motion.div
             key={activeItem}
             initial={{ opacity: 0, scale: 0.9 }}

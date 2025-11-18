@@ -59,11 +59,11 @@ export default function CaseStudiesSection({ autoplay = false }: { autoplay?: bo
 
   if (isLoading) {
     return (
-      <section className="container mx-auto px-8 py-20">
-        <h2 className="text-4xl md:text-5xl mb-12">
+      <section className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-8 sm:mb-10 md:mb-12">
           Case Studies
         </h2>
-        <div className="bg-[#150040] rounded-lg p-20 flex justify-center items-center">
+        <div className="bg-[#150040] rounded-lg p-12 sm:p-16 md:p-20 flex justify-center items-center">
           <div className="animate-pulse text-gray-400">Loading case studies...</div>
         </div>
       </section>
@@ -75,32 +75,32 @@ export default function CaseStudiesSection({ autoplay = false }: { autoplay?: bo
   }
 
   return (
-    <section className="container mx-auto px-8 py-20">
-      <h2 className="text-4xl md:text-5xl mb-12">
+    <section className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
+      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-8 sm:mb-10 md:mb-12">
         Case Studies
       </h2>
 
-      <div className="bg-[#150040] rounded-lg p-20 relative overflow-hidden">
-        <div className="relative z-10 grid md:grid-cols-2 gap-12 items-center">
+      <div className="bg-[#150040] rounded-lg p-6 sm:p-10 md:p-16 lg:p-20 relative overflow-hidden">
+        <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
           <div>
             <div>
-              <div className="flex gap-4 pt-12 md:pt-0 mb-10">
+              <div className="flex gap-3 sm:gap-4 pt-0 mb-6 sm:mb-8 md:mb-10">
                 <button
                   onClick={handlePrev}
-                  className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
+                  className="group/button flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800 hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors"
                 >
-                  <IconArrowLeft className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
+                  <IconArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 text-black transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
                 </button>
                 <button
                   onClick={handleNext}
-                  className="group/button flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800"
+                  className="group/button flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800 hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors"
                 >
-                  <IconArrowRight className="h-5 w-5 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
+                  <IconArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
                 </button>
               </div>
             </div>
             <motion.div>
-              <p className="text-xl mb-8 leading-relaxed">
+              <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 leading-relaxed">
                 {usecases[active].content.split(' ').slice(0, 50).join(' ')}
                 {usecases[active].content.split(' ').length > 50 ? '...' : ''}
               </p>
@@ -118,14 +118,14 @@ export default function CaseStudiesSection({ autoplay = false }: { autoplay?: bo
                   <div className="text-sm text-gray-200">Accuracy</div>
                 </div>
               </div> */}
-              <a href="#" className="bg-white text-sm text-slate-900 px-6 py-2 rounded-lg inline-block font-medium hover:bg-white/70 transition-colors">
+              <a href="#" className="bg-white text-xs sm:text-sm text-slate-900 px-5 py-2 sm:px-6 sm:py-2.5 rounded-lg inline-block font-medium hover:bg-white/70 transition-colors">
                 View Case Study
               </a>
             </motion.div>
           </div>
-          <div className="flex justify-center">
+          <div className="flex justify-center mt-8 md:mt-0">
             <div
-              className="w-[200px] h-[200px] rounded-full backdrop-blur-sm flex items-center justify-center bg-cover bg-center relative">
+              className="w-[150px] h-[150px] sm:w-[180px] sm:h-[180px] md:w-[200px] md:h-[200px] rounded-full backdrop-blur-sm flex items-center justify-center bg-cover bg-center relative">
               <svg xmlns="http://www.w3.org/2000/svg" width="500" height="300" viewBox="0 0 668 718" fill="none" className="absolute">
                 <g filter="url(#filter0_f_8855_3695)">
                   <path d="M467.786 382.044C467.398 481.781 362.075 562.417 232.541 562.148C103.008 561.879 -1.68484 480.809 -1.29612 381.071C-0.907403 281.334 104.415 200.699 233.949 200.967C363.483 201.236 468.175 282.307 467.786 382.044Z" fill="url(#paint0_linear_8855_3695)" />
@@ -159,8 +159,8 @@ export default function CaseStudiesSection({ autoplay = false }: { autoplay?: bo
                   </linearGradient>
                 </defs>
               </svg>
-              <span className="text-8xl z-100 -ml-10">
-                <Image src={usecases[active].logo} width={250} height={250} alt={"usecase"}></Image>
+              <span className="text-6xl sm:text-7xl md:text-8xl z-100 -ml-6 sm:-ml-8 md:-ml-10">
+                <Image src={usecases[active].logo} width={180} height={180} alt={"usecase"} className="sm:w-[220px] sm:h-[220px] md:w-[250px] md:h-[250px]"></Image>
               </span>
             </div>
           </div>
