@@ -94,6 +94,16 @@ export default function Header() {
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
+              <NavigationMenuTrigger className="text-sm md:text-base">Solutions</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="grid w-[250px] md:w-[300px] gap-4 p-4">
+                  <ListItem href="/solutions/finance" title="Banking & Finance">
+                    Location intelligence for KYC, AML compliance, and fraud reduction
+                  </ListItem>
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+            <NavigationMenuItem>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
                 <Link href="/about" className="text-sm md:text-base">Company</Link>
               </NavigationMenuLink>
@@ -163,6 +173,20 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <ArrowRight width={15} /> Intelligence
+                </Link>
+              </div>
+            </div>
+
+            {/* Solutions Section */}
+            <div>
+              <div className="text-gray-400 text-xs uppercase font-semibold mb-2">Solutions</div>
+              <div className="flex flex-col space-y-2 pl-4">
+                <Link
+                  href="/solutions/finance"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> Banking & Finance
                 </Link>
               </div>
             </div>
