@@ -1,9 +1,11 @@
 "use client"
 
 import * as React from "react"
-import Link from "next/link"
 import { Logo } from '../logo';
 import { Menu, X, ArrowRight } from 'lucide-react';
+import LanguageSwitcher from '../LanguageSwitcher';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 import {
   NavigationMenu,
@@ -54,6 +56,8 @@ const components: { title: string; href: string; description: string }[] = [
 ]
 
 export default function Header() {
+  const t = useTranslations('nav');
+  const solutions = useTranslations('solutions');
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
 
   return (
@@ -64,10 +68,11 @@ export default function Header() {
             <Logo />
           </Link>
         </div>
-        <NavigationMenu className="hidden sm:flex">
-          <NavigationMenuList className="flex-wrap gap-1">
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-sm md:text-base">Data</NavigationMenuTrigger>
+        <div className="flex items-center gap-4">
+          <NavigationMenu className="hidden sm:flex">
+            <NavigationMenuList className="flex-wrap gap-1">
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="text-sm md:text-base">{t('data')}</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid gap-2 w-[300px] sm:w-[400px] lg:w-[500px] p-4 lg:grid-cols-[.75fr_1fr]">
                   <li className="row-span-3">
@@ -76,63 +81,63 @@ export default function Header() {
                         className="flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md"
                       >
                         <div className="mb-2 text-base md:text-lg font-medium">
-                          Loci
+                          {t('loci')}
                         </div>
                         <p className="text-muted-foreground text-xs md:text-sm leading-tight">
-                          Your all in one data platform
+                          {t('lociDescription')}
                         </p>
                       </p>
                     </NavigationMenuLink>
                   </li>
-                  <ListItem href="/data/collection" title="Collection">
+                  <ListItem href="/data/collection" title={t('collection')}>
                   </ListItem>
-                  <ListItem href="/data/integration" title="Integration">
+                  <ListItem href="/data/integration" title={t('integration')}>
                   </ListItem>
-                  <ListItem href="/data/intelligence" title="Intelligence">
+                  <ListItem href="/data/intelligence" title={t('intelligence')}>
                   </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-sm md:text-base">Solutions</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="text-sm md:text-base">{t('solutions')}</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[250px] md:w-[300px] gap-4 p-4">
-                  <ListItem href="/solutions/finance" title="Banking & Finance">
-                    Location intelligence for KYC, AML compliance, and fraud reduction
+                  <ListItem href="/solutions/finance" title={solutions('bankingFinance.title')}>
+                    {solutions('bankingFinance.description')}
                   </ListItem>
-                  <ListItem href="/solutions/logistics" title="Logistics & Delivery">
-                    Location intelligent solutions for optimized delivery and fleet management
+                  <ListItem href="/solutions/logistics" title={solutions('logistics.title')}>
+                    {solutions('logistics.description')}
                   </ListItem>
-                  <ListItem href="/solutions/public-health" title="Public Health">
-                    Spatial data acquisition and analysis for micro-planning efforts
+                  <ListItem href="/solutions/public-health" title={solutions('publicHealth.title')}>
+                    {solutions('publicHealth.description')}
                   </ListItem>
-                  <ListItem href="/solutions/marketing" title="Marketing">
-                    Location intelligence for sales and marketing strategies
+                  <ListItem href="/solutions/marketing" title={solutions('marketing.title')}>
+                    {solutions('marketing.description')}
                   </ListItem>
-                  <ListItem href="/solutions/manufacturing" title="Manufacturing">
-                    IoT data acquisition for machine optimization and production
+                  <ListItem href="/solutions/manufacturing" title={solutions('manufacturing.title')}>
+                    {solutions('manufacturing.description')}
                   </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link href="/about" className="text-sm md:text-base">Company</Link>
+                <Link href="/about" className="text-sm md:text-base">{t('company')}</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
             <NavigationMenuItem className="hidden lg:block">
-              <NavigationMenuTrigger className="text-sm md:text-base">Resources</NavigationMenuTrigger>
+              <NavigationMenuTrigger className="text-sm md:text-base">{t('resources')}</NavigationMenuTrigger>
               <NavigationMenuContent>
                 <ul className="grid w-[250px] md:w-[300px] gap-4 p-4">
                   <li>
                     <NavigationMenuLink asChild>
                       <Link href="/blog">
-                        <div className="font-medium text-sm md:text-base">Blog</div>
+                        <div className="font-medium text-sm md:text-base">{t('blog')}</div>
                       </Link>
                     </NavigationMenuLink>
                     <NavigationMenuLink asChild>
                       <Link href="/publications">
-                        <div className="font-medium text-sm md:text-base">Papers</div>
+                        <div className="font-medium text-sm md:text-base">{t('papers')}</div>
                       </Link>
                     </NavigationMenuLink>
                   </li>
@@ -141,20 +146,28 @@ export default function Header() {
             </NavigationMenuItem>
             <NavigationMenuItem>
               <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link href="/contact" className="text-sm md:text-base">Contact us</Link>
+                <Link href="/contact" className="text-sm md:text-base">{t('contact')}</Link>
               </NavigationMenuLink>
             </NavigationMenuItem>
           </NavigationMenuList>
         </NavigationMenu>
 
-        {/* Mobile menu button */}
-        <button
-          className="sm:hidden text-white p-2"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-          aria-label="Toggle mobile menu"
-        >
-          {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <div className="hidden sm:block">
+          <LanguageSwitcher />
+        </div>
+        </div>
+
+        {/* Mobile menu button and language switcher */}
+        <div className="sm:hidden flex items-center gap-2">
+          <LanguageSwitcher />
+          <button
+            className="text-white p-2"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle mobile menu"
+          >
+            {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Dropdown Menu */}
@@ -163,70 +176,70 @@ export default function Header() {
           <nav className="container mx-auto px-4 py-4 flex flex-col space-y-4 text-[14px]">
             {/* Data Section */}
             <div>
-              <div className="text-gray-400 text-xs uppercase font-semibold mb-2">Data</div>
+              <div className="text-gray-400 text-xs uppercase font-semibold mb-2">{t('data')}</div>
               <div className="flex flex-col space-y-2 pl-4">
                 <Link
                   href="/data/collection"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> Collection
+                  <ArrowRight width={15} /> {t('collection')}
                 </Link>
                 <Link
                   href="/data/integration"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> Integration
+                  <ArrowRight width={15} /> {t('integration')}
                 </Link>
                 <Link
                   href="/data/intelligence"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> Intelligence
+                  <ArrowRight width={15} /> {t('intelligence')}
                 </Link>
               </div>
             </div>
 
             {/* Solutions Section */}
             <div>
-              <div className="text-gray-400 text-xs uppercase font-semibold mb-2">Solutions</div>
+              <div className="text-gray-400 text-xs uppercase font-semibold mb-2">{t('solutions')}</div>
               <div className="flex flex-col space-y-2 pl-4">
                 <Link
                   href="/solutions/finance"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> Banking & Finance
+                  <ArrowRight width={15} /> {solutions('bankingFinance.title')}
                 </Link>
                 <Link
                   href="/solutions/logistics"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> Logistics & Delivery
+                  <ArrowRight width={15} /> {solutions('logistics.title')}
                 </Link>
                 <Link
                   href="/solutions/public-health"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> Public Health
+                  <ArrowRight width={15} /> {solutions('publicHealth.title')}
                 </Link>
                 <Link
                   href="/solutions/marketing"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> Marketing
+                  <ArrowRight width={15} /> {solutions('marketing.title')}
                 </Link>
                 <Link
                   href="/solutions/manufacturing"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> Manufacturing
+                  <ArrowRight width={15} /> {solutions('manufacturing.title')}
                 </Link>
               </div>
             </div>
@@ -237,26 +250,26 @@ export default function Header() {
               className="text-white hover:text-gray-300 py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Company
+              {t('company')}
             </Link>
 
             {/* Resources Section */}
             <div>
-              <div className="text-gray-400 text-xs uppercase font-semibold mb-2">Resources</div>
+              <div className="text-gray-400 text-xs uppercase font-semibold mb-2">{t('resources')}</div>
               <div className="flex flex-col space-y-2 pl-4">
                 <Link
                   href="/blog"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> Blog
+                  <ArrowRight width={15} /> {t('blog')}
                 </Link>
                 <Link
                   href="/publications"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> Papers
+                  <ArrowRight width={15} /> {t('papers')}
                 </Link>
               </div>
             </div>
@@ -267,7 +280,7 @@ export default function Header() {
               className="text-white hover:text-gray-300 py-2"
               onClick={() => setMobileMenuOpen(false)}
             >
-              Contact us
+              {t('contact')}
             </Link>
           </nav>
         </div>

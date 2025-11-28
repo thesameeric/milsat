@@ -1,8 +1,11 @@
+import { WavyGradientCanvas } from "@/components/WavyGradientCanvas";
+import { WhyUs } from "@/components/whyUs";
 import Image from "next/image";
-import { WhyUs } from '../../../components/whyUs';
-import { WavyGradientCanvas } from '../../../components/WavyGradientCanvas';
+import { useTranslations } from "next-intl";
 
-export default function PublicHealthSolutionPage() {
+export default function FinanceSolutionPage() {
+    const t = useTranslations('solutionPages.finance');
+
     return (
         <div className="min-h-screen bg-black">
             <section className="relative container min-h-[500px] md:min-h-[600px] lg:min-h-[700px] mx-auto flex flex-col items-center justify-center px-4 overflow-hidden">
@@ -13,11 +16,11 @@ export default function PublicHealthSolutionPage() {
 
                 {/* Content */}
                 <span className="relative z-10">
-                    <p className="border border-[#fafafa] px-3 py-1 rounded-full text-sm">Public Health</p>
+                    <p className="border border-[#fafafa] px-3 py-1 rounded-full text-sm">{t('badge')}</p>
                 </span>
                 <div className="md:max-w-7/12 mt-5 relative z-10">
                     <h1 className="font-bold text-4xl md:text-7xl text-center">
-                        Spatial data acquisition and analysis for micro-planning
+                        {t('title')}
                     </h1>
                 </div>
             </section>
@@ -25,16 +28,16 @@ export default function PublicHealthSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Identify Target Population
+                        {t('amlTitle')}
                     </h2>
                     <p className="">
-                        Collect geospatial data on population profiles to deliver relief and develop sustainable public health frameworks that reach communities in need
+                        {t('amlDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/crowd.jpg"
-                        alt="Target Population Identification"
+                        src="/lincon.jpg"
+                        alt="AML Compliance"
                         width={600}
                         height={400}
                         className="rounded-lg"
@@ -44,16 +47,16 @@ export default function PublicHealthSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row-reverse items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Strengthen Intervention Planning
+                        {t('validateTitle')}
                     </h2>
                     <p>
-                        Understand geographic profiles of target communities and collect accessibility and health center data to design effective intervention strategies
+                        {t('validateDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/health-planning.jpg"
-                        alt="Intervention Planning"
+                        src="/thumbprint.jpg"
+                        alt="AML Compliance"
                         width={600}
                         height={400}
                         className="rounded-lg"
@@ -63,16 +66,16 @@ export default function PublicHealthSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Develop Intervention Micro-plan
+                        {t('insightsTitle')}
                     </h2>
                     <p>
-                        Create comprehensive maps with population and healthcare facility information to ensure vaccines reach underserved areas and maximize immunization impact
+                        {t('insightsDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/map-hos.jpg"
-                        alt="Intervention Micro-planning"
+                        src="/user-data.jpg"
+                        alt="AML Compliance"
                         width={600}
                         height={400}
                         className="rounded-lg"

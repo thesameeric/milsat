@@ -8,7 +8,6 @@ import ReadyToStart from "@/components/ReadyToStart";
 import NewsletterSection from "@/components/NewsletterSection";
 
 export default function Home() {
-
   return (
     <div className="min-h-screen text-white">
       <HeroSection />

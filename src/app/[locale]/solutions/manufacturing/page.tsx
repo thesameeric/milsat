@@ -1,8 +1,11 @@
+import { WavyGradientCanvas } from "@/components/WavyGradientCanvas";
+import { WhyUs } from "@/components/whyUs";
 import Image from "next/image";
-import { WhyUs } from '../../../components/whyUs';
-import { WavyGradientCanvas } from '../../../components/WavyGradientCanvas';
+import { useTranslations } from "next-intl";
 
-export default function LogisticsSolutionPage() {
+export default function ManufacturingSolutionPage() {
+    const t = useTranslations('solutionPages.manufacturing');
+
     return (
         <div className="min-h-screen bg-black">
             <section className="relative container min-h-[500px] md:min-h-[600px] lg:min-h-[700px] mx-auto flex flex-col items-center justify-center px-4 overflow-hidden">
@@ -13,11 +16,11 @@ export default function LogisticsSolutionPage() {
 
                 {/* Content */}
                 <span className="relative z-10">
-                    <p className="border border-[#fafafa] px-3 py-1 rounded-full text-sm">Logistics & Delivery</p>
+                    <p className="border border-[#fafafa] px-3 py-1 rounded-full text-sm">{t('badge')}</p>
                 </span>
                 <div className="md:max-w-7/12 mt-5 relative z-10">
                     <h1 className="font-bold text-4xl md:text-7xl text-center">
-                        Location intelligent solutions for optimized delivery
+                        {t('title')}
                     </h1>
                 </div>
             </section>
@@ -25,16 +28,16 @@ export default function LogisticsSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Location Intelligence
+                        {t('downtimeTitle')}
                     </h2>
                     <p className="">
-                        Identify your high-volume customer base and optimize fleet movement and supply chain with advanced location intelligence technology that puts data at the center of your operations
+                        {t('downtimeDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/map.jpg"
-                        alt="Location Intelligence"
+                        src="/facility-downtime.jpg"
+                        alt="Eliminate Facility Downtimes"
                         width={600}
                         height={400}
                         className="rounded-lg"
@@ -44,16 +47,16 @@ export default function LogisticsSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row-reverse items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Delivery Timeliness Enhancement
+                        {t('savingsTitle')}
                     </h2>
                     <p>
-                        Combine location data with internal fleet data to optimize delivery routes and understand customer groupings, saving valuable delivery time and improving customer satisfaction
+                        {t('savingsDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/ontime.jpg"
-                        alt="Delivery Timeliness"
+                        src="/manufacturing-savings.jpg"
+                        alt="Operational Cost-savings"
                         width={600}
                         height={400}
                         className="rounded-lg"
@@ -63,16 +66,16 @@ export default function LogisticsSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Fleet Control Improvement
+                        {t('monitoringTitle')}
                     </h2>
                     <p>
-                        Monitor fleet security and compliance with geofences around warehouses and delivery hubs. Leverage geospatial models and RFID technology for complete visibility and control
+                        {t('monitoringDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/fleet.jpg"
-                        alt="Fleet Control"
+                        src="/consumption.jpg"
+                        alt="Live Asset Monitoring"
                         width={600}
                         height={400}
                         className="rounded-lg"

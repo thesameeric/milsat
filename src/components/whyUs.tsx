@@ -8,48 +8,45 @@ import {
     IconTargetArrow,
 } from "@tabler/icons-react";
 
+import { useTranslations } from "next-intl";
+
 export function WhyUs() {
+    const t = useTranslations('whyChooseUs');
     const features = [
         {
-            title: "We hear you",
-            description:
-                "Location intelligent mobile and web applications to gather all your business data in one place",
+            title: t('features.weHearYou.title'),
+            description: t('features.weHearYou.description'),
             icon: <IconSpeakerphone />,
         },
         {
-            title: "Expert technical support",
-            description:
-                "Comprehensive technical support from industry experts, dedicated to resolving your issues promptly and efficiently.",
+            title: t('features.expertSupport.title'),
+            description: t('features.expertSupport.description'),
             icon: <IconEaseInOut />,
         },
         {
-            title: "Clear pricing, no hidden fees",
-            description:
-                "Transparent pricing with no surprises. Know exactly what you're paying for upfront.",
+            title: t('features.clearPricing.title'),
+            description: t('features.clearPricing.description'),
             icon: <IconMoneybag />,
         },
         {
-            title: "Proven reliability and security",
-            description:
-                "Enterprise-grade security standards ensuring your data is protected with advanced encryption and compliance certifications.",
+            title: t('features.reliability.title'),
+            description: t('features.reliability.description'),
             icon: <IconShieldCheck />,
         },
         {
-            title: "Rapid deployment and scalability",
-            description:
-                "Get started quickly with our streamlined onboarding process and scale effortlessly as your business grows.",
+            title: t('features.deployment.title'),
+            description: t('features.deployment.description'),
             icon: <IconClock24 />,
         },
         {
-            title: "Industry-specific solutions",
-            description:
-                "Tailored geospatial solutions designed specifically for your industry needs, delivering precise and actionable insights.",
+            title: t('features.industrySolutions.title'),
+            description: t('features.industrySolutions.description'),
             icon: <IconTargetArrow />,
         },
     ];
     return (
         <div className="container mx-auto">
-            <h2 className="font-normal text-3xl md:text-5xl py-3 md:py-10">Why choose us</h2>
+            <h2 className="font-normal text-3xl md:text-5xl py-3 md:py-10">{t('title')}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  relative z-10 py-10 max-w-7xl mx-auto">
                 {features.map((feature, index) => (
                     <Feature key={feature.title} {...feature} index={index} />

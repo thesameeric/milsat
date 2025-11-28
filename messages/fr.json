@@ -1,0 +1,248 @@
+{
+  "common": {
+    "readMore": "En savoir plus",
+    "getStarted": "Commencer",
+    "learnMore": "Apprendre davantage",
+    "contactUs": "Nous contacter"
+  },
+  "nav": {
+    "home": "Accueil",
+    "data": "Données",
+    "solutions": "Solutions",
+    "company": "Entreprise",
+    "resources": "Ressources",
+    "about": "À propos",
+    "blog": "Blog",
+    "contact": "Nous contacter",
+    "collection": "Collecte",
+    "integration": "Intégration",
+    "intelligence": "Intelligence",
+    "sharing": "Partage",
+    "loci": "Loci",
+    "lociDescription": "Votre plateforme de données tout-en-un",
+    "papers": "Publications"
+  },
+  "hero": {
+    "title": "L'Afrique que les Autres ne Voient Pas",
+    "seeHowItWorks": "Voir comment ça marche",
+    "talkToExpert": "Parler à un expert"
+  },
+  "whyWeExist": {
+    "title": "Pourquoi nous existons",
+    "description": "Pendant trop longtemps, comprendre l'Afrique a signifié s'appuyer sur des cartes obsolètes et des hypothèses étrangères. Nous travaillons à l'intersection de l'intelligence locale et de la technologie de pointe pour capturer chaque impulsion de la véritable réalité du continent. Avec des données terrain et un contexte hyperlocal, une image plus claire du potentiel de l'Afrique émerge maintenant. Bienvenue chez Milsat."
+  },
+  "howWeDoIt": {
+    "title": "Comment nous procédons",
+    "dataCollection": {
+      "title": "Collecte de Données",
+      "description": "Acquisition de données multimodales grâce à plus de 5000 agents de terrain formés, capteurs IoT pour les zones inaccessibles, et IA pour l'extrapolation intelligente"
+    },
+    "dataIntegration": {
+      "title": "Intégration de Données",
+      "description": "Connectez de manière transparente les données collectées à vos bases de données, outils (PowerBI, CRM) et plateformes orientées client pour une valeur opérationnelle"
+    },
+    "dataIntelligence": {
+      "title": "Intelligence de Données",
+      "description": "Transformez les données en actifs de revenus et d'impact via un partage sécurisé par blockchain pour la monétisation, la recherche et le bien social"
+    }
+  },
+  "solutions": {
+    "bankingFinance": {
+      "title": "Banque & Finance",
+      "description": "Intelligence de localisation pour KYC, conformité AML et réduction de la fraude"
+    },
+    "logistics": {
+      "title": "Logistique & Livraison",
+      "description": "Solutions intelligentes de localisation pour la livraison optimisée et la gestion de flotte"
+    },
+    "publicHealth": {
+      "title": "Santé Publique",
+      "description": "Acquisition et analyse de données spatiales pour les efforts de micro-planification"
+    },
+    "marketing": {
+      "title": "Marketing",
+      "description": "Intelligence de localisation pour les stratégies de vente et de marketing"
+    },
+    "manufacturing": {
+      "title": "Fabrication",
+      "description": "Acquisition de données IoT pour l'optimisation des machines et de la production"
+    }
+  },
+  "readyToStart": {
+    "title": "Prêt à commencer ?",
+    "description": "Rejoignez des milliers d'utilisateurs qui exploitent notre plateforme pour transformer leurs données en informations exploitables et en résultats percutants."
+  },
+  "newsletter": {
+    "title": "Restez Informé",
+    "description": "Abonnez-vous à notre newsletter pour les dernières informations sur l'intelligence des données africaines, les innovations cartographiques et les tendances du secteur.",
+    "placeholder": "Entrez votre email",
+    "subscribe": "S'abonner",
+    "subscribing": "Abonnement en cours...",
+    "successTitle": "Abonnement réussi !",
+    "successDescription": "Merci de vous être abonné à notre newsletter.",
+    "errorTitle": "Échec de l'abonnement",
+    "errorDescription": "Échec de l'abonnement. Veuillez réessayer.",
+    "invalidEmail": "Veuillez entrer une adresse email valide"
+  },
+  "footer": {
+    "tagline": "Transformer chaque coin d'Afrique en intelligence exploitable.",
+    "product": "Produit",
+    "company": "Entreprise",
+    "legal": "Légal",
+    "dataCollection": "Collecte de Données",
+    "dataIntegration": "Intégration de Données",
+    "dataSharing": "Partage de Données",
+    "about": "À propos",
+    "caseStudies": "Études de Cas",
+    "contact": "Contact",
+    "privacy": "Confidentialité",
+    "terms": "Conditions",
+    "copyright": "© 2025 Milsat. Tous droits réservés."
+  },
+  "about": {
+    "subtitle": "Par des Africains",
+    "title": "Pour l'Afrique",
+    "intro": "Le monde a passé des décennies à essayer de comprendre l'Afrique de l'extérieur. Des images satellites depuis l'espace. Des rapports rédigés dans des bureaux lointains. Des données collectées par des personnes qui n'ont jamais marché dans nos rues ou parlé nos langues.",
+    "flippedTitle": "Nous avons changé la donne",
+    "flippedDescription": "Milsat est une intelligence recueillie par des Africains qui connaissent leurs quartiers, alimentée par une technologie qui respecte nos réalités, et livrée à ceux qui sont prêts à voir le continent tel qu'il est vraiment—pas tel qu'il a été imaginé. Voici l'Afrique, cartographiée par l'Afrique.",
+    "commitment": "Nous savions que l'Afrique méritait mieux. Plus important encore, nous savions que les Africains pouvaient le réaliser."
+  },
+  "contact": {
+    "getInTouch": "Nous Contacter",
+    "title": "Prêt à découvrir ce que nous savons sur votre domaine d'intérêt ?",
+    "mailTo": "Envoyer un email à",
+    "address": "Adresse",
+    "addressText": "H4, Parcelle 574, Rue Ameh Ebute, District de Wuye, Abuja.",
+    "officeHours": "Heures d'Ouverture",
+    "officeHoursText": "Lundi au Vendredi : 9h00 - 18h00",
+    "fullName": "Nom Complet",
+    "fullNamePlaceholder": "Jean Dupont",
+    "email": "Adresse Email",
+    "emailPlaceholder": "jean@exemple.com",
+    "phone": "Numéro de Téléphone",
+    "phonePlaceholder": "+234 800 000 0000",
+    "meetingDate": "Date de Réunion",
+    "meetingTime": "Heure de Réunion",
+    "pickDate": "Choisir une date",
+    "scheduleMeeting": "Planifier une Réunion",
+    "submitting": "Envoi en cours...",
+    "successTitle": "Demande de Réunion Envoyée",
+    "successDescription": "Nous vous contacterons bientôt pour confirmer votre réunion.",
+    "errorTitle": "Échec de l'Envoi",
+    "errorDescription": "Échec de l'envoi de votre demande de réunion. Veuillez réessayer.",
+    "validation": {
+      "fullNameMin": "Le nom complet doit contenir au moins 2 caractères",
+      "emailInvalid": "Adresse email invalide",
+      "phoneMin": "Le numéro de téléphone doit contenir au moins 10 chiffres",
+      "dateRequired": "Veuillez sélectionner une date et une heure pour la réunion",
+      "timeRequired": "Veuillez sélectionner une heure pour la réunion"
+    }
+  },
+  "dataPages": {
+    "collection": {
+      "title": "Collecte de Données",
+      "subtitle": "Nous transformons chaque coin d'Afrique en intelligence exploitable. Des schémas de circulation à Lagos aux rendements agricoles à Nairobi—nous capturons ce que les autres manquent",
+      "howWeDoIt": "Comment nous procédons",
+      "howWeDoItDescription": "Notre cadre automatisé de collecte de données orchestre de manière transparente les réseaux d'intelligence humaine, les capteurs IoT, la cartographie par drone et les flux satellites en flux unifiés en temps réel. Au lieu d'attendre des mois pour des rapports obsolètes, les entreprises obtiennent une intelligence continue et vérifiée de chaque coin du continent.",
+      "aerialTitle": "Intelligence Aérienne Là Où Les Routes Se Terminent",
+      "aerialDescription": "Lorsque le terrain devient impraticable et que l'infrastructure n'existe pas, nos drones prennent leur envol. De la cartographie des schémas d'inondation dans les zones humides reculées à l'arpentage des rendements agricoles dans les régions montagneuses, notre flotte aérienne capture une intelligence haute résolution des environnements les plus difficiles d'Afrique.",
+      "realInsightTitle": "Informations Réelles de Vraies Personnes, en Temps Réel",
+      "realInsightDescription": "Ce ne sont pas seulement des recenseurs, ce sont des agents de renseignement locaux qui comprennent les nuances culturelles, parlent les langues maternelles et établissent la confiance là où les étrangers ne le peuvent pas. Lorsque vous avez besoin de données provenant d'endroits qui n'apparaissent pas sur la plupart des cartes, nos équipes sont déjà là."
+    },
+    "integration": {
+      "title": "Intégration de Données",
+      "subtitle": "Les données sans intégration sont comme du carburant sans moteur—pleines de potentiel mais incapables de créer du mouvement. Nous veillons à ce que vos données collectées s'intègrent de manière transparente dans votre écosystème existant, amplifiant leur valeur et leur impact.",
+      "ownershipTitle": "Propriété et Contrôle de la Base de Données",
+      "ownershipDescription": "Nous croyons fermement que celui qui possède le stockage possède les données. C'est pourquoi nous priorisons l'intégration des informations collectées directement dans vos bases de données internes. Vous maintenez une souveraineté complète sur vos actifs de données pendant que nous gérons les complexités techniques de normalisation, de formatage et de transfert sécurisé. Cette approche garantit que vous construisez une intelligence organisationnelle à long terme, sans créer de dépendances vis-à-vis de plateformes externes.",
+      "toolsTitle": "Amélioration des Outils et Processus",
+      "toolsDescription": "Votre organisation utilise déjà des outils spécifiques—PowerBI pour l'analyse, ArcGIS pour la cartographie, des CRM pour la gestion client, des portails de paiement pour les transactions, des logiciels de reporting d'impact pour la communication avec les parties prenantes. Nous ne vous demandons pas de les changer. Au lieu de cela, nous construisons des ponts qui permettent à nos données collectées de s'intégrer naturellement dans ces systèmes existants. Cette intégration transforme des outils statiques en plateformes dynamiques et riches en données qui fournissent des informations en temps réel et permettent une prise de décision basée sur les données sans perturber les flux de travail établis."
+    },
+    "intelligence": {
+      "title": "Faire de Vos Données un Actif",
+      "subtitle": "Dans l'économie moderne, les données sont une monnaie—mais seulement si elles peuvent être partagées de manière sécurisée et bénéfique. Nous avons construit des cadres avancés qui transforment vos données d'un centre de coûts en générateur de revenus et multiplicateur d'impact.",
+      "researchTitle": "Facilitation de la Recherche",
+      "researchDescription": "La recherche académique et commerciale prospère grâce à des données de qualité. Nous facilitons les co-publications où vos données contribuent à des études révolutionnaires, en assurant une attribution et une citation appropriées. Vos ensembles de données peuvent former des modèles d'IA de nouvelle génération spécifiquement conçus pour les contextes africains, soutenir des études de référence pour la mesure d'impact, ou permettre des recherches longitudinales qui ne seraient pas possibles sans des données cohérentes et de qualité. Chaque application de recherche améliore la réputation de votre organisation en tant que leader d'opinion et pionnier des données tout en générant des frais de licence ou des opportunités de collaboration."
+    }
+  },
+  "solutionPages": {
+    "finance": {
+      "badge": "Banque & finance",
+      "title": "Collecte de données précises pour les exigences KYC",
+      "amlTitle": "Atteindre la Conformité AML",
+      "amlDescription": "Atteindre la pleine conformité anti-blanchiment d'argent, réduire les risques de fraude et minimiser les possibilités de prêts douteux en vérifiant avec précision les adresses des clients partout au Nigeria avec Milsat",
+      "validateTitle": "Valider la Base de Données Clients",
+      "validateDescription": "Améliorer les données clients internes avec de nouveaux attributs géospatiaux de terrain pour développer une base de données clients plus complète et proposer des offres pertinentes précisément à vos clients",
+      "insightsTitle": "Élargir les Informations Précises",
+      "insightsDescription": "Atténuer les risques d'inexactitudes avec des données nouvelles et pertinentes sur l'emplacement de vos clients et leur comportement pour construire un cadre qui favorise des niveaux sans précédent d'informations fiables"
+    },
+    "logistics": {
+      "badge": "Logistique & Livraison",
+      "title": "Solutions intelligentes de localisation pour une livraison optimisée",
+      "locationTitle": "Intelligence de Localisation",
+      "locationDescription": "Identifiez votre clientèle à fort volume et optimisez le mouvement de la flotte et la chaîne d'approvisionnement avec une technologie avancée d'intelligence de localisation qui place les données au centre de vos opérations",
+      "timelinessTitle": "Amélioration de la Ponctualité des Livraisons",
+      "timelinessDescription": "Combinez les données de localisation avec les données de flotte internes pour optimiser les itinéraires de livraison et comprendre les groupes de clients, économisant un temps de livraison précieux et améliorant la satisfaction client",
+      "fleetTitle": "Amélioration du Contrôle de la Flotte",
+      "fleetDescription": "Surveillez la sécurité et la conformité de la flotte avec des géobarrières autour des entrepôts et des centres de livraison. Exploitez les modèles géospatiaux et la technologie RFID pour une visibilité et un contrôle complets"
+    },
+    "publicHealth": {
+      "badge": "Santé Publique",
+      "title": "Acquisition et analyse de données spatiales pour la micro-planification",
+      "populationTitle": "Identifier la Population Cible",
+      "populationDescription": "Collectez des données géospatiales sur les profils de population pour fournir des secours et développer des cadres de santé publique durables qui atteignent les communautés dans le besoin",
+      "interventionTitle": "Renforcer la Planification des Interventions",
+      "interventionDescription": "Comprendre les profils géographiques des communautés cibles et collecter des données d'accessibilité et de centres de santé pour concevoir des stratégies d'intervention efficaces",
+      "microplanTitle": "Développer un Micro-plan d'Intervention",
+      "microplanDescription": "Créer des cartes complètes avec des informations sur la population et les établissements de santé pour s'assurer que les vaccins atteignent les zones mal desservies et maximiser l'impact de l'immunisation"
+    },
+    "marketing": {
+      "badge": "Marketing",
+      "title": "Intelligence de localisation pour les stratégies de vente et de marketing",
+      "understandingTitle": "Compréhension du Client",
+      "understandingDescription": "Collectez des données qualitatives de mobilité autour des Points d'Intérêt pour améliorer le ROI marketing et améliorer les informations clients pour des campagnes plus efficaces",
+      "territoryTitle": "Identification du Territoire de Vente",
+      "territoryDescription": "Utilisez l'intelligence de localisation pour déterminer les zones de vente actuelles, identifier les marchés captables et optimiser l'allocation des ressources pour l'acquisition de clients",
+      "roiTitle": "Optimiser le ROI Marketing",
+      "roiDescription": "Exploitez des applications mobiles et web intelligentes de localisation pour rassembler toutes vos données commerciales en un seul endroit et prendre des décisions marketing basées sur les données qui donnent des résultats"
+    },
+    "manufacturing": {
+      "badge": "Fabrication",
+      "title": "Acquisition de données IoT pour l'optimisation des machines et de la production",
+      "downtimeTitle": "Éliminer les Temps d'Arrêt des Installations",
+      "downtimeDescription": "Contrôlez les opérations des machines, prédisez les besoins de maintenance et prévenez les pannes avec une mesure intelligente en temps réel via des capteurs IoT qui maintiennent votre production en bon état de fonctionnement",
+      "savingsTitle": "Réaliser des Économies de Coûts Opérationnels",
+      "savingsDescription": "Surveillez l'énergie, la puissance et la santé des équipements via des capteurs IoT et des tableaux de bord pour identifier les opportunités d'économie de coûts et optimiser vos opérations de fabrication",
+      "monitoringTitle": "Surveillance des Actifs en Direct",
+      "monitoringDescription": "Suivez les équipements à distance avec un simple tableau de bord en direct, réduisez les visites sur site et prévenez les pannes surprises avec une surveillance continue et des alertes en temps réel"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Pourquoi nous choisir",
+    "features": {
+      "weHearYou": {
+        "title": "Nous vous écoutons",
+        "description": "Applications mobiles et web intelligentes de localisation pour rassembler toutes vos données commerciales en un seul endroit"
+      },
+      "expertSupport": {
+        "title": "Support technique expert",
+        "description": "Support technique complet par des experts de l'industrie, dédié à la résolution rapide et efficace de vos problèmes."
+      },
+      "clearPricing": {
+        "title": "Tarification claire, sans frais cachés",
+        "description": "Tarification transparente sans surprises. Sachez exactement ce que vous payez à l'avance."
+      },
+      "reliability": {
+        "title": "Fiabilité et sécurité éprouvées",
+        "description": "Normes de sécurité de niveau entreprise garantissant la protection de vos données avec un cryptage avancé et des certifications de conformité."
+      },
+      "deployment": {
+        "title": "Déploiement rapide et évolutivité",
+        "description": "Commencez rapidement avec notre processus d'intégration simplifié et évoluez sans effort à mesure que votre entreprise se développe."
+      },
+      "industrySolutions": {
+        "title": "Solutions spécifiques à l'industrie",
+        "description": "Solutions géospatiales sur mesure conçues spécifiquement pour les besoins de votre industrie, fournissant des informations précises et exploitables."
+      }
+    }
+  }
+}

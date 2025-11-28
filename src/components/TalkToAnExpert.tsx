@@ -1,5 +1,5 @@
-import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { Link } from '@/i18n/routing';
 
 export default function TalkToAnExpert({ link, text = 'Talk to an expert' }: { link: string; text?: string }) {
     return <Link className="border rounded-md flex items-center px-6 py-3 text-sm group" href={link}>

@@ -1,8 +1,11 @@
+import { WavyGradientCanvas } from "@/components/WavyGradientCanvas";
+import { WhyUs } from "@/components/whyUs";
 import Image from "next/image";
-import { WhyUs } from '../../../components/whyUs';
-import { WavyGradientCanvas } from '../../../components/WavyGradientCanvas';
+import { useTranslations } from "next-intl";
 
-export default function MarketingSolutionPage() {
+export default function PublicHealthSolutionPage() {
+    const t = useTranslations('solutionPages.publicHealth');
+
     return (
         <div className="min-h-screen bg-black">
             <section className="relative container min-h-[500px] md:min-h-[600px] lg:min-h-[700px] mx-auto flex flex-col items-center justify-center px-4 overflow-hidden">
@@ -13,11 +16,11 @@ export default function MarketingSolutionPage() {
 
                 {/* Content */}
                 <span className="relative z-10">
-                    <p className="border border-[#fafafa] px-3 py-1 rounded-full text-sm">Marketing</p>
+                    <p className="border border-[#fafafa] px-3 py-1 rounded-full text-sm">{t('badge')}</p>
                 </span>
                 <div className="md:max-w-7/12 mt-5 relative z-10">
                     <h1 className="font-bold text-4xl md:text-7xl text-center">
-                        Location intelligence for sales and marketing strategies
+                        {t('title')}
                     </h1>
                 </div>
             </section>
@@ -25,16 +28,16 @@ export default function MarketingSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Customer Understanding
+                        {t('populationTitle')}
                     </h2>
                     <p className="">
-                        Gather qualitative mobility data around Points-of-Interest to improve marketing ROI and enhance customer insights for more effective campaigns
+                        {t('populationDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/customer-understanding.jpg"
-                        alt="Customer Understanding"
+                        src="/crowd.jpg"
+                        alt="Target Population Identification"
                         width={600}
                         height={400}
                         className="rounded-lg"
@@ -44,16 +47,16 @@ export default function MarketingSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row-reverse items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Sales Territory Identification
+                        {t('interventionTitle')}
                     </h2>
                     <p>
-                        Use location intelligence to determine current sales zones, identify capturable markets, and optimize resource allocation for customer acquisition
+                        {t('interventionDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/sales-team.jpg"
-                        alt="Sales Territory Identification"
+                        src="/health-planning.jpg"
+                        alt="Intervention Planning"
                         width={600}
                         height={400}
                         className="rounded-lg"
@@ -63,16 +66,16 @@ export default function MarketingSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Optimize Marketing ROI
+                        {t('microplanTitle')}
                     </h2>
                     <p>
-                        Leverage location-intelligent mobile and web applications to gather all your business data in one place and make data-driven marketing decisions that deliver results
+                        {t('microplanDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/roi.jpg"
-                        alt="Marketing ROI Optimization"
+                        src="/map-hos.jpg"
+                        alt="Intervention Micro-planning"
                         width={600}
                         height={400}
                         className="rounded-lg"

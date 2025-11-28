@@ -8,7 +8,8 @@ import { DataCollectionSvg } from "./DataCollectionSvg";
 import { ArrowLeft } from "lucide-react";
 import DataIntegrationSvg from "./svg/DataIntegration";
 import DataSharingSvg from "./svg/DataSharing";
-import Link from "next/link";
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 const screenContent = [
   {
@@ -48,6 +49,8 @@ const screenContent = [
 ];
 
 export default function HowWeDoItSection() {
+  const t = useTranslations('howWeDoIt');
+  const common = useTranslations('common');
   const containerRef = useRef<HTMLDivElement>(null);
   const item1Ref = useRef<HTMLDivElement>(null);
   const item2Ref = useRef<HTMLDivElement>(null);
@@ -90,7 +93,7 @@ export default function HowWeDoItSection() {
   return (
     <section id="how-it-works" className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20" ref={containerRef}>
       <h2 className="text-3xl sm:text-4xl md:text-5xl mt-20 sm:mt-32 md:mt-40">
-        How We do it
+        {t('title')}
       </h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-12 sm:mt-20 md:mt-40 relative">
@@ -107,13 +110,12 @@ export default function HowWeDoItSection() {
                 <Image src={'/collection.png'} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"collection"}></Image>
               </span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-medium mb-3 sm:mb-4">Data Collection</h3>
+            <h3 className="text-2xl sm:text-3xl font-medium mb-3 sm:mb-4">{t('dataCollection.title')}</h3>
             <p className={cn(
               "mb-6 sm:mb-10 transition-colors duration-300 text-base sm:text-lg",
               activeItem === 1 ? "text-gray-400" : "text-gray-600"
             )}>
-              Multi-modal data acquisition through 5k+ trained field agents, IoT sensors for unreachable areas,
-              and AI for smart extrapolation
+              {t('dataCollection.description')}
             </p>
             <Link href={'/data/collection'} className={cn(
               "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
@@ -121,7 +123,7 @@ export default function HowWeDoItSection() {
                 ? "text-blue-500 hover:underline"
                 : "text-gray-500 border-gray-500"
             )}>
-              Learn more <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
+              {common('learnMore')} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
             </Link>
           </div>
 
@@ -137,13 +139,12 @@ export default function HowWeDoItSection() {
                 <Image src={'/integration.png'} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"integration"}></Image>
               </span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Data Integration</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{t('dataIntegration.title')}</h3>
             <p className={cn(
               "mb-6 transition-colors duration-300 text-base sm:text-lg",
               activeItem === 2 ? "text-gray-400" : "text-gray-600"
             )}>
-              Seamlessly connect collected data to your databases, tools (PowerBI, CRMs), and customer-facing
-              platforms for operational value
+              {t('dataIntegration.description')}
             </p>
             <Link href={'/data/integration'} className={cn(
               "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
@@ -151,7 +152,7 @@ export default function HowWeDoItSection() {
                 ? "text-blue-500 hover:underline"
                 : "text-gray-500 border-gray-500"
             )}>
-              Learn more <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
+              {common('learnMore')} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
             </Link>
           </div>
 
@@ -167,13 +168,12 @@ export default function HowWeDoItSection() {
                 <Image src={'/sharing.png'} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"sharing"}></Image>
               </span>
             </div>
-            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">Data Intelligence</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{t('dataIntelligence.title')}</h3>
             <p className={cn(
               "mb-6 transition-colors duration-300 text-base sm:text-lg",
               activeItem === 3 ? "text-gray-400" : "text-gray-600"
             )}>
-              Transform data into revenue & impact assets via blockchain-secured sharing for monetization,
-              research, and social good
+              {t('dataIntelligence.description')}
             </p>
             <Link href={'/data/intelligence'} className={cn(
               "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
@@ -181,7 +181,7 @@ export default function HowWeDoItSection() {
                 ? "text-blue-500 hover:underline"
                 : "text-gray-500 border-gray-500"
             )}>
-              Learn more <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
+              {common('learnMore')} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
             </Link>
           </div>
         </div>

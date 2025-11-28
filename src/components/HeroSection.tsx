@@ -2,9 +2,11 @@
 import { useEffect, useState } from 'react';
 import WordFlipper from './wordFlippers';
 import TalkToAnExpert from './TalkToAnExpert';
-import Link from 'next/link';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 export default function HeroSection() {
+  const t = useTranslations('hero');
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -52,7 +54,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 container mx-auto">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold leading-tight mb-6 sm:mb-8 max-w-5xl mx-auto">
-          The Africa Others<br /> Don&apos;t See
+          {t('title').split(' Don').map((part, i) => i === 0 ? part : <><br key={i} /> Don{part}</>)}
         </h1>
         <WordFlipper />
         <div className="flex gap-3 sm:gap-4 justify-center items-center flex-wrap mt-8 sm:mt-10">
@@ -60,9 +62,9 @@ export default function HeroSection() {
             href="/try"
             className="px-5 py-2.5 sm:px-6 sm:py-3 text-sm sm:text-base bg-white rounded-md text-slate-900 font-medium hover:underline hover:bg-gray-200 transition-colors"
           >
-            See how it works
+            {t('seeHowItWorks')}
           </Link>
-          <TalkToAnExpert link={'/contact'} />
+          <TalkToAnExpert link={'/contact'} text={t('talkToExpert')} />
         </div>
       </div>
     </section>

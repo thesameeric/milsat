@@ -1,0 +1,248 @@
+{
+  "common": {
+    "readMore": "Read more",
+    "getStarted": "Get started",
+    "learnMore": "Learn more",
+    "contactUs": "Contact us"
+  },
+  "nav": {
+    "home": "Home",
+    "data": "Data",
+    "solutions": "Solutions",
+    "company": "Company",
+    "resources": "Resources",
+    "about": "About",
+    "blog": "Blog",
+    "contact": "Contact us",
+    "collection": "Collection",
+    "integration": "Integration",
+    "intelligence": "Intelligence",
+    "sharing": "Sharing",
+    "loci": "Loci",
+    "lociDescription": "Your all in one data platform",
+    "papers": "Papers"
+  },
+  "hero": {
+    "title": "The Africa Others Don't See",
+    "seeHowItWorks": "See how it works",
+    "talkToExpert": "Talk to an expert"
+  },
+  "whyWeExist": {
+    "title": "Why we Exist",
+    "description": "For too long, understanding Africa has meant relying on outdated maps and foreign assumptions. We're working at the intersection of local intelligence and cutting-edge technology to capture every pulse of the continent's true reality. With ground-truth data and hyperlocal context, a clearer picture of Africa's potential is now emerging. Welcome to Milsat."
+  },
+  "howWeDoIt": {
+    "title": "How We do it",
+    "dataCollection": {
+      "title": "Data Collection",
+      "description": "Multi-modal data acquisition through 5k+ trained field agents, IoT sensors for unreachable areas, and AI for smart extrapolation"
+    },
+    "dataIntegration": {
+      "title": "Data Integration",
+      "description": "Seamlessly connect collected data to your databases, tools (PowerBI, CRMs), and customer-facing platforms for operational value"
+    },
+    "dataIntelligence": {
+      "title": "Data Intelligence",
+      "description": "Transform data into revenue & impact assets via blockchain-secured sharing for monetization, research, and social good"
+    }
+  },
+  "solutions": {
+    "bankingFinance": {
+      "title": "Banking & Finance",
+      "description": "Location intelligence for KYC, AML compliance, and fraud reduction"
+    },
+    "logistics": {
+      "title": "Logistics & Delivery",
+      "description": "Location intelligent solutions for optimized delivery and fleet management"
+    },
+    "publicHealth": {
+      "title": "Public Health",
+      "description": "Spatial data acquisition and analysis for micro-planning efforts"
+    },
+    "marketing": {
+      "title": "Marketing",
+      "description": "Location intelligence for sales and marketing strategies"
+    },
+    "manufacturing": {
+      "title": "Manufacturing",
+      "description": "IoT data acquisition for machine optimization and production"
+    }
+  },
+  "readyToStart": {
+    "title": "Ready to get started?",
+    "description": "Join thousands of users leveraging our platform to transform their data into actionable insights and impactful results."
+  },
+  "newsletter": {
+    "title": "Stay Updated",
+    "description": "Subscribe to our newsletter for the latest insights on African data intelligence, mapping innovations, and industry trends.",
+    "placeholder": "Enter your email",
+    "subscribe": "Subscribe",
+    "subscribing": "Subscribing...",
+    "successTitle": "Successfully subscribed!",
+    "successDescription": "Thank you for subscribing to our newsletter.",
+    "errorTitle": "Subscription Failed",
+    "errorDescription": "Failed to subscribe. Please try again.",
+    "invalidEmail": "Please enter a valid email address"
+  },
+  "footer": {
+    "tagline": "Turning every corner of Africa into actionable intelligence.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "dataCollection": "Data Collection",
+    "dataIntegration": "Data Integration",
+    "dataSharing": "Data Sharing",
+    "about": "About",
+    "caseStudies": "Case Studies",
+    "contact": "Contact",
+    "privacy": "Privacy",
+    "terms": "Terms",
+    "copyright": "© 2025 Milsat. All rights reserved."
+  },
+  "about": {
+    "subtitle": "By Africans",
+    "title": "For Africa",
+    "intro": "The world has spent decades trying to understand Africa from the outside looking in. Satellite images from space. Reports written in distant offices. Data collected by people who've never walked our streets or spoken our languages.",
+    "flippedTitle": "We flipped the script",
+    "flippedDescription": "Milsat is intelligence gathered by Africans who know their neighborhoods, powered by technology that respects our realities, and delivered to those ready to see the continent as it truly is—not as it's been imagined. This is Africa, mapped by Africa.",
+    "commitment": "We knew Africa deserved better. More importantly, we knew Africans could deliver it."
+  },
+  "contact": {
+    "getInTouch": "Get in Touch",
+    "title": "Ready to discover what we know about your area of interest?",
+    "mailTo": "Mail to",
+    "address": "Address",
+    "addressText": "H4, Plot 574, Ameh Ebute Street, Wuye District, Abuja.",
+    "officeHours": "Office Hours",
+    "officeHoursText": "Monday to Friday: 9:00 AM - 6:00PM",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "John Doe",
+    "email": "Email Address",
+    "emailPlaceholder": "john@example.com",
+    "phone": "Phone Number",
+    "phonePlaceholder": "+234 800 000 0000",
+    "meetingDate": "Meeting Date",
+    "meetingTime": "Meeting Time",
+    "pickDate": "Pick a date",
+    "scheduleMeeting": "Schedule Meeting",
+    "submitting": "Submitting...",
+    "successTitle": "Meeting Request Submitted",
+    "successDescription": "We'll get back to you soon to confirm your meeting.",
+    "errorTitle": "Submission Failed",
+    "errorDescription": "Failed to submit your meeting request. Please try again.",
+    "validation": {
+      "fullNameMin": "Full name must be at least 2 characters",
+      "emailInvalid": "Invalid email address",
+      "phoneMin": "Phone number must be at least 10 digits",
+      "dateRequired": "Please select a date and time for the meeting",
+      "timeRequired": "Please select a time for the meeting"
+    }
+  },
+  "dataPages": {
+    "collection": {
+      "title": "Data Collection",
+      "subtitle": "We turn every corner of Africa into actionable intelligence. From Lagos traffic patterns to Nairobi agricultural yields—we capture what others miss",
+      "howWeDoIt": "How we do it",
+      "howWeDoItDescription": "Our automated data collection framework seamlessly orchestrates human intelligence networks, IoT sensors, drone mapping, and satellite feeds into unified, real-time streams. Instead of waiting months for outdated reports, businesses get continuous, verified intelligence from every corner of the continent.",
+      "aerialTitle": "Aerial Intelligence Where Roads End",
+      "aerialDescription": "When terrain becomes impassable and infrastructure doesn't exist, our drones take flight. From mapping flood patterns across remote wetlands to surveying agricultural yields in mountainous regions, our aerial fleet captures high-resolution intelligence from Africa's most challenging environments.",
+      "realInsightTitle": "Real Insight from Real people, in Real Time",
+      "realInsightDescription": "These aren't just enumerators, they're local intelligence agents who understand cultural nuances, speak native languages, and build trust where outsiders cannot. When you need data from places that don't appear on most maps, our people are already there."
+    },
+    "integration": {
+      "title": "Data Integration",
+      "subtitle": "Data without integration is like fuel without an engine—full of potential but unable to create movement. We ensure your collected data seamlessly flows into your existing ecosystem, amplifying its value and impact.",
+      "ownershipTitle": "Database Ownership & Control",
+      "ownershipDescription": "We firmly believe that whoever owns the storage owns the data. That's why we prioritize integrating collected information directly into your internal databases. You maintain complete sovereignty over your data assets while we handle the technical complexities of standardization, formatting, and secure transfer. This approach ensures you're building long-term organizational intelligence, not creating dependencies on external platforms.",
+      "toolsTitle": "Tool & Process Enhancement",
+      "toolsDescription": "Your organization already uses specific tools—PowerBI for analytics, ArcGIS for mapping, CRMs for customer management, payment portals for transactions, impact reporting software for stakeholder communication. We don't ask you to change these. Instead, we build bridges that allow our collected data to flow naturally into these existing systems. This integration transforms static tools into dynamic, data-rich platforms that provide real-time insights and enable data-driven decision-making without disrupting established workflows."
+    },
+    "intelligence": {
+      "title": "Making Your Data an Asset",
+      "subtitle": "In the modern economy, data is currency—but only if it can be shared securely and beneficially. We've built advanced frameworks that transform your data from a cost center into a revenue generator and impact multiplier.",
+      "researchTitle": "Research Enablement",
+      "researchDescription": "Academic and commercial research thrives on quality data. We facilitate co-publications where your data contributes to groundbreaking studies, ensuring proper attribution and citation. Your datasets can train next-generation AI models specifically designed for African contexts, support baseline studies for impact measurement, or enable longitudinal research that wouldn't be possible without consistent, quality data. Each research application enhances your organization's reputation as a thought leader and data pioneer while generating licensing fees or collaboration opportunities."
+    }
+  },
+  "solutionPages": {
+    "finance": {
+      "badge": "Banking & finance",
+      "title": "Accurate data collection for KYC requirements",
+      "amlTitle": "Achieve AML Compliance",
+      "amlDescription": "Attain full anti-money laundering compliance, reduce fraud risks, and minimize bad loan possibilities by accurately verifying customer addresses anywhere in Nigeria with Milsat",
+      "validateTitle": "Validate Customer Database",
+      "validateDescription": "Improve internal customer data with new field geospatial attributes to develop a more comprehensive customer database and deliver relevant offerings precisely for your customers",
+      "insightsTitle": "Expand Accurate Insights",
+      "insightsDescription": "Mitigate the risks of inaccuracies with new and relevant data about your customer's location and their behaviour to build a framework that fosters unprecedented levels of reliable insights"
+    },
+    "logistics": {
+      "badge": "Logistics & Delivery",
+      "title": "Location intelligent solutions for optimized delivery",
+      "locationTitle": "Location Intelligence",
+      "locationDescription": "Identify your high-volume customer base and optimize fleet movement and supply chain with advanced location intelligence technology that puts data at the center of your operations",
+      "timelinessTitle": "Delivery Timeliness Enhancement",
+      "timelinessDescription": "Combine location data with internal fleet data to optimize delivery routes and understand customer groupings, saving valuable delivery time and improving customer satisfaction",
+      "fleetTitle": "Fleet Control Improvement",
+      "fleetDescription": "Monitor fleet security and compliance with geofences around warehouses and delivery hubs. Leverage geospatial models and RFID technology for complete visibility and control"
+    },
+    "publicHealth": {
+      "badge": "Public Health",
+      "title": "Spatial data acquisition and analysis for micro-planning",
+      "populationTitle": "Identify Target Population",
+      "populationDescription": "Collect geospatial data on population profiles to deliver relief and develop sustainable public health frameworks that reach communities in need",
+      "interventionTitle": "Strengthen Intervention Planning",
+      "interventionDescription": "Understand geographic profiles of target communities and collect accessibility and health center data to design effective intervention strategies",
+      "microplanTitle": "Develop Intervention Micro-plan",
+      "microplanDescription": "Create comprehensive maps with population and healthcare facility information to ensure vaccines reach underserved areas and maximize immunization impact"
+    },
+    "marketing": {
+      "badge": "Marketing",
+      "title": "Location intelligence for sales and marketing strategies",
+      "understandingTitle": "Customer Understanding",
+      "understandingDescription": "Gather qualitative mobility data around Points-of-Interest to improve marketing ROI and enhance customer insights for more effective campaigns",
+      "territoryTitle": "Sales Territory Identification",
+      "territoryDescription": "Use location intelligence to determine current sales zones, identify capturable markets, and optimize resource allocation for customer acquisition",
+      "roiTitle": "Optimize Marketing ROI",
+      "roiDescription": "Leverage location-intelligent mobile and web applications to gather all your business data in one place and make data-driven marketing decisions that deliver results"
+    },
+    "manufacturing": {
+      "badge": "Manufacturing",
+      "title": "IoT data acquisition for machine optimization and production",
+      "downtimeTitle": "Eliminate Facility Downtimes",
+      "downtimeDescription": "Control machine operations, predict maintenance needs, and prevent breakdowns with real-time smart metering via IoT sensors that keep your production running smoothly",
+      "savingsTitle": "Achieve Operational Cost-savings",
+      "savingsDescription": "Monitor power, energy, and equipment health through IoT sensors and dashboards to identify cost-saving opportunities and optimize your manufacturing operations",
+      "monitoringTitle": "Live Asset Monitoring",
+      "monitoringDescription": "Track equipment remotely with a simple live dashboard, reduce site visits, and prevent surprise breakdowns with continuous monitoring and real-time alerts"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Why choose us",
+    "features": {
+      "weHearYou": {
+        "title": "We hear you",
+        "description": "Location intelligent mobile and web applications to gather all your business data in one place"
+      },
+      "expertSupport": {
+        "title": "Expert technical support",
+        "description": "Comprehensive technical support from industry experts, dedicated to resolving your issues promptly and efficiently."
+      },
+      "clearPricing": {
+        "title": "Clear pricing, no hidden fees",
+        "description": "Transparent pricing with no surprises. Know exactly what you're paying for upfront."
+      },
+      "reliability": {
+        "title": "Proven reliability and security",
+        "description": "Enterprise-grade security standards ensuring your data is protected with advanced encryption and compliance certifications."
+      },
+      "deployment": {
+        "title": "Rapid deployment and scalability",
+        "description": "Get started quickly with our streamlined onboarding process and scale effortlessly as your business grows."
+      },
+      "industrySolutions": {
+        "title": "Industry-specific solutions",
+        "description": "Tailored geospatial solutions designed specifically for your industry needs, delivering precise and actionable insights."
+      }
+    }
+  }
+}

@@ -25,18 +25,7 @@ import {
 import { useState } from "react";
 import { useCollection } from "@/lib/sdk";
 import { toast } from "sonner";
-
-const formSchema = z.object({
-    fullName: z.string().min(2, "Full name must be at least 2 characters"),
-    email: z.email("Invalid email address"),
-    phone: z.string().min(10, "Phone number must be at least 10 digits"),
-    meetingDate: z.date({
-        message: "Please select a date and time for the meeting",
-    }),
-    meetingTime: z.string({
-        message: "Please select a time for the meeting",
-    }),
-});
+import { useTranslations } from 'next-intl';
 
 const availableTimes = [
     "09:00 AM",
@@ -51,9 +40,22 @@ const availableTimes = [
 ];
 
 export default function ContactUs() {
+    const t = useTranslations('contact');
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const contactCollection = useCollection("contact_us");
+
+    const formSchema = z.object({
+        fullName: z.string().min(2, t('validation.fullNameMin')),
+        email: z.string().email(t('validation.emailInvalid')),
+        phone: z.string().min(10, t('validation.phoneMin')),
+        meetingDate: z.date({
+            message: t('validation.dateRequired'),
+        }),
+        meetingTime: z.string({
+            message: t('validation.timeRequired'),
+        }),
+    });
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -75,15 +77,15 @@ export default function ContactUs() {
                 meeting_time: values.meetingTime,
             });
 
-            toast.success("Meeting Request Submitted", {
-                description: "We'll get back to you soon to confirm your meeting.",
+            toast.success(t('successTitle'), {
+                description: t('successDescription'),
             });
 
             form.reset();
             setSelectedDate(undefined);
         } catch (error: any) {
-            toast.error("Submission Failed", {
-                description: error.message || "Failed to submit your meeting request. Please try again.",
+            toast.error(t('errorTitle'), {
+                description: error.message || t('errorDescription'),
             });
         } finally {
             setIsSubmitting(false);
@@ -93,24 +95,24 @@ export default function ContactUs() {
     return <div>
         <section className="container flex mx-auto my-40">
             <div className="w-3/12">
-                <p className="text-gray-400 uppercase tracking-widest text-sm mb-5">Get in Touch</p>
+                <p className="text-gray-400 uppercase tracking-widest text-sm mb-5">{t('getInTouch')}</p>
             </div>
             <div>
                 <h1 className="text-5xl">
-                    Ready to discover what we know about your area of interest?
+                    {t('title')}
                 </h1>
                 <div className="mt-20">
-                    <p className="tracking-widest uppercase text-sm">Mail to</p>
+                    <p className="tracking-widest uppercase text-sm">{t('mailTo')}</p>
                     <a className="text-5xl" href="mailto:support@milsat.africa">support@milsat.africa</a>
                 </div>
                 <div className="flex items-center justify-between">
                     <div className="mt-20">
-                        <p className="tracking-widest uppercase text-sm">Address</p>
-                        <a className="text-xl text-gray-400" href="mailto:support@milsat.africa">H4, Plot 574, Ameh Ebute Street, Wuye District, Abuja.</a>
+                        <p className="tracking-widest uppercase text-sm">{t('address')}</p>
+                        <a className="text-xl text-gray-400" href="mailto:support@milsat.africa">{t('addressText')}</a>
                     </div>
                     <div className="mt-20">
-                        <p className="tracking-widest uppercase text-sm">Office Hours</p>
-                        <a className="text-xl text-gray-400" href="mailto:support@milsat.africa">Monday to Friday: 9:00 AM - 6:00PM</a>
+                        <p className="tracking-widest uppercase text-sm">{t('officeHours')}</p>
+                        <a className="text-xl text-gray-400" href="mailto:support@milsat.africa">{t('officeHoursText')}</a>
                     </div>
                 </div>
                 <Form {...form}>
@@ -121,9 +123,9 @@ export default function ContactUs() {
                                 name="fullName"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Full Name</FormLabel>
+                                        <FormLabel>{t('fullName')}</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="John Doe" {...field} />
+                                            <Input placeholder={t('fullNamePlaceholder')} {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -134,9 +136,9 @@ export default function ContactUs() {
                                 name="email"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Email Address</FormLabel>
+                                        <FormLabel>{t('email')}</FormLabel>
                                         <FormControl>
-                                            <Input type="email" placeholder="john@example.com" {...field} />
+                                            <Input type="email" placeholder={t('emailPlaceholder')} {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -147,9 +149,9 @@ export default function ContactUs() {
                                 name="phone"
                                 render={({ field }) => (
                                     <FormItem>
-                                        <FormLabel>Phone Number</FormLabel>
+                                        <FormLabel>{t('phone')}</FormLabel>
                                         <FormControl>
-                                            <Input type="tel" placeholder="+234 800 000 0000" {...field} />
+                                            <Input type="tel" placeholder={t('phonePlaceholder')} {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>
@@ -160,7 +162,7 @@ export default function ContactUs() {
                                 name="meetingDate"
                                 render={({ field }) => (
                                     <FormItem className="flex flex-col">
-                                        <FormLabel>Meeting Date</FormLabel>
+                                        <FormLabel>{t('meetingDate')}</FormLabel>
                                         <Popover>
                                             <PopoverTrigger asChild>
                                                 <FormControl>
@@ -174,7 +176,7 @@ export default function ContactUs() {
                                                         {field.value ? (
                                                             format(field.value, "PPP")
                                                         ) : (
-                                                            <span>Pick a date</span>
+                                                            <span>{t('pickDate')}</span>
                                                         )}
                                                         <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                                                     </Button>
@@ -205,7 +207,7 @@ export default function ContactUs() {
                                     name="meetingTime"
                                     render={({ field }) => (
                                         <FormItem className="flex flex-col">
-                                            <FormLabel>Meeting Time</FormLabel>
+                                            <FormLabel>{t('meetingTime')}</FormLabel>
                                             <div className="grid grid-cols-3 gap-2">
                                                 {availableTimes.map((time) => (
                                                     <Button
@@ -227,7 +229,7 @@ export default function ContactUs() {
                         </div>
                         <div className="mt-10">
                             <Button type="submit" className="px-6 py-3" disabled={isSubmitting}>
-                                {isSubmitting ? "Submitting..." : "Schedule Meeting"}
+                                {isSubmitting ? t('submitting') : t('scheduleMeeting')}
                             </Button>
                         </div>
                     </form>

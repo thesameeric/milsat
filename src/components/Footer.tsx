@@ -1,6 +1,10 @@
-import Link from "next/link";
+'use client';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/routing';
 
 export default function Footer() {
+  const t = useTranslations('footer');
+
   return (
     <footer className="border-t border-white/10">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
@@ -8,35 +12,35 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Milsat</h3>
             <p className="text-gray-400 text-sm sm:text-base">
-              Turning every corner of Africa into actionable intelligence.
+              {t('tagline')}
             </p>
           </div>
           <div>
-            <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">Product</h4>
+            <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">{t('product')}</h4>
             <ul className="space-y-2 text-sm sm:text-base text-gray-400">
-              <li><Link href="/data/collection" className="hover:text-white transition-colors">Data Collection</Link></li>
-              <li><Link href="/data/integration" className="hover:text-white transition-colors">Data Integration</Link></li>
-              <li><Link href="/data/sharing" className="hover:text-white transition-colors">Data Sharing</Link></li>
+              <li><Link href="/data/collection" className="hover:text-white transition-colors">{t('dataCollection')}</Link></li>
+              <li><Link href="/data/integration" className="hover:text-white transition-colors">{t('dataIntegration')}</Link></li>
+              <li><Link href="/data/sharing" className="hover:text-white transition-colors">{t('dataSharing')}</Link></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">Company</h4>
+            <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">{t('company')}</h4>
             <ul className="space-y-2 text-sm sm:text-base text-gray-400">
-              <li><Link href="/about" className="hover:text-white transition-colors">About</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors">Case Studies</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Contact</a></li>
+              <li><Link href="/about" className="hover:text-white transition-colors">{t('about')}</Link></li>
+              <li><a href="#" className="hover:text-white transition-colors">{t('caseStudies')}</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">{t('contact')}</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">Legal</h4>
+            <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">{t('legal')}</h4>
             <ul className="space-y-2 text-sm sm:text-base text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">Privacy</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">Terms</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">{t('privacy')}</a></li>
+              <li><a href="#" className="hover:text-white transition-colors">{t('terms')}</a></li>
             </ul>
           </div>
         </div>
         <div className="border-t border-white/10 mt-8 sm:mt-12 pt-6 sm:pt-8 text-xs sm:text-sm text-gray-400">
-          <p>© 2025 Milsat. All rights reserved.</p>
+          <p>{t('copyright')}</p>
         </div>
       </div>
     </footer>

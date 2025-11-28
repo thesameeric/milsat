@@ -1,8 +1,11 @@
+import { WavyGradientCanvas } from "@/components/WavyGradientCanvas";
+import { WhyUs } from "@/components/whyUs";
 import Image from "next/image";
-import { WhyUs } from '../../../components/whyUs';
-import { WavyGradientCanvas } from '../../../components/WavyGradientCanvas';
+import { useTranslations } from "next-intl";
 
-export default function ManufacturingSolutionPage() {
+export default function MarketingSolutionPage() {
+    const t = useTranslations('solutionPages.marketing');
+
     return (
         <div className="min-h-screen bg-black">
             <section className="relative container min-h-[500px] md:min-h-[600px] lg:min-h-[700px] mx-auto flex flex-col items-center justify-center px-4 overflow-hidden">
@@ -13,11 +16,11 @@ export default function ManufacturingSolutionPage() {
 
                 {/* Content */}
                 <span className="relative z-10">
-                    <p className="border border-[#fafafa] px-3 py-1 rounded-full text-sm">Manufacturing</p>
+                    <p className="border border-[#fafafa] px-3 py-1 rounded-full text-sm">{t('badge')}</p>
                 </span>
                 <div className="md:max-w-7/12 mt-5 relative z-10">
                     <h1 className="font-bold text-4xl md:text-7xl text-center">
-                        IoT data acquisition for machine optimization and production
+                        {t('title')}
                     </h1>
                 </div>
             </section>
@@ -25,16 +28,16 @@ export default function ManufacturingSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Eliminate Facility Downtimes
+                        {t('understandingTitle')}
                     </h2>
                     <p className="">
-                        Control machine operations, predict maintenance needs, and prevent breakdowns with real-time smart metering via IoT sensors that keep your production running smoothly
+                        {t('understandingDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/facility-downtime.jpg"
-                        alt="Eliminate Facility Downtimes"
+                        src="/customer-understanding.jpg"
+                        alt="Customer Understanding"
                         width={600}
                         height={400}
                         className="rounded-lg"
@@ -44,16 +47,16 @@ export default function ManufacturingSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row-reverse items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Achieve Operational Cost-savings
+                        {t('territoryTitle')}
                     </h2>
                     <p>
-                        Monitor power, energy, and equipment health through IoT sensors and dashboards to identify cost-saving opportunities and optimize your manufacturing operations
+                        {t('territoryDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/manufacturing-savings.jpg"
-                        alt="Operational Cost-savings"
+                        src="/sales-team.jpg"
+                        alt="Sales Territory Identification"
                         width={600}
                         height={400}
                         className="rounded-lg"
@@ -63,16 +66,16 @@ export default function ManufacturingSolutionPage() {
             <section className="container mx-auto flex flex-col-reverse md:flex-row items-center justify-between py-20 px-4 sm:px-6 lg:px-8 gap-8">
                 <div className="md:max-w-5/12">
                     <h2 className="text-3xl sm:font-semibold md:font-normal md:text-5xl pb-8">
-                        Live Asset Monitoring
+                        {t('roiTitle')}
                     </h2>
                     <p>
-                        Track equipment remotely with a simple live dashboard, reduce site visits, and prevent surprise breakdowns with continuous monitoring and real-time alerts
+                        {t('roiDescription')}
                     </p>
                 </div>
                 <div>
                     <Image
-                        src="/consumption.jpg"
-                        alt="Live Asset Monitoring"
+                        src="/roi.jpg"
+                        alt="Marketing ROI Optimization"
                         width={600}
                         height={400}
                         className="rounded-lg"

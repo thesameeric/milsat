@@ -1,19 +1,23 @@
+'use client';
 import Image from "next/image";
 import TalkToAnExpert from "@/components/TalkToAnExpert";
+import { useTranslations } from 'next-intl';
 
 export default function DataCollection() {
+    const t = useTranslations('dataPages.collection');
+    const common = useTranslations('common');
+
     return <div>
         <section className="container flex items-center mx-auto my-40">
             <div className="w-full md:w-6/12">
-                <h1 className="text-7xl">Data Collection</h1>
+                <h1 className="text-7xl">{t('title')}</h1>
                 <span className="flex mt-10">
                     <p className="text-gray-400">
-                        We turn every corner of Africa into actionable intelligence.
-                        From Lagos traffic patterns to Nairobi agricultural yields—we capture what others miss
+                        {t('subtitle')}
                     </p>
                 </span>
                 <span className="flex pt-10">
-                    <TalkToAnExpert link="/contact" />
+                    <TalkToAnExpert link="/contact" text={common('contactUs')} />
                 </span>
             </div>
             <div className="">
@@ -22,20 +26,20 @@ export default function DataCollection() {
         </section>
         <section className="bg-[#01191D]">
             <div className="container mx-auto py-40">
-                <h2 className="text-5xl">How we do it</h2>
+                <h2 className="text-5xl">{t('howWeDoIt')}</h2>
                 <span className="flex pt-10 md:w-6/12">
                     <p>
-                        Our automated data collection framework seamlessly orchestrates human intelligence networks, IoT sensors, drone mapping, and satellite feeds into unified, real-time streams. Instead of waiting months for outdated reports, businesses get continuous, verified intelligence from every corner of the continent.
+                        {t('howWeDoItDescription')}
                     </p>
                 </span>
             </div>
         </section>
         <section className="container flex justify-between items-center mx-auto py-40">
             <div className="w-full md:w-5/12">
-                <h2 className="text-5xl leading-15">Aerial Intelligence Where Roads End</h2>
+                <h2 className="text-5xl leading-15">{t('aerialTitle')}</h2>
                 <span className="inline-block pt-10">
                     <p>
-                        When terrain becomes impassable and infrastructure doesn&apos;t exist, our drones take flight. From mapping flood patterns across remote wetlands to surveying agricultural yields in mountainous regions, our aerial fleet captures high-resolution intelligence from Africa&apos;s most challenging environments.
+                        {t('aerialDescription')}
                     </p>
                 </span>
             </div>
@@ -45,14 +49,14 @@ export default function DataCollection() {
         </section>
         <section className="container mx-auto">
             <h2 className="text-5xl">
-                Real Insight from Real people, in Real Time
+                {t('realInsightTitle')}
             </h2>
             <div className="pt-10">
                 <Image src={"/people.png"} width={1000} height={574} alt={""} className="w-full h-auto rounded-lg"></Image>
             </div>
             <div className="md:w-6/12">
                 <p className="pt-10">
-                    These aren't just enumerators, they're local intelligence agents who understand cultural nuances, speak native languages, and build trust where outsiders cannot. When you need data from places that don't appear on most maps, our people are already there.
+                    {t('realInsightDescription')}
                 </p>
             </div>
         </section>

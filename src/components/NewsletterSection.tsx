@@ -15,14 +15,16 @@ import {
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
 import { useCollection } from "@/lib/sdk";
-
-const formSchema = z.object({
-  email: z.string().email("Please enter a valid email address"),
-});
+import { useTranslations } from 'next-intl';
 
 export default function NewsletterSection() {
+  const t = useTranslations('newsletter');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const newsletterCollection = useCollection("newsletter");
+
+  const formSchema = z.object({
+    email: z.string().email(t('invalidEmail')),
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -39,14 +41,14 @@ export default function NewsletterSection() {
         subscribed_at: new Date().toISOString(),
       });
 
-      toast.success("Successfully subscribed!", {
-        description: "Thank you for subscribing to our newsletter.",
+      toast.success(t('successTitle'), {
+        description: t('successDescription'),
       });
 
       form.reset();
     } catch (error: any) {
-      toast.error("Subscription Failed", {
-        description: error.message || "Failed to subscribe. Please try again.",
+      toast.error(t('errorTitle'), {
+        description: error.message || t('errorDescription'),
       });
     } finally {
       setIsSubmitting(false);
@@ -58,11 +60,10 @@ export default function NewsletterSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center max-w-3xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4">
-            Stay Updated
+            {t('title')}
           </h2>
           <p className="text-lg text-gray-400 mb-10 text-[18px]">
-            Subscribe to our newsletter for the latest insights on African data intelligence,
-            mapping innovations, and industry trends.
+            {t('description')}
           </p>
 
           <Form {...form}>
@@ -77,7 +78,7 @@ export default function NewsletterSection() {
                       <FormControl>
                         <Input
                           type="email"
-                          placeholder="Enter your email"
+                          placeholder={t('placeholder')}
                           className="px-4 sm:px-6 py-3 rounded-full bg-background text-foreground placeholder:text-foreground/50 border-0 h-auto text-sm sm:text-base"
                           {...field}
                         />
@@ -91,7 +92,7 @@ export default function NewsletterSection() {
                   disabled={isSubmitting}
                   className="px-6 sm:px-8 py-3 bg-[#343333] hover:bg-[#252424] cursor-pointer text-foreground transition-colors font-medium disabled:opacity-50 disabled:cursor-not-allowed h-auto rounded-none text-sm sm:text-base"
                 >
-                  {isSubmitting ? "Subscribing..." : "Subscribe"}
+                  {isSubmitting ? t('subscribing') : t('subscribe')}
                 </Button>
               </div>
             </form>
