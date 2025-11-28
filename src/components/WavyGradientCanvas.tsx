@@ -58,6 +58,5 @@ declare global {
             isInitialized: boolean;
             init: () => void;
         };
-        requestIdleCallback: (callback: () => void) => void;
     }
 }
