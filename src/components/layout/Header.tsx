@@ -100,6 +100,18 @@ export default function Header() {
                   <ListItem href="/solutions/finance" title="Banking & Finance">
                     Location intelligence for KYC, AML compliance, and fraud reduction
                   </ListItem>
+                  <ListItem href="/solutions/logistics" title="Logistics & Delivery">
+                    Location intelligent solutions for optimized delivery and fleet management
+                  </ListItem>
+                  <ListItem href="/solutions/public-health" title="Public Health">
+                    Spatial data acquisition and analysis for micro-planning efforts
+                  </ListItem>
+                  <ListItem href="/solutions/marketing" title="Marketing">
+                    Location intelligence for sales and marketing strategies
+                  </ListItem>
+                  <ListItem href="/solutions/manufacturing" title="Manufacturing">
+                    IoT data acquisition for machine optimization and production
+                  </ListItem>
                 </ul>
               </NavigationMenuContent>
             </NavigationMenuItem>
@@ -187,6 +199,34 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <ArrowRight width={15} /> Banking & Finance
+                </Link>
+                <Link
+                  href="/solutions/logistics"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> Logistics & Delivery
+                </Link>
+                <Link
+                  href="/solutions/public-health"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> Public Health
+                </Link>
+                <Link
+                  href="/solutions/marketing"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> Marketing
+                </Link>
+                <Link
+                  href="/solutions/manufacturing"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> Manufacturing
                 </Link>
               </div>
             </div>
