@@ -16,6 +16,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const components: { title: string; href: string; description: string }[] = [
   {
@@ -59,6 +60,7 @@ export default function Header() {
   const t = useTranslations('nav');
   const solutions = useTranslations('solutions');
   const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+  const isMobile = useIsMobile();
 
   return (
     <header className="sticky top-0 left-0 bg-black w-full z-[999]">
@@ -69,92 +71,92 @@ export default function Header() {
           </Link>
         </div>
         <div className="flex items-center gap-4">
-          <NavigationMenu className="hidden sm:flex">
+          <NavigationMenu viewport={!!isMobile} className="hidden sm:flex">
             <NavigationMenuList className="flex-wrap gap-1">
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="text-sm md:text-base">{t('data')}</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid gap-2 w-[300px] sm:w-[400px] lg:w-[500px] p-4 lg:grid-cols-[.75fr_1fr]">
-                  <li className="row-span-3">
-                    <NavigationMenuLink asChild>
-                      <p
-                        className="flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md"
-                      >
-                        <div className="mb-2 text-base md:text-lg font-medium">
-                          {t('loci')}
-                        </div>
-                        <p className="text-muted-foreground text-xs md:text-sm leading-tight">
-                          {t('lociDescription')}
+                <NavigationMenuContent>
+                  <ul className="grid gap-2 w-[300px] sm:w-[400px] lg:w-[500px] p-4 lg:grid-cols-[.75fr_1fr]">
+                    <li className="row-span-3">
+                      <NavigationMenuLink asChild>
+                        <p
+                          className="flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md"
+                        >
+                          <div className="mb-2 text-base md:text-lg font-medium">
+                            {t('loci')}
+                          </div>
+                          <p className="text-muted-foreground text-xs md:text-sm leading-tight">
+                            {t('lociDescription')}
+                          </p>
                         </p>
-                      </p>
-                    </NavigationMenuLink>
-                  </li>
-                  <ListItem href="/data/collection" title={t('collection')}>
-                  </ListItem>
-                  <ListItem href="/data/integration" title={t('integration')}>
-                  </ListItem>
-                  <ListItem href="/data/intelligence" title={t('intelligence')}>
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuTrigger className="text-sm md:text-base">{t('solutions')}</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[250px] md:w-[300px] gap-4 p-4">
-                  <ListItem href="/solutions/finance" title={solutions('bankingFinance.title')}>
-                    {solutions('bankingFinance.description')}
-                  </ListItem>
-                  <ListItem href="/solutions/logistics" title={solutions('logistics.title')}>
-                    {solutions('logistics.description')}
-                  </ListItem>
-                  <ListItem href="/solutions/public-health" title={solutions('publicHealth.title')}>
-                    {solutions('publicHealth.description')}
-                  </ListItem>
-                  <ListItem href="/solutions/marketing" title={solutions('marketing.title')}>
-                    {solutions('marketing.description')}
-                  </ListItem>
-                  <ListItem href="/solutions/manufacturing" title={solutions('manufacturing.title')}>
-                    {solutions('manufacturing.description')}
-                  </ListItem>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link href="/about" className="text-sm md:text-base">{t('company')}</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-            <NavigationMenuItem className="hidden lg:block">
-              <NavigationMenuTrigger className="text-sm md:text-base">{t('resources')}</NavigationMenuTrigger>
-              <NavigationMenuContent>
-                <ul className="grid w-[250px] md:w-[300px] gap-4 p-4">
-                  <li>
-                    <NavigationMenuLink asChild>
-                      <Link href="/blog">
-                        <div className="font-medium text-sm md:text-base">{t('blog')}</div>
-                      </Link>
-                    </NavigationMenuLink>
-                    <NavigationMenuLink asChild>
-                      <Link href="/publications">
-                        <div className="font-medium text-sm md:text-base">{t('papers')}</div>
-                      </Link>
-                    </NavigationMenuLink>
-                  </li>
-                </ul>
-              </NavigationMenuContent>
-            </NavigationMenuItem>
-            <NavigationMenuItem>
-              <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-                <Link href="/contact" className="text-sm md:text-base">{t('contact')}</Link>
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-          </NavigationMenuList>
-        </NavigationMenu>
+                      </NavigationMenuLink>
+                    </li>
+                    <ListItem href="/data/collection" title={t('collection')}>
+                    </ListItem>
+                    <ListItem href="/data/integration" title={t('integration')}>
+                    </ListItem>
+                    <ListItem href="/data/intelligence" title={t('intelligence')}>
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuTrigger className="text-sm md:text-base">{t('solutions')}</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[250px] md:w-[300px] gap-4 p-4">
+                    <ListItem href="/solutions/finance" title={solutions('bankingFinance.title')}>
+                      {solutions('bankingFinance.description')}
+                    </ListItem>
+                    <ListItem href="/solutions/logistics" title={solutions('logistics.title')}>
+                      {solutions('logistics.description')}
+                    </ListItem>
+                    <ListItem href="/solutions/public-health" title={solutions('publicHealth.title')}>
+                      {solutions('publicHealth.description')}
+                    </ListItem>
+                    <ListItem href="/solutions/marketing" title={solutions('marketing.title')}>
+                      {solutions('marketing.description')}
+                    </ListItem>
+                    <ListItem href="/solutions/manufacturing" title={solutions('manufacturing.title')}>
+                      {solutions('manufacturing.description')}
+                    </ListItem>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <Link href="/about" className="text-sm md:text-base">{t('company')}</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+              <NavigationMenuItem className="hidden lg:block">
+                <NavigationMenuTrigger className="text-sm md:text-base">{t('resources')}</NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid w-[250px] md:w-[300px] gap-4 p-4">
+                    <li>
+                      <NavigationMenuLink asChild>
+                        <Link href="/blog">
+                          <div className="font-medium text-sm md:text-base">{t('blog')}</div>
+                        </Link>
+                      </NavigationMenuLink>
+                      <NavigationMenuLink asChild>
+                        <Link href="/publications">
+                          <div className="font-medium text-sm md:text-base">{t('papers')}</div>
+                        </Link>
+                      </NavigationMenuLink>
+                    </li>
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
+                  <Link href="/contact" className="text-sm md:text-base">{t('contact')}</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
 
-        <div className="hidden sm:block">
-          <LanguageSwitcher />
-        </div>
+          <div className="hidden sm:block">
+            <LanguageSwitcher />
+          </div>
         </div>
 
         {/* Mobile menu button and language switcher */}
