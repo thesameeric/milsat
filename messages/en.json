@@ -23,27 +23,27 @@
     "papers": "Papers"
   },
   "hero": {
-    "title": "The Africa Others Don't See",
-    "seeHowItWorks": "See how it works",
-    "talkToExpert": "Talk to an expert"
+    "title": "We make finding data for decisions in Africa easy",
+    "seeHowItWorks": "Get Started",
+    "talkToExpert": "Book a Demo"
   },
   "whyWeExist": {
     "title": "Why we Exist",
-    "description": "For too long, understanding Africa has meant relying on outdated maps and foreign assumptions. We're working at the intersection of local intelligence and cutting-edge technology to capture every pulse of the continent's true reality. With ground-truth data and hyperlocal context, a clearer picture of Africa's potential is now emerging. Welcome to Milsat."
+    "description": "Africa is home to over 1.3 billion people spread across thousands of diverse communities, each with dynamic behaviours, activities, and movements. Yet governments, NGOs and businesses still struggle to access quantifiable, up-to-date on-ground realities. We exist to close this gap. We are enabling leaders to make decisions rooted in evidence, not assumptions"
   },
   "howWeDoIt": {
     "title": "How We do it",
     "dataCollection": {
       "title": "Data Collection",
-      "description": "Multi-modal data acquisition through 5k+ trained field agents, IoT sensors for unreachable areas, and AI for smart extrapolation"
+      "description": "Actionable insights delivered through 10k+ trained field agents with a balanced spread across 40+ cities in Nigeria"
     },
     "dataIntegration": {
       "title": "Data Integration",
-      "description": "Seamlessly connect collected data to your databases, tools (PowerBI, CRMs), and customer-facing platforms for operational value"
+      "description": "ntegration-ready APIs to connect hyperlocal insights with your internal databases, work tools, and CRMs, making data usable for daily operations"
     },
     "dataIntelligence": {
       "title": "Data Intelligence",
-      "description": "Transform data into revenue & impact assets via blockchain-secured sharing for monetization, research, and social good"
+      "description": "Impact-ready insights derived from accurately acquired superlocal data that help you simulate outcomes, forecast needs, and plan resources with precision."
     }
   },
   "solutions": {
@@ -140,28 +140,36 @@
   },
   "dataPages": {
     "collection": {
-      "title": "Data Collection",
-      "subtitle": "We turn every corner of Africa into actionable intelligence. From Lagos traffic patterns to Nairobi agricultural yields—we capture what others miss",
-      "howWeDoIt": "How we do it",
-      "howWeDoItDescription": "Our automated data collection framework seamlessly orchestrates human intelligence networks, IoT sensors, drone mapping, and satellite feeds into unified, real-time streams. Instead of waiting months for outdated reports, businesses get continuous, verified intelligence from every corner of the continent.",
-      "aerialTitle": "Aerial Intelligence Where Roads End",
-      "aerialDescription": "When terrain becomes impassable and infrastructure doesn't exist, our drones take flight. From mapping flood patterns across remote wetlands to surveying agricultural yields in mountainous regions, our aerial fleet captures high-resolution intelligence from Africa's most challenging environments.",
-      "realInsightTitle": "Real Insight from Real people, in Real Time",
-      "realInsightDescription": "These aren't just enumerators, they're local intelligence agents who understand cultural nuances, speak native languages, and build trust where outsiders cannot. When you need data from places that don't appear on most maps, our people are already there."
+      "title": "Enumerate everywhere, and miss nothing",
+      "subtitle": "From dense urban settlements to the most remote locations, we crowdsource field data using a 7000+ strong agent network and custom data-collection technologies to ensure complete coverage, high accuracy, and real-time validation across Africa.",
+      "fieldTaskTitle": "Field Task Assignment",
+      "fieldTaskDescription": "Every agent receives location-specific tasks within predefined geofences. This eliminates overlap, improves accountability, and ensures complete settlement or locality coverage.",
+      "baselineTitle": "Baseline data for fast turnaround",
+      "baselineDescription": "We combine field data with satellite imagery, administrative boundaries, existing datasets, and algorithmic checks from a single community to multiple states or entire countries, while maintaining speed, cost-efficiency, and verified reliability.",
+      "realInsightTitle": "Distributed Field Agent Network",
+      "realInsightDescription": "We activate a verified network of over 7,000 trained field agents, strategically located across cities, towns, and rural communities. This gives us instant reach and reliable coverage across diverse terrains."
     },
     "integration": {
-      "title": "Data Integration",
-      "subtitle": "Data without integration is like fuel without an engine—full of potential but unable to create movement. We ensure your collected data seamlessly flows into your existing ecosystem, amplifying its value and impact.",
-      "ownershipTitle": "Database Ownership & Control",
-      "ownershipDescription": "We firmly believe that whoever owns the storage owns the data. That's why we prioritize integrating collected information directly into your internal databases. You maintain complete sovereignty over your data assets while we handle the technical complexities of standardization, formatting, and secure transfer. This approach ensures you're building long-term organizational intelligence, not creating dependencies on external platforms.",
-      "toolsTitle": "Tool & Process Enhancement",
-      "toolsDescription": "Your organization already uses specific tools—PowerBI for analytics, ArcGIS for mapping, CRMs for customer management, payment portals for transactions, impact reporting software for stakeholder communication. We don't ask you to change these. Instead, we build bridges that allow our collected data to flow naturally into these existing systems. This integration transforms static tools into dynamic, data-rich platforms that provide real-time insights and enable data-driven decision-making without disrupting established workflows."
+      "title": "Your data unified, and ready for work",
+      "subtitle": "We connect field data, internal systems, and additional sources into a single, harmonized structure, using integration-ready APIs and automated pipelines that make your insights usable immediately for daily operations.",
+      "ownershipTitle": "From Field to Internal Systems",
+      "ownershipDescription": "Our APIs plug directly into your internal tools, such as Power BI dashboards, Zoho CRM, custom Apps, and other operational systems, allowing you to automate field-to-office data flow and eliminate manual handoffs during exchange",
+      "toolsTitle": "Continuous Sync & Updates",
+      "toolsDescription": "Our systems provides on-the-go data verification and validation ensuring new discoveries and updates are automatically reflected across your operational and integrated analytic tools",
+      "geographicAtt": "Geographic & Attribute Linking",
+      "geographicAttDescription": "We link geographic features (buildings, households, businesses, streets) with relevant attributes and metadata including lead description , enabling richer insights and location-aware decision-making"
     },
     "intelligence": {
-      "title": "Making Your Data an Asset",
-      "subtitle": "In the modern economy, data is currency—but only if it can be shared securely and beneficially. We've built advanced frameworks that transform your data from a cost center into a revenue generator and impact multiplier.",
-      "researchTitle": "Research Enablement",
-      "researchDescription": "Academic and commercial research thrives on quality data. We facilitate co-publications where your data contributes to groundbreaking studies, ensuring proper attribution and citation. Your datasets can train next-generation AI models specifically designed for African contexts, support baseline studies for impact measurement, or enable longitudinal research that wouldn't be possible without consistent, quality data. Each research application enhances your organization's reputation as a thought leader and data pioneer while generating licensing fees or collaboration opportunities."
+      "title": "See what’s happening, and what happens next",
+      "subtitle": "IWe convert field and integrated data into actionable intelligence that reveals patterns, predict outcomes, and guide your next move with clarity. From planning to execution, you get visibility that drives results",
+      "dynamicDashboardTitle": "Dynamic Dashboards & Visualization",
+      "dynamicDashboardDescription": "We build interactive dashboards that turn complex data into intuitive visual insights. Users can explore maps, charts, and KPIs in real time, enabling faster decision-making across teams and departments.",
+      "aiTitle": "AI Text-to-Insight",
+      "aiDescription": "We develop AI-driven text-to-insight systems that instantly summarize large datasets, reports, and field evidence into clear, actionable narratives, allowing teams to retrieve insights, trend summaries, and decision-ready briefs in seconds.",
+      "impactTitle": "Impact Measurement & Progress Tracking",
+      "impactDescription": "For NGOs, governments, and development partners, we convert raw evidence into measurable indicators that track change, quantify impact, and support reporting, audits, and program monitoring.",
+      "decisionTitle": "Decision Support Tools & Reports",
+      "decisionDescription": "We generate automated executive reports, spatial summaries, and operational recommendations, helping leadership teams act decisively and plan strategically using verified intelligence."
     }
   },
   "solutionPages": {

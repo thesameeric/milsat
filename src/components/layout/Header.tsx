@@ -76,21 +76,7 @@ export default function Header() {
               <NavigationMenuItem>
                 <NavigationMenuTrigger className="text-sm md:text-base">{t('data')}</NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid gap-2 w-[300px] sm:w-[400px] lg:w-[500px] p-4 lg:grid-cols-[.75fr_1fr]">
-                    <li className="row-span-3">
-                      <NavigationMenuLink asChild>
-                        <p
-                          className="flex h-full w-full flex-col justify-end rounded-md bg-linear-to-b p-4 no-underline outline-hidden transition-all duration-200 select-none focus:shadow-md"
-                        >
-                          <div className="mb-2 text-base md:text-lg font-medium">
-                            {t('loci')}
-                          </div>
-                          <p className="text-muted-foreground text-xs md:text-sm leading-tight">
-                            {t('lociDescription')}
-                          </p>
-                        </p>
-                      </NavigationMenuLink>
-                    </li>
+                  <ul className="grid gap-2 w-[300px] sm:w-[400px] lg:w-[250px] p-4 lg:grid-cols-1">
                     <ListItem href="/data/collection" title={t('collection')}>
                     </ListItem>
                     <ListItem href="/data/integration" title={t('integration')}>
