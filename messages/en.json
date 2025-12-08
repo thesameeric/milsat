@@ -70,7 +70,13 @@
   },
   "readyToStart": {
     "title": "Ready to get started?",
-    "description": "Join thousands of users leveraging our platform to transform their data into actionable insights and impactful results."
+    "description": "Join thousands of users leveraging our platform to transform their data into actionable insights and impactful results.",
+    "marketResearch": "Market Research",
+    "marketResearchDescription": "Data and data acquisition on consumer behaviour, retail distribution, business expansion, and emerging opportunities to maximize revenue and simplify your strategies",
+    "govtResearch": "Government Research",
+    "govtResearchDescription": "Geospatial tools and infrastructures to support custom digital processes for nation-wide projects such as basemap provisioning, census mapping, postcodes generation and automated property taxation",
+    "impactResearch": "Impact Research",
+    "impactResearchDescription": "Data from hard-to-reach areas through identification and enumeration strategies support aid delivery, intervention microplanning and across target population"
   },
   "newsletter": {
     "title": "Stay Updated",
