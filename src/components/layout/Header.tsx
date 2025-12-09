@@ -18,44 +18,6 @@ import {
 } from "@/components/ui/navigation-menu"
 import { useIsMobile } from "@/hooks/use-mobile";
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-]
-
 export default function Header() {
   const t = useTranslations('nav');
   const solutions = useTranslations('solutions');
@@ -93,18 +55,18 @@ export default function Header() {
                     <ListItem href="/solutions/finance" title={solutions('bankingFinance.title')}>
                       {solutions('bankingFinance.description')}
                     </ListItem>
-                    <ListItem href="/solutions/logistics" title={solutions('logistics.title')}>
+                    {/* <ListItem href="/solutions/logistics" title={solutions('logistics.title')}>
                       {solutions('logistics.description')}
-                    </ListItem>
+                    </ListItem> */}
                     <ListItem href="/solutions/public-health" title={solutions('publicHealth.title')}>
                       {solutions('publicHealth.description')}
                     </ListItem>
                     <ListItem href="/solutions/marketing" title={solutions('marketing.title')}>
                       {solutions('marketing.description')}
                     </ListItem>
-                    <ListItem href="/solutions/manufacturing" title={solutions('manufacturing.title')}>
+                    {/* <ListItem href="/solutions/manufacturing" title={solutions('manufacturing.title')}>
                       {solutions('manufacturing.description')}
-                    </ListItem>
+                    </ListItem> */}
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
