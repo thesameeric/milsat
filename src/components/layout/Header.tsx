@@ -52,17 +52,17 @@ export default function Header() {
                 <NavigationMenuTrigger className="text-sm md:text-base">{t('solutions')}</NavigationMenuTrigger>
                 <NavigationMenuContent>
                   <ul className="grid w-[250px] md:w-[300px] gap-4 p-4">
-                    <ListItem href="/solutions/finance" title={solutions('bankingFinance.title')}>
-                      {solutions('bankingFinance.description')}
-                    </ListItem>
                     {/* <ListItem href="/solutions/logistics" title={solutions('logistics.title')}>
                       {solutions('logistics.description')}
                     </ListItem> */}
+                    <ListItem href="/solutions/marketing" title={solutions('marketing.title')}>
+                      {solutions('marketing.description')}
+                    </ListItem>
                     <ListItem href="/solutions/public-health" title={solutions('publicHealth.title')}>
                       {solutions('publicHealth.description')}
                     </ListItem>
-                    <ListItem href="/solutions/marketing" title={solutions('marketing.title')}>
-                      {solutions('marketing.description')}
+                    <ListItem href="/solutions/finance" title={solutions('bankingFinance.title')}>
+                      {solutions('bankingFinance.description')}
                     </ListItem>
                     {/* <ListItem href="/solutions/manufacturing" title={solutions('manufacturing.title')}>
                       {solutions('manufacturing.description')}
