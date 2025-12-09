@@ -101,7 +101,7 @@ export default function HowWeDoItSection() {
           <div
             ref={item1Ref}
             className={cn(
-              "item-1 transition-colors duration-300 min-h-[400px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col",
+              "item-1 transition-colors duration-300 min-h-[250px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col",
               activeItem === 1 ? "text-white" : "text-gray-500"
             )}
           >
@@ -130,7 +130,7 @@ export default function HowWeDoItSection() {
           <div
             ref={item2Ref}
             className={cn(
-              "item-2 transition-colors duration-300 min-h-[400px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col justify-start",
+              "item-2 transition-colors duration-300 min-h-[250px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col justify-start",
               activeItem === 2 ? "text-white" : "text-gray-500"
             )}
           >
@@ -159,7 +159,7 @@ export default function HowWeDoItSection() {
           <div
             ref={item3Ref}
             className={cn(
-              "item-3 transition-colors duration-300 min-h-[400px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col justify-start",
+              "item-3 transition-colors duration-300 min-h-[250px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col justify-start",
               activeItem === 3 ? "text-white" : "text-gray-500"
             )}
           >
@@ -187,7 +187,7 @@ export default function HowWeDoItSection() {
         </div>
 
         {/* Sticky Screen - Right Column */}
-        <div className="hidden lg:block sticky top-20 sm:top-32 md:top-40 h-[400px] sm:h-[500px] md:h-[600px] flex items-center justify-center">
+        <div className="hidden lg:block sticky top-20 sm:top-32 md:top-40 h-[250px] sm:h-[500px] md:h-[600px] flex items-center justify-center">
           <motion.div
             key={activeItem}
             initial={{ opacity: 0, scale: 0.9 }}

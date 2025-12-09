@@ -79,7 +79,7 @@ export default function NewsletterSection() {
                         <Input
                           type="email"
                           placeholder={t('placeholder')}
-                          className="px-4 sm:px-6 py-3 rounded-full bg-background text-foreground placeholder:text-foreground/50 border-0 h-auto text-sm sm:text-base"
+                          className="px-4 sm:px-6 py-3 outline-none rounded-none bg-background text-foreground placeholder:text-foreground/50 border-0 h-auto text-sm sm:text-base"
                           {...field}
                         />
                       </FormControl>

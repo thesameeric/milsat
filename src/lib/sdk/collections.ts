@@ -95,6 +95,8 @@ export interface Post {
   author_id: string
   published: boolean
   published_at?: string
+  is_pinned: boolean
+  is_featured: boolean
 }
 
 export interface CreatePostOptions {
@@ -105,6 +107,8 @@ export interface CreatePostOptions {
   header_image?: string
   metadata?: PostMetadata
   published?: boolean
+  is_pinned?: boolean
+  is_featured?: boolean
 }
 
 export interface UpdatePostOptions {
@@ -115,6 +119,8 @@ export interface UpdatePostOptions {
   header_image?: string
   metadata?: PostMetadata
   published?: boolean
+  is_pinned?: boolean
+  is_featured?: boolean
 }
 
 export interface PostListResponse {
@@ -132,7 +138,7 @@ class PostsAPI {
     private request: <T>(endpoint: string, options?: RequestInit) => Promise<T>,
     private organizationId: string,
     private useApiRoute: boolean = false
-  ) {}
+  ) { }
 
   private getEndpoint(path: string): string {
     const base = this.useApiRoute ? "/api/v1/api" : "/api/v1"
@@ -141,19 +147,61 @@ class PostsAPI {
 
   /**
    * List all published posts (public)
+   * @param page - Page number (default: 1)
+   * @param limit - Items per page (default: 10)
+   * @param isFeatured - Filter by featured status (optional)
+   * @param isPinned - Filter by pinned status (optional)
    */
-  async list(page: number = 1, limit: number = 10): Promise<PostListResponse> {
+  async list(
+    page: number = 1,
+    limit: number = 10,
+    isFeatured?: boolean,
+    isPinned?: boolean
+  ): Promise<PostListResponse> {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      limit: limit.toString(),
+    })
+
+    if (isFeatured !== undefined) {
+      params.append('is_featured', isFeatured.toString())
+    }
+    if (isPinned !== undefined) {
+      params.append('is_pinned', isPinned.toString())
+    }
+
     return this.request(
-      `/api/v1/organizations/${this.organizationId}/posts?page=${page}&limit=${limit}`
+      `/api/v1/organizations/${this.organizationId}/posts?${params.toString()}`
     )
   }
 
   /**
    * List all posts including drafts (requires authentication)
+   * @param page - Page number (default: 1)
+   * @param limit - Items per page (default: 10)
+   * @param isFeatured - Filter by featured status (optional)
+   * @param isPinned - Filter by pinned status (optional)
    */
-  async listAll(page: number = 1, limit: number = 10): Promise<PostListResponse> {
+  async listAll(
+    page: number = 1,
+    limit: number = 10,
+    isFeatured?: boolean,
+    isPinned?: boolean
+  ): Promise<PostListResponse> {
+    const params = new URLSearchParams({
+      page: page.toString(),
+      limit: limit.toString(),
+    })
+
+    if (isFeatured !== undefined) {
+      params.append('is_featured', isFeatured.toString())
+    }
+    if (isPinned !== undefined) {
+      params.append('is_pinned', isPinned.toString())
+    }
+
     return this.request(
-      this.getEndpoint(`/posts/all?page=${page}&limit=${limit}`)
+      this.getEndpoint(`/posts/all?${params.toString()}`)
     )
   }
 
@@ -244,7 +292,7 @@ class SubscribersAPI {
     private request: <T>(endpoint: string, options?: RequestInit) => Promise<T>,
     private organizationId: string,
     private useApiRoute: boolean = false
-  ) {}
+  ) { }
 
   private getEndpoint(path: string): string {
     const base = this.useApiRoute ? "/api/v1/api" : "/api/v1"
@@ -334,7 +382,7 @@ class CollectionAPI {
     private request: <T>(endpoint: string, options?: RequestInit) => Promise<T>,
     private organizationId: string,
     private useApiRoute: boolean = false
-  ) {}
+  ) { }
 
   private getEndpoint(path: string): string {
     const base = this.useApiRoute ? "/api/v1/api" : "/api/v1"
@@ -439,7 +487,7 @@ export class DataCollectionSDK {
     })
 
     console.log(this.getHeaders());
-    
+
 
     if (!response.ok) {
       const error = await response.json().catch(() => ({ error: "Request failed" }))

@@ -123,7 +123,7 @@ export default function Try() {
                     <div className="text-center mb-8">
                         <Image src={'/ai.gif'} alt={"ai gif"} width={100} height={100} className="mx-auto" />
                         <p className="text-gray-600 dark:text-gray-400">
-                            Ask questions about your documents
+                            Ask Loci about AMAC
                         </p>
                     </div>
 
@@ -186,13 +186,13 @@ export default function Try() {
                     )}
 
                     {/* Input Section */}
-                    <div className="">
+                    <div className="w-full">
                         <form onSubmit={handleSubmit}>
                             <AiInput
                                 ref={inputRef}
                                 onSubmit={() => handleSubmit}
                                 className={'h-[130px] z-[90] w-full'}
-                                placeholder='Ask anything about our data'
+                                placeholder='Ask loci'
                                 disabled={isStreaming}
                                 isStreaming={isStreaming}
                                 onCancelStream={handleCancelStream}

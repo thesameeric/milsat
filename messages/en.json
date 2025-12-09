@@ -228,6 +228,16 @@
       "savingsDescription": "Monitor power, energy, and equipment health through IoT sensors and dashboards to identify cost-saving opportunities and optimize your manufacturing operations",
       "monitoringTitle": "Live Asset Monitoring",
       "monitoringDescription": "Track equipment remotely with a simple live dashboard, reduce site visits, and prevent surprise breakdowns with continuous monitoring and real-time alerts"
+    },
+    "government": {
+      "badge": "Government",
+      "title": "Digital enumeration and geospatial intelligence for accurate national planning",
+      "censusTitle": "Digital Census Mapping",
+      "censusDescription": "Load high-resolution basemaps, satellite imagery, and settlement layers directly into our digital EAD app, accessible offline for all field teams to ensure every settlement and locality boundary is correctly identified, verified, and ready for use during census operations.",
+      "postcodesTitle": "Digital Postcodes Generation",
+      "postcodesDescription": "We capture and harmonize nationwide datasets, buildings, streets, settlement boundaries, and administrative layers, using advanced geospatial tools and verified field data, creating the spatial backbone for a modern and integratable postcode system built on local geography at global standard.",
+      "propertyTaxationTitle": "Automated Property Taxation",
+      "propertyTaxationDescription": "Deploy all-in-one property geo-portal that enable tax managers to annotate landuse, validate properties geocode, monitor bill generation, bill delivery and bill payment status. Seamlessly track tax compliance  coverage and impact."
     }
   },
   "whyChooseUs": {
