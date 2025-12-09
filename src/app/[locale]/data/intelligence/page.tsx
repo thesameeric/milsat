@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useTranslations } from 'next-intl';
 import { FeatureSection } from '@/components/FeatureSection';
 import { HeroSection } from '@/components/HeroSection';
+import { CTA } from "@/components/CTA";
 
 export default function DataIntelligence() {
     const t = useTranslations('dataPages.intelligence');
@@ -13,7 +14,11 @@ export default function DataIntelligence() {
             subtitle={t('subtitle')}
             videoSrc="https://res.cloudinary.com/thesameeric/video/upload/v1761973579/milsat/0_Abstract_Design_1280x720_r030bj.mp4"
             className="my-20"
-        />
+        >
+            <div className="mt-10">
+                <CTA />
+            </div>
+        </HeroSection>
         <FeatureSection
             title={t('dynamicDashboardTitle')}
             description={t('dynamicDashboardDescription')}

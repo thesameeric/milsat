@@ -3,6 +3,7 @@ import Image from "next/image";
 import { useTranslations } from 'next-intl';
 import { FeatureSection } from '@/components/FeatureSection';
 import { HeroSection } from '@/components/HeroSection';
+import { CTA } from "@/components/CTA";
 
 export default function DataIntegration() {
     const t = useTranslations('dataPages.integration');
@@ -12,7 +13,11 @@ export default function DataIntegration() {
             title={t('title')}
             subtitle={t('subtitle')}
             videoSrc="https://res.cloudinary.com/thesameeric/video/upload/v1761660079/milsat/GettyImages-1226609402_fub96z.mp4"
-        />
+        >
+            <div className="mt-10">
+                <CTA />
+            </div>
+        </HeroSection>
         <section className="bg-[#01191D]">
             <FeatureSection
                 title={t('ownershipTitle')}

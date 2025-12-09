@@ -4,6 +4,7 @@ import TalkToAnExpert from "@/components/TalkToAnExpert";
 import { useTranslations } from 'next-intl';
 import { HeroSection } from '@/components/HeroSection';
 import { FeatureSection } from '@/components/FeatureSection';
+import { CTA } from "@/components/CTA";
 
 export default function DataCollection() {
     const t = useTranslations('dataPages.collection');
@@ -15,7 +16,9 @@ export default function DataCollection() {
             subtitle={t('subtitle')}
             videoSrc="https://res.cloudinary.com/thesameeric/video/upload/v1761657727/milsat/GettyImages-1175032280_z6lfy5.mp4"
         >
-            <TalkToAnExpert link="/contact" text={common('contactUs')} />
+            <div className="mt-10">
+                <CTA />
+            </div>
         </HeroSection>
         <section className="bg-[#01191D]">
             <FeatureSection
