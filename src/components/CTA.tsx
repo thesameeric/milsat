@@ -117,7 +117,7 @@ export function CTA({
     return (
         <div className={cn("flex flex-col sm:flex-row gap-4 items-center justify-center", className)}>
             <Link href={getStartedHref}>
-                <Button size="lg" className="group px-8 py-6 text-lg">
+                <Button size="sm" className="group px-8 py-6 cursor-pointer">
                     {getStartedText}
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -125,7 +125,7 @@ export function CTA({
 
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogTrigger asChild>
-                    <Button size="lg" variant="outline" className="px-8 py-6 text-lg">
+                    <Button size="sm" variant="outline" className="px-8 py-6 cursor-pointer">
                         {talkToExpertText}
                     </Button>
                 </DialogTrigger>

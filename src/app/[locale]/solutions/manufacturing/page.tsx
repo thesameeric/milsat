@@ -2,6 +2,7 @@ import { WavyGradientCanvas } from "@/components/WavyGradientCanvas";
 import { WhyUs } from "@/components/whyUs";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
+import { CTA } from "@/components/CTA";
 
 export default function ManufacturingSolutionPage() {
     const t = useTranslations('solutionPages.manufacturing');
@@ -22,6 +23,9 @@ export default function ManufacturingSolutionPage() {
                     <h1 className="font-bold text-4xl md:text-7xl text-center">
                         {t('title')}
                     </h1>
+                    <div className="mt-10">
+                        <CTA />
+                    </div>
                 </div>
             </section>
 

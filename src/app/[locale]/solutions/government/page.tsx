@@ -3,6 +3,7 @@ import { WhyUs } from "@/components/whyUs";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { FeatureSection } from "@/components/FeatureSection";
+import { CTA } from "@/components/CTA";
 
 export default function MarketingSolutionPage() {
     const t = useTranslations('solutionPages.government');
@@ -23,6 +24,9 @@ export default function MarketingSolutionPage() {
                     <h1 className="font-bold text-4xl md:text-7xl text-center">
                         {t('title')}
                     </h1>
+                    <div className="mt-10">
+                        <CTA />
+                    </div>
                 </div>
             </section>
 
@@ -46,6 +50,10 @@ export default function MarketingSolutionPage() {
                 imageSrc={"/taxation.png"}
                 imageAlt={t('propertyTaxationTitle')}
             />
+
+            <section className="py-20">
+                <CTA />
+            </section>
 
             <section className="px-4 sm:px-6 lg:px-8">
                 <WhyUs />
