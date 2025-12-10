@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
@@ -17,12 +17,14 @@ export const Tabs = ({
   activeTabClassName,
   tabClassName,
   contentClassName,
+  autoplayInterval = 5000,
 }: {
   tabs: Tab[];
   containerClassName?: string;
   activeTabClassName?: string;
   tabClassName?: string;
   contentClassName?: string;
+  autoplayInterval?: number;
 }) => {
   const [active, setActive] = useState<Tab>(propTabs[0]);
   const [tabs, setTabs] = useState<Tab[]>(propTabs);
@@ -37,15 +39,61 @@ export const Tabs = ({
 
   const [hovering, setHovering] = useState(false);
 
+  // Autoplay functionality
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const currentIndex = propTabs.findIndex(tab => tab.value === active.value);
+      const nextIndex = (currentIndex + 1) % propTabs.length;
+      moveSelectedTabToTop(nextIndex);
+    }, autoplayInterval);
+
+    return () => clearInterval(interval);
+  }, [active, propTabs, autoplayInterval]);
+
+  const goToPrevious = () => {
+    const currentIndex = propTabs.findIndex(tab => tab.value === active.value);
+    const previousIndex = (currentIndex - 1 + propTabs.length) % propTabs.length;
+    moveSelectedTabToTop(previousIndex);
+  };
+
+  const goToNext = () => {
+    const currentIndex = propTabs.findIndex(tab => tab.value === active.value);
+    const nextIndex = (currentIndex + 1) % propTabs.length;
+    moveSelectedTabToTop(nextIndex);
+  };
+
   return (
     <>
-      <div
-        className={cn(
-          "flex flex-row items-center gap-x-10 justify-start [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
-          containerClassName
-        )}
-      >
-        {propTabs.map((tab, idx) => (
+      <div className="flex items-center gap-4 w-full">
+        {/* Previous Button */}
+        <button
+          onClick={goToPrevious}
+          className="flex-shrink-0 p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors"
+          aria-label="Previous"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="15 18 9 12 15 6"></polyline>
+          </svg>
+        </button>
+
+        {/* Tabs Container */}
+        <div
+          className={cn(
+            "flex flex-row items-center gap-x-10 justify-start [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
+            containerClassName
+          )}
+        >
+          {propTabs.map((tab, idx) => (
           <button
             key={tab.title}
             onClick={() => {
@@ -71,10 +119,39 @@ export const Tabs = ({
 
             {tab.image ? (
               // eslint-disable-next-line @next/next/no-img-element
-              <img className="relative block object-contain h-14" src={tab.image} alt={tab.title} />
+              <img
+                className={cn(
+                  "relative block object-contain h-14 transition-all duration-300",
+                  active.value !== tab.value && "grayscale opacity-60"
+                )}
+                src={tab.image}
+                alt={tab.title}
+              />
             ) : null}
           </button>
         ))}
+        </div>
+
+        {/* Next Button */}
+        <button
+          onClick={goToNext}
+          className="flex-shrink-0 p-2 rounded-full bg-zinc-800 hover:bg-zinc-700 transition-colors"
+          aria-label="Next"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
       </div>
       <FadeInDiv
         tabs={tabs}

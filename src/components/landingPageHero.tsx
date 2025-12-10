@@ -42,14 +42,14 @@ export default function LandingPageHero() {
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
-                    opacity: 0.1,
+                    opacity: 0.2,
                     transform: `translateY(${scrollY * 0.5}px)`,
                     willChange: 'transform'
                 }}
             />
 
             {/* Dark Overlay */}
-            <div className="absolute top-0 left-0 w-full h-full bg-black/60 sm:bg-black/50 md:bg-black/30 -z-10"></div>
+            <div className="absolute top-0 left-0 w-full h-full bg-black/50 sm:bg-black/50 md:bg-black/40 -z-10"></div>
 
             {/* Content */}
             <div className="relative z-10 container mx-auto">

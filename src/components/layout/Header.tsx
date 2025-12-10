@@ -64,9 +64,9 @@ export default function Header() {
                     <ListItem href="/solutions/finance" title={solutions('bankingFinance.title')}>
                       {solutions('bankingFinance.description')}
                     </ListItem>
-                    {/* <ListItem href="/solutions/manufacturing" title={solutions('manufacturing.title')}>
-                      {solutions('manufacturing.description')}
-                    </ListItem> */}
+                    <ListItem href="/solutions/government" title={solutions('government.title')}>
+                      {solutions('government.description')}
+                    </ListItem>
                   </ul>
                 </NavigationMenuContent>
               </NavigationMenuItem>
@@ -176,6 +176,13 @@ export default function Header() {
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   <ArrowRight width={15} /> {solutions('bankingFinance.title')}
+                </Link>
+                <Link
+                  href="/solutions/government"
+                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  <ArrowRight width={15} /> {solutions('government.title')}
                 </Link>
               </div>
             </div>

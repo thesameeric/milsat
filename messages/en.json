@@ -66,6 +66,10 @@
     "manufacturing": {
       "title": "Manufacturing",
       "description": "IoT data acquisition for machine optimization and production"
+    },
+    "government": {
+      "title": "Government & Policy",
+      "description": "Digital enumeration and geospatial intelligence for accurate national planning"
     }
   },
   "readyToStart": {

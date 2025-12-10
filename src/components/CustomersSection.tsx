@@ -3,71 +3,109 @@ import { Tabs } from "./ui/tabs";
 export default function CustomersSection() {
   const tabs = [
     {
-      title: "Sierra Leone Statistics",
-      value: "Sierra Leone Statistics",
+      title: "Statistics Sierra Leone",
+      value: "Statistics Sierra Leone",
       image: '/clients/sls.png',
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
           style={{
             background: '#01191D'
           }}>
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">National Census Mapping</p>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">Census and Enumeration Area Declination</p>
           <span className="inline-block pt-6 sm:pt-8 md:pt-10">
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-              Backbone tool for the digital cartographic mapping for Sierra Leone demographic and households census, ensuring accuracy and completeness at unprecedented scale.
+              Country-wide deployment of custom geo app, algorithms and web tools for national census planning, settlement identification and full digital creation of enumeration area boundaries, building footprints and Point of Interest.
             </p>
           </span>
         </div>
       ),
     },
     {
-      title: "National population Commision",
-      value: "National population Commision",
+      title: "National Population Commission",
+      value: "National Population Commission",
       image: '/clients/npc.png',
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
           style={{
             background: '#01191D'
           }}>
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">National Enumeration Area Demarcation</p>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">Enumeration Area Delineation and Baseline Mapping</p>
           <span className="inline-block pt-6 sm:pt-8 md:pt-10">
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-              Deployed to drive the Enumeration Area Demarcation (EAD) — successfully mapping 65M+ properties across 37 states within 9 months, the fastest operation of its kind in Africa.            </p>
-          </span>
-        </div>
-      ),
-    },
-    {
-      title: "Nipost",
-      value: "Nipost",
-      image: '/clients/nipost2.jpg',
-      content: (
-        <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
-          style={{
-            background: '#01191D'
-          }}>
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">National Addressing & Postcode</p>
-          <span className="inline-block pt-6 sm:pt-8 md:pt-10">
-            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-              Officially adopted as the certified geo application for countrywide postcode generation and address verification, enabling a digital backbone for addresses nationwide.
+              Field technology customization and support for Nigeria&apos;s first digital nation-wide mapping of over 100 million geospatial datasets consisting of localities, buildings, roads and population estimate.
             </p>
           </span>
         </div>
       ),
     },
     {
-      title: "UNDP",
-      value: "UNDP",
+      title: "Nigeria Postcode Service",
+      value: "Nigeria Postcode Service",
+      image: '/clients/nipost2.jpg',
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
+          style={{
+            background: '#01191D'
+          }}>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">Nigeria's First Digital Postcode System</p>
+          <span className="inline-block pt-6 sm:pt-8 md:pt-10">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+              Providing technology and geospatial modelling support for the generation of 60million+ digital alphanumeric postcode system to support national addressing system, logistics and delivery precision.
+            </p>
+          </span>
+        </div>
+      ),
+    },
+    {
+      title: "Ekiti State Internal Revenue Service",
+      value: "Ekiti State Internal Revenue Service",
+      image: '/clients/ekiti_logo.png',
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
+          style={{
+            background: '#01191D'
+          }}>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">Property Mapping for Equitable Taxation</p>
+          <span className="inline-block pt-6 sm:pt-8 md:pt-10">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+              LGA-wide property mapping of 170000+ buildings with classification and annotation to maximize tax coverage and enhance revenue growth through improved digital billing, tracking, and revenue collection.
+            </p>
+          </span>
+        </div>
+      ),
+    },
+    {
+      title: "United Nations Development Program",
+      value: "United Nations Development Program",
       image: '/clients/undp.png',
       content: (
         <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
           style={{
             background: '#01191D'
           }}>
-          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">Mining and Miners Census</p>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">Enumeration and Profiling of Artisanal Miners in Africa</p>
           <span className="inline-block pt-6 sm:pt-8 md:pt-10">
             <p className="text-sm sm:text-base md:text-lg leading-relaxed">
-              Driving inclusion and innovation across Sub-Saharan Africa with artisanal miners enumeration and geospatial mapping, creating pathways for formalization in the mining sector.            </p>
+              Structured identification and enumeration of artisanal miners for a needs assessment, enabling health insurance, financial inclusion, access to equipment, and climate resilience through service partnerships.
+            </p>
+          </span>
+        </div>
+      ),
+    },
+    {
+      title: "Sabi",
+      value: "Sabi",
+      image: '/clients/sabi.svg',
+      content: (
+        <div className="w-full overflow-hidden relative h-full rounded-2xl px-6 sm:px-8 md:px-10 py-12 sm:py-16 md:py-20 text-white"
+          style={{
+            background: '#01191D'
+          }}>
+          <p className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-semibold">Farmers and aggregators profiling for cocoa ESG traceability</p>
+          <span className="inline-block pt-6 sm:pt-8 md:pt-10">
+            <p className="text-sm sm:text-base md:text-lg leading-relaxed">
+              Acquisition of verified field data on farms, farmers, aggregators, and aggregation methods, along with accurate ESG ratings, to understand the traceability of cocoa movement from farms to processing across the cocoa value chain.
+            </p>
           </span>
         </div>
       ),
@@ -77,7 +115,7 @@ export default function CustomersSection() {
   return (
     <section className="container mx-auto px-4 sm:px-6 md:px-8 pt-12 sm:pt-16 md:pt-20 w-full">
       <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-8 sm:mb-10 md:mb-12 max-w-4xl">
-        Customers using local data for industrial advantage
+        Customers using our expertise to solve real problems
       </h2>
       <div className="[perspective:1000px] relative b flex flex-col items-start justify-start my-12 sm:my-16 md:my-20">
         <Tabs tabs={tabs} />
