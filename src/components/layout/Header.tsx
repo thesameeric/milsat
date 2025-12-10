@@ -157,18 +157,11 @@ export default function Header() {
               <div className="text-gray-400 text-xs uppercase font-semibold mb-2">{t('solutions')}</div>
               <div className="flex flex-col space-y-2 pl-4">
                 <Link
-                  href="/solutions/finance"
+                  href="/solutions/marketing"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> {solutions('bankingFinance.title')}
-                </Link>
-                <Link
-                  href="/solutions/logistics"
-                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <ArrowRight width={15} /> {solutions('logistics.title')}
+                  <ArrowRight width={15} /> {solutions('marketing.title')}
                 </Link>
                 <Link
                   href="/solutions/public-health"
@@ -178,18 +171,11 @@ export default function Header() {
                   <ArrowRight width={15} /> {solutions('publicHealth.title')}
                 </Link>
                 <Link
-                  href="/solutions/marketing"
+                  href="/solutions/finance"
                   className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  <ArrowRight width={15} /> {solutions('marketing.title')}
-                </Link>
-                <Link
-                  href="/solutions/manufacturing"
-                  className="flex item-center gap-x-5 text-white hover:text-gray-300 py-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  <ArrowRight width={15} /> {solutions('manufacturing.title')}
+                  <ArrowRight width={15} /> {solutions('bankingFinance.title')}
                 </Link>
               </div>
             </div>

@@ -94,6 +94,19 @@ export default async function RootLayout({
 
   return (
     <html lang={locale || 'en'}>
+      <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-09L72TDE3P"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-09L72TDE3P');
+            `,
+          }}
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

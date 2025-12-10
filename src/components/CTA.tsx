@@ -177,7 +177,7 @@ export function CTA(props: CTAProps) {
                     <DialogHeader>
                         <DialogTitle className="text-2xl">Schedule a Meeting</DialogTitle>
                         <DialogDescription>
-                            Fill out the form below and we'll get back to you shortly to confirm your meeting.
+                            Fill out the form below and we&apos;ll get back to you shortly to confirm your meeting.
                         </DialogDescription>
                     </DialogHeader>
 
