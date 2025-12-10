@@ -1,5 +1,27 @@
+"use client";
+
 import { ArrowDownCircle } from "lucide-react";
 import Link from "next/link";
+import { useCollection } from "@/lib/sdk";
+import { useEffect, useState } from "react";
+
+interface PaperDoc {
+    hash: string;
+    name: string;
+    size: number;
+    type: string;
+    url: string;
+}
+
+interface Paper {
+    id: string;
+    Title: string;
+    Authors: string;
+    Description: string;
+    field: string;
+    created_at: string;
+    doc: PaperDoc;
+}
 
 function truncateWords(text: string, wordLimit: number): string {
     const words = text.split(' ');
@@ -8,88 +30,129 @@ function truncateWords(text: string, wordLimit: number): string {
 }
 
 export default function Publications() {
-    const publications = [
-        {
-            title: "Participatory GIS Mapping for Sustainable Urban Development in Sub-Saharan African Cities",
-            authors: ["Dr. Amara Okonkwo", "Prof. Kwame Mensah", "Dr. Fatima Hassan"],
-            abstract: "This study examines the implementation of participatory Geographic Information Systems (PGIS) in five major Sub-Saharan African cities: Lagos, Nairobi, Accra, Dar es Salaam, and Kampala. Through community-based mapping initiatives involving over 15,000 residents, we demonstrate how local knowledge integration with formal GIS datasets can improve urban planning outcomes. Our findings reveal that PGIS approaches increase community engagement by 78% and lead to more equitable resource allocation in informal settlements. The research highlights challenges including digital literacy gaps, data quality concerns, and institutional resistance, while proposing frameworks for scalable implementation across diverse urban contexts.",
-            researchArea: "Urban Planning & Community GIS",
-            dateOfPublication: "2024-09-15"
-        },
-        {
-            title: "Remote Sensing and Machine Learning for Agricultural Land Use Classification in the Sahel Region",
-            authors: ["Dr. Ibrahim Diallo", "Dr. Sarah Ndlovu", "Prof. Jean-Baptiste Kamau"],
-            abstract: "Climate change and population growth necessitate accurate agricultural monitoring systems across the Sahel. This paper presents a novel approach combining Sentinel-2 satellite imagery with deep learning algorithms to classify crop types and predict yields across 2.5 million hectares in Burkina Faso, Mali, and Niger. Our convolutional neural network achieved 92.3% accuracy in distinguishing between millet, sorghum, cowpea, and groundnut cultivation. The model successfully identified early drought stress indicators, enabling timely intervention strategies. We demonstrate that open-source remote sensing data, when coupled with ground-truth validation from mobile data collection, can provide cost-effective agricultural intelligence for smallholder farming communities.",
-            researchArea: "Remote Sensing & Agricultural Monitoring",
-            dateOfPublication: "2024-11-22"
-        },
-        {
-            title: "Mobile Data Collection Technologies for Healthcare Facility Mapping in Rural East Africa",
-            authors: ["Dr. Grace Wanjiru", "Dr. Moses Okello", "Dr. Aisha Mohammed", "Prof. Daniel Kibira"],
-            abstract: "Healthcare accessibility remains a critical challenge in rural East Africa, with incomplete facility databases hindering service delivery planning. This research evaluates mobile data collection platforms (KoBoToolbox, ODK Collect, and Survey123) deployed across rural Kenya, Uganda, and Tanzania to map 3,847 healthcare facilities. Our comparative analysis reveals that offline-capable mobile solutions reduced data collection time by 65% compared to traditional paper-based methods, while improving spatial accuracy to within 5 meters. We documented facility characteristics including services offered, staff capacity, equipment availability, and patient volumes. The resulting geospatial database has been integrated into national Health Information Systems, enabling evidence-based resource allocation and emergency response planning.",
-            researchArea: "Health GIS & Mobile Data Collection",
-            dateOfPublication: "2025-01-10"
-        },
-        {
-            title: "UAV-Based Photogrammetry for Infrastructure Development and Monitoring in West African Coastal Zones",
-            authors: ["Dr. Kofi Asante", "Dr. Ngozi Eze", "Prof. Amadou Bah"],
-            abstract: "Coastal erosion and infrastructure degradation threaten millions of residents in West African coastal cities. This study demonstrates the application of low-cost UAV technology for high-resolution mapping and temporal monitoring of coastal infrastructure in Accra, Lagos, and Dakar. Using Structure-from-Motion photogrammetry, we generated centimeter-level Digital Elevation Models covering 450 kilometers of coastline. Time-series analysis from 2022-2024 quantified erosion rates averaging 2.8 meters annually, with some areas experiencing up to 12 meters of retreat. Our methodology enables local governments to prioritize infrastructure investments and implement adaptive management strategies. We provide open-source workflows that can be replicated across similar contexts with minimal technical expertise.",
-            researchArea: "Coastal GIS & UAV Remote Sensing",
-            dateOfPublication: "2024-07-03"
-        },
-        {
-            title: "Crowdsourced Mapping and Disaster Response: OpenStreetMap's Role in Southern African Cyclone Recovery",
-            authors: ["Prof. Thabo Mthembu", "Dr. Lindiwe Khumalo", "Dr. Fernando Santos", "Dr. Precious Moyo"],
-            abstract: "Tropical cyclones Idai (2019) and Freddy (2023) devastated Mozambique, Malawi, and Zimbabwe, exposing critical gaps in baseline geographic data. This research analyzes the humanitarian mapping response through OpenStreetMap, where 12,000 volunteers digitized 2.3 million buildings and 185,000 kilometers of roads. We assess data quality, volunteer coordination mechanisms, and integration with formal emergency response systems. Geospatial analysis reveals that areas with pre-existing OSM coverage received aid 40% faster than unmapped regions. Our findings emphasize the importance of proactive mapping before disasters strike and identify best practices for coordinating crowdsourced geodata during humanitarian crises. We propose frameworks for sustained community mapping initiatives linked to national disaster preparedness strategies.",
-            researchArea: "Disaster Management & Humanitarian Mapping",
-            dateOfPublication: "2024-10-28"
-        },
-        {
-            title: "Geospatial Data Infrastructure Development and Policy Frameworks in Anglophone Africa",
-            authors: ["Prof. Chiamaka Okoli", "Dr. David Mensah", "Dr. Elizabeth Mwangi"],
-            abstract: "Effective governance requires accessible, standardized geospatial data infrastructure (SDI). This comparative policy analysis examines SDI implementation across eight Anglophone African nations: Nigeria, Kenya, South Africa, Ghana, Uganda, Tanzania, Zambia, and Rwanda. Through stakeholder interviews, document analysis, and technical assessments, we identify critical success factors including political commitment, inter-agency coordination, and capacity building. Countries with dedicated SDI legislation demonstrated 3x higher data sharing rates between government agencies. We document persistent challenges including fragmented institutional mandates, proprietary data silos, and insufficient funding. The research proposes evidence-based policy recommendations aligned with African Union Agenda 2063 objectives and the UN-GGIM framework for integrated geospatial information.",
-            researchArea: "Geospatial Policy & Data Infrastructure",
-            dateOfPublication: "2025-02-14"
-        },
-        {
-            title: "Real-Time GPS Tracking and Predictive Analytics for Wildlife Anti-Poaching in Tanzanian National Parks",
-            authors: ["Dr. Sadiq Juma", "Dr. Catherine Mollel", "Prof. Richard Hoare", "Dr. Anna Lyimo"],
-            abstract: "Wildlife poaching threatens Africa's biodiversity and tourism economy. This research presents an integrated GIS platform combining real-time GPS collar data from 247 elephants and rhinos with patrol ranger tracking, environmental variables, and historical poaching incidents across Serengeti, Tarangire, and Ruaha National Parks. Machine learning algorithms predict high-risk poaching zones with 87% accuracy, enabling proactive ranger deployment. Our system reduced elephant poaching by 43% over 18 months through optimized patrol routing. Mobile data collection apps facilitate incident reporting, evidence documentation, and patrol monitoring. The platform's open architecture allows replication across East African conservation areas, demonstrating how geospatial technology can support evidence-based wildlife protection strategies.",
-            researchArea: "Conservation GIS & Wildlife Tracking",
-            dateOfPublication: "2024-12-05"
-        },
-        {
-            title: "Blockchain-Enabled Land Registration Systems: Geospatial Technology for Tenure Security in Rwanda",
-            authors: ["Dr. Jean-Paul Nsengimana", "Prof. Alice Mukamana", "Dr. Emmanuel Hategeka"],
-            abstract: "Land tenure insecurity undermines agricultural investment and economic development across Africa. This study evaluates Rwanda's innovative integration of blockchain technology with traditional cadastral GIS systems to create tamper-proof land registries. Analysis of 1.2 million registered parcels demonstrates that blockchain-backed land certificates reduced registration disputes by 68% and increased women's land ownership documentation by 34%. High-accuracy GPS boundary surveys using mobile tablets ensure spatial precision, while blockchain immutability prevents fraudulent alterations. Survey data from 5,000 landholders reveals increased willingness to invest in land improvements and access credit using digital certificates as collateral. We propose a scalable model adaptable to diverse African legal and institutional contexts.",
-            researchArea: "Land Administration & Cadastral Systems",
-            dateOfPublication: "2024-08-19"
+    const papersCollection = useCollection("papers");
+    const [papers, setPapers] = useState<Paper[]>([]);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState<string | null>(null);
+
+    useEffect(() => {
+        async function fetchPapers() {
+            try {
+                const result = await papersCollection.list(1, 100);
+                setPapers(result.data as Paper[]);
+            } catch (err: any) {
+                setError(err.message || "Failed to load publications");
+                console.error("Error fetching papers:", err);
+            } finally {
+                setIsLoading(false);
+            }
         }
-    ];
-    return <div className="container mx-auto my-20">
-        <div>
-            <ul className="md:max-w-8/12">
-                {publications.map((publication, index) => <li className="border-dashed border-[#27272a] border-b py-10" key={index}>
-                    <div className="flex items-center justify-between mb-10">
-                        <div className="flex items-center gap-x-3">
-                            {publication.authors.map((author, i) => <p className="text-[14px]" key={i}>{author}</p>)}
+        fetchPapers();
+    }, [papersCollection]);
+
+    if (isLoading) {
+        return (
+            <div className="container mx-auto my-10 sm:my-16 md:my-20 px-4 sm:px-6 md:px-8">
+                <div className="max-w-5xl mx-auto">
+                    <div className="mb-8 sm:mb-12">
+                        <div className="h-10 sm:h-12 bg-neutral-800 rounded w-48 sm:w-64 mb-3 sm:mb-4 animate-pulse" />
+                        <div className="h-6 bg-neutral-800 rounded w-32 sm:w-48 animate-pulse" />
+                    </div>
+                    {[...Array(3)].map((_, i) => (
+                        <div key={i} className="border-dashed border-[#27272a] border-b pb-6 sm:pb-8 md:pb-10 mb-6 sm:mb-8 animate-pulse">
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0 mb-4 sm:mb-6">
+                                <div className="flex items-center gap-2 sm:gap-x-3">
+                                    <div className="h-4 bg-neutral-800 rounded w-24 sm:w-32" />
+                                    <div className="h-4 bg-neutral-800 rounded w-24 sm:w-32" />
+                                </div>
+                                <div className="h-4 bg-neutral-800 rounded w-20 sm:w-24" />
+                            </div>
+                            <div className="h-6 sm:h-8 bg-neutral-800 rounded w-full sm:w-3/4 mb-4" />
+                            <div className="h-16 sm:h-20 bg-neutral-800 rounded w-full mb-4" />
+                            <div className="h-6 bg-neutral-800 rounded w-32 sm:w-48" />
                         </div>
-                        <div className="flex items-center gap-x-2 text-sm font-semibold">
-                            <ArrowDownCircle color="#27272a" />
-                            Paper
-                        </div>
-                    </div>
-                    <div>
-                        <Link href={`publications/${index}`} className="inline-block text-2xl pb-15">{publication.title}</Link>
-                    </div>
-                    <div>
-                        <p className="text-[18px] pb-10 leading-8 tracking-wider text-gray-400">{truncateWords(publication.abstract, 40)}</p>
-                    </div>
-                    <div className="flex gap-x-5">
-                        <p>{publication.researchArea}</p>
-                    </div>
-                </li>)}
-            </ul>
+                    ))}
+                </div>
+            </div>
+        );
+    }
+
+    if (error) {
+        return (
+            <div className="container mx-auto my-10 sm:my-16 md:my-20 px-4 sm:px-6 md:px-8">
+                <div className="text-center py-12">
+                    <p className="text-destructive mb-2 text-base sm:text-lg">Failed to load publications</p>
+                    <p className="text-sm sm:text-base text-muted-foreground">{error}</p>
+                </div>
+            </div>
+        );
+    }
+
+    if (papers.length === 0) {
+        return (
+            <div className="container mx-auto my-10 sm:my-16 md:my-20 px-4 sm:px-6 md:px-8">
+                <div className="text-center py-12">
+                    <p className="text-muted-foreground text-base sm:text-lg">No publications available</p>
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="container mx-auto my-10 sm:my-16 md:my-20 px-4 sm:px-6 md:px-8">
+            <div className="max-w-5xl mx-auto">
+                <div className="mb-8 sm:mb-12">
+                    <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4">Publications</h1>
+                    <p className="text-base sm:text-lg text-gray-400">Research papers and publications</p>
+                </div>
+                <ul className="space-y-6 sm:space-y-8">
+                    {papers.map((paper, index) => {
+                        // Parse authors string into array
+                        const authors = paper.Authors.split(',').map(a => a.trim());
+
+                        return (
+                            <li className="border-dashed border-[#27272a] border-b pb-6 sm:pb-8 md:pb-10" key={paper.id}>
+                                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 sm:gap-0 mb-4 sm:mb-6">
+                                    <div className="flex flex-wrap items-center gap-2 sm:gap-x-3">
+                                        {authors.map((author, i) => (
+                                            <p className="text-xs sm:text-sm text-gray-300" key={i}>
+                                                {author}{i < authors.length - 1 && ','}
+                                            </p>
+                                        ))}
+                                    </div>
+                                    <a
+                                        href={paper.doc.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center gap-x-2 text-xs sm:text-sm font-semibold hover:text-primary transition-colors w-fit"
+                                    >
+                                        <ArrowDownCircle className="w-4 h-4" color="#27272a" />
+                                        <span>Download Paper</span>
+                                    </a>
+                                </div>
+                                <div className="mb-4 sm:mb-6">
+                                    <Link
+                                        href={`publications/${paper.id}`}
+                                        className="inline-block text-lg sm:text-xl md:text-2xl font-semibold hover:text-primary transition-colors leading-tight"
+                                    >
+                                        {paper.Title}
+                                    </Link>
+                                </div>
+                                <div className="mb-4 sm:mb-6">
+                                    <p className="text-sm sm:text-base md:text-lg leading-relaxed tracking-wide text-gray-400">
+                                        {truncateWords(paper.Description, 40)}
+                                    </p>
+                                </div>
+                                <div className="flex flex-wrap gap-2 sm:gap-3">
+                                    <span className="px-3 py-1 bg-neutral-800 rounded-full text-xs sm:text-sm">
+                                        {paper.field}
+                                    </span>
+                                </div>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </div>
         </div>
-    </div>
+    );
 }
