@@ -433,15 +433,18 @@ class CollectionAPI {
   }
 }
 
+import { SchedulingAPI } from "./scheduling"
+
 /**
  * Data Collection SDK Client
  */
 export class DataCollectionSDK {
   private apiUrl: string
-  private organizationId: string
+  public readonly organizationId: string
   private apiKey?: string
   public subscribers: SubscribersAPI
   public posts: PostsAPI
+  public scheduling: SchedulingAPI
 
   constructor(config: DataCollectionConfig) {
     this.apiUrl = config.apiUrl.replace(/\/$/, "") // Remove trailing slash
@@ -458,6 +461,11 @@ export class DataCollectionSDK {
       this.request.bind(this),
       this.organizationId,
       !!this.apiKey // Use API route if API key is provided
+    )
+
+    this.scheduling = new SchedulingAPI(
+      this.request.bind(this),
+      !!this.apiKey
     )
   }
 

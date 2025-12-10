@@ -42,18 +42,11 @@ export default function DataIntelligence() {
             imageAlt="tool enhancement"
         />
         <FeatureSection
-            title={t('impactTitle')}
-            description={t('impactDescription')}
-            imageSrc="/impact.png"
-            imageAlt="tool enhancement"
-            imagePosition="left"
-        />
-
-        <FeatureSection
             title={t('decisionTitle')}
             description={t('decisionDescription')}
             imageSrc="/report.jpg"
             imageAlt="tool enhancement"
+            imagePosition="left"
         />
     </div>
 }

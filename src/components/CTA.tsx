@@ -30,8 +30,8 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog";
-import { useState } from "react";
-import { useCollection } from "@/lib/sdk";
+import { useState, useEffect } from "react";
+import { useSDK } from "@/lib/sdk";
 import { toast } from "sonner";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
@@ -53,18 +53,43 @@ interface CTAProps {
     getStartedText?: string;
     talkToExpertText?: string;
     className?: string;
+    availabilityId?: string;
 }
 
-export function CTA({
-    getStartedHref = "/try",
-    getStartedText = "Get Started",
-    talkToExpertText = "Talk to an Expert",
-    className = "",
-}: CTAProps) {
+export function CTA(props: CTAProps) {
+    const { getStartedHref = "/try", getStartedText = "Get Started", talkToExpertText = "Talk to an Expert", className = "", availabilityId = process.env.NEXT_PUBLIC_SCHEDULING_AVAILABILITY_ID } = props;
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const contactCollection = useCollection("contact_us");
+    const [activeAvailabilityId, setActiveAvailabilityId] = useState<string | undefined>(availabilityId);
+    const sdk = useSDK();
+
+    // Fetch default availability if not provided
+    useEffect(() => {
+        if (!activeAvailabilityId && isOpen) {
+            // We need orgId. It's in sdk config but not exposed publicly on sdk instance usually?
+            // Wait, DataCollectionSDK stores organizationId privately.
+            // But we can usually assume the consumer knows it or the SDK has it.
+            // Actually, we can't access sdk.organizationId if it's private.
+            // But `sdk.scheduling.list(orgId)` requires orgId.
+            // We'll need to expose it or assume it's passed.
+            // Let's assume Milsat pages are under an Org context?
+            // "Can't we get it from the orgId" -> User implies they have orgId.
+            // Milsat config usually puts orgId in NEXT_PUBLIC_ORGANIZATION_ID?
+            // Or we check if sdk has a public getter.
+            // Based on sdk/collections.ts, organizationId is private.
+            // I will assume process.env.NEXT_PUBLIC_ORGANIZATION_ID is available as fallback for list.
+
+            const orgId = sdk.organizationId;
+            if (orgId) {
+                sdk.scheduling.list(orgId).then((res) => {
+                    if (res.data && res.data.length > 0) {
+                        setActiveAvailabilityId(res.data[0].id);
+                    }
+                }).catch(console.error);
+            }
+        }
+    }, [isOpen, activeAvailabilityId, sdk]);
 
     const formSchema = z.object({
         fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -90,12 +115,30 @@ export function CTA({
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsSubmitting(true);
         try {
-            await contactCollection.add({
-                full_name: values.fullName,
-                email: values.email,
-                phone: values.phone,
-                meeting_date: values.meetingDate.toISOString(),
-                meeting_time: values.meetingTime,
+            const targetAvailabilityId = activeAvailabilityId;
+
+            if (!targetAvailabilityId) {
+                throw new Error("Availability ID is not configured and no default could be found");
+            }
+
+            // Parse time string (e.g., "09:00 AM") and combine with date
+            const [timeStr, period] = values.meetingTime.split(" ");
+            let [hours, minutes] = timeStr.split(":").map(Number);
+
+            if (period === "PM" && hours !== 12) hours += 12;
+            if (period === "AM" && hours === 12) hours = 0;
+
+            const startTime = new Date(values.meetingDate);
+            startTime.setHours(hours, minutes, 0, 0);
+
+            await sdk.scheduling.book({
+                availability_id: targetAvailabilityId,
+                attendee_name: values.fullName,
+                attendee_email: values.email,
+                attendee_phone: values.phone,
+                start_time: startTime.toISOString(),
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                notes: "Scheduled via Website",
             });
 
             toast.success("Meeting Scheduled!", {
@@ -106,6 +149,7 @@ export function CTA({
             setSelectedDate(undefined);
             setIsOpen(false);
         } catch (error: any) {
+            console.error(error);
             toast.error("Something went wrong", {
                 description: error.message || "Please try again later.",
             });
@@ -117,7 +161,7 @@ export function CTA({
     return (
         <div className={cn("flex flex-col sm:flex-row gap-4 items-center justify-center", className)}>
             <Link href={getStartedHref}>
-                <Button size="sm" className="group px-8 py-6 cursor-pointer">
+                <Button size="sm" variant={'outline'} className="group px-8 py-6 cursor-pointer">
                     {getStartedText}
                     <ArrowRight className="ml-2 h-5 w-5 transition-transform group-hover:translate-x-1" />
                 </Button>
@@ -125,7 +169,7 @@ export function CTA({
 
             <Dialog open={isOpen} onOpenChange={setIsOpen}>
                 <DialogTrigger asChild>
-                    <Button size="sm" variant="outline" className="px-8 py-6 cursor-pointer">
+                    <Button size="sm" className="px-8 py-6 cursor-pointer">
                         {talkToExpertText}
                     </Button>
                 </DialogTrigger>

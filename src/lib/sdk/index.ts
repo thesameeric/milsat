@@ -33,9 +33,15 @@ export {
   type RAGContent,
   type RAGDone,
   type RAGError,
-  type RAGStreamEvent,
   type RAGQueryCallbacks,
 } from "./rag"
+
+// Scheduling SDK
+export {
+  type Availability,
+  type Booking,
+  type CreateBookingOptions,
+} from "./scheduling"
 
 // React Provider and Hooks
 export {
