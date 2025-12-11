@@ -101,12 +101,13 @@
     "legal": "Legal",
     "dataCollection": "Data Collection",
     "dataIntegration": "Data Integration",
-    "dataSharing": "Data Sharing",
+    "dataIntelligence": "Data Intelligence",
     "about": "About",
     "caseStudies": "Case Studies",
-    "contact": "Contact",
-    "privacy": "Privacy",
-    "terms": "Terms",
+    "contact": "Contact Us",
+    "privacy": "Privacy Policy",
+    "blog": "Blog",
+    "aspirantProgram": "Milsat Aspirant Program",
     "copyright": "© 2025 Milsat. All rights reserved."
   },
   "about": {

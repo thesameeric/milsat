@@ -20,22 +20,22 @@ export default function Footer() {
             <ul className="space-y-2 text-sm sm:text-base text-gray-400">
               <li><Link href="/data/collection" className="hover:text-white transition-colors">{t('dataCollection')}</Link></li>
               <li><Link href="/data/integration" className="hover:text-white transition-colors">{t('dataIntegration')}</Link></li>
-              <li><Link href="/data/sharing" className="hover:text-white transition-colors">{t('dataSharing')}</Link></li>
+              <li><Link href="/data/sharing" className="hover:text-white transition-colors">{t('dataIntelligence')}</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">{t('company')}</h4>
             <ul className="space-y-2 text-sm sm:text-base text-gray-400">
               <li><Link href="/about" className="hover:text-white transition-colors">{t('about')}</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors">{t('caseStudies')}</a></li>
+              <li><Link href="/blog" className="hover:text-white transition-colors">{t('blog')}</Link></li>
+              <li><a href="https://aspirant.milsat.africa" target='_blank' className="hover:text-white transition-colors">{t('aspirantProgram')}</a></li>
               <li><a href="#" className="hover:text-white transition-colors">{t('contact')}</a></li>
             </ul>
           </div>
           <div>
             <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">{t('legal')}</h4>
             <ul className="space-y-2 text-sm sm:text-base text-gray-400">
-              <li><a href="#" className="hover:text-white transition-colors">{t('privacy')}</a></li>
-              <li><a href="#" className="hover:text-white transition-colors">{t('terms')}</a></li>
+              <li><Link href="privacy-policy" className="hover:text-white transition-colors">{t('privacy')}</Link></li>
             </ul>
           </div>
         </div>

@@ -89,47 +89,47 @@ export const Tabs = ({
         {/* Tabs Container */}
         <div
           className={cn(
-            "flex flex-row items-center gap-x-10 justify-start [perspective:1000px] relative overflow-auto sm:overflow-visible no-visible-scrollbar max-w-full w-full",
+            "flex flex-row items-center gap-x-4 sm:gap-x-10 justify-start [perspective:1000px] relative overflow-x-auto no-visible-scrollbar max-w-full flex-1 min-w-0",
             containerClassName
           )}
         >
           {propTabs.map((tab, idx) => (
-          <button
-            key={tab.title}
-            onClick={() => {
-              moveSelectedTabToTop(idx);
-            }}
-            onMouseEnter={() => setHovering(true)}
-            onMouseLeave={() => setHovering(false)}
-            className={cn("relative px-2 text-sm py-2 cursor-pointer overflow-hidden", tabClassName)}
-            style={{
-              transformStyle: "preserve-3d",
-            }}
-          >
-            {active.value === tab.value && (
-              <motion.div
-                layoutId="clickedbutton"
-                transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
-                className={cn(
-                  "absolute inset-0 bg-zinc-800 rounded-lg",
-                  activeTabClassName
-                )}
-              />
-            )}
+            <button
+              key={tab.title}
+              onClick={() => {
+                moveSelectedTabToTop(idx);
+              }}
+              onMouseEnter={() => setHovering(true)}
+              onMouseLeave={() => setHovering(false)}
+              className={cn("relative px-2 text-sm py-2 cursor-pointer overflow-hidden shrink-0", tabClassName)}
+              style={{
+                transformStyle: "preserve-3d",
+              }}
+            >
+              {active.value === tab.value && (
+                <motion.div
+                  layoutId="clickedbutton"
+                  transition={{ type: "spring", bounce: 0.3, duration: 0.6 }}
+                  className={cn(
+                    "absolute inset-0 bg-zinc-800 rounded-lg",
+                    activeTabClassName
+                  )}
+                />
+              )}
 
-            {tab.image ? (
-              // eslint-disable-next-line @next/next/no-img-element
-              <img
-                className={cn(
-                  "relative block object-contain h-14 transition-all duration-300",
-                  active.value !== tab.value && "grayscale opacity-60"
-                )}
-                src={tab.image}
-                alt={tab.title}
-              />
-            ) : null}
-          </button>
-        ))}
+              {tab.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  className={cn(
+                    "relative block object-contain h-16 sm:h-20 transition-all duration-300",
+                    active.value !== tab.value && "grayscale opacity-60"
+                  )}
+                  src={tab.image}
+                  alt={tab.title}
+                />
+              ) : null}
+            </button>
+          ))}
         </div>
 
         {/* Next Button */}

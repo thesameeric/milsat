@@ -36,17 +36,18 @@ import { toast } from "sonner";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-const availableTimes = [
-    "09:00 AM",
-    "10:00 AM",
-    "11:00 AM",
-    "12:00 PM",
-    "01:00 PM",
-    "02:00 PM",
-    "03:00 PM",
-    "04:00 PM",
-    "05:00 PM",
-];
+interface TimeSlot {
+    day_of_week: number;
+    start_time: string;
+    end_time: string;
+}
+
+interface Availability {
+    id: string;
+    duration: number;
+    time_slots: TimeSlot[];
+    timezone: string;
+}
 
 interface CTAProps {
     getStartedHref?: string;
@@ -61,35 +62,56 @@ export function CTA(props: CTAProps) {
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-    const [activeAvailabilityId, setActiveAvailabilityId] = useState<string | undefined>(availabilityId);
+    const [activeAvailability, setActiveAvailability] = useState<Availability | null>(null);
+    const [generatedTimes, setGeneratedTimes] = useState<string[]>([]);
     const sdk = useSDK();
 
     // Fetch default availability if not provided
     useEffect(() => {
-        if (!activeAvailabilityId && isOpen) {
-            // We need orgId. It's in sdk config but not exposed publicly on sdk instance usually?
-            // Wait, DataCollectionSDK stores organizationId privately.
-            // But we can usually assume the consumer knows it or the SDK has it.
-            // Actually, we can't access sdk.organizationId if it's private.
-            // But `sdk.scheduling.list(orgId)` requires orgId.
-            // We'll need to expose it or assume it's passed.
-            // Let's assume Milsat pages are under an Org context?
-            // "Can't we get it from the orgId" -> User implies they have orgId.
-            // Milsat config usually puts orgId in NEXT_PUBLIC_ORGANIZATION_ID?
-            // Or we check if sdk has a public getter.
-            // Based on sdk/collections.ts, organizationId is private.
-            // I will assume process.env.NEXT_PUBLIC_ORGANIZATION_ID is available as fallback for list.
-
+        if (!activeAvailability && isOpen) {
             const orgId = sdk.organizationId;
             if (orgId) {
                 sdk.scheduling.list(orgId).then((res) => {
                     if (res.data && res.data.length > 0) {
-                        setActiveAvailabilityId(res.data[0].id);
+                        setActiveAvailability(res.data[0]);
                     }
                 }).catch(console.error);
             }
         }
-    }, [isOpen, activeAvailabilityId, sdk]);
+    }, [isOpen, activeAvailability, sdk]);
+
+    // Generate time slots when date is selected
+    useEffect(() => {
+        if (!selectedDate || !activeAvailability) {
+            setGeneratedTimes([]);
+            return;
+        }
+
+        const dayOfWeek = selectedDate.getDay();
+        const slotConfig = activeAvailability.time_slots.find(s => s.day_of_week === dayOfWeek);
+
+        if (!slotConfig) {
+            setGeneratedTimes([]);
+            return;
+        }
+
+        const times: string[] = [];
+        const [startHour, startMinute] = slotConfig.start_time.split(':').map(Number);
+        const [endHour, endMinute] = slotConfig.end_time.split(':').map(Number);
+
+        let current = new Date(selectedDate);
+        current.setHours(startHour, startMinute, 0, 0);
+
+        const end = new Date(selectedDate);
+        end.setHours(endHour, endMinute, 0, 0);
+
+        while (current < end) {
+            times.push(format(current, "hh:mm a"));
+            current.setMinutes(current.getMinutes() + activeAvailability.duration);
+        }
+
+        setGeneratedTimes(times);
+    }, [selectedDate, activeAvailability]);
 
     const formSchema = z.object({
         fullName: z.string().min(2, "Full name must be at least 2 characters"),
@@ -115,7 +137,7 @@ export function CTA(props: CTAProps) {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsSubmitting(true);
         try {
-            const targetAvailabilityId = activeAvailabilityId;
+            const targetAvailabilityId = activeAvailability?.id || availabilityId;
 
             if (!targetAvailabilityId) {
                 throw new Error("Availability ID is not configured and no default could be found");
@@ -256,9 +278,17 @@ export function CTA(props: CTAProps) {
                                                             field.onChange(date);
                                                             setSelectedDate(date);
                                                         }}
-                                                        disabled={(date) =>
-                                                            date < new Date() || date < new Date("1900-01-01")
-                                                        }
+                                                        disabled={(date) => {
+                                                            const isPast = date < new Date() || date < new Date("1900-01-01");
+                                                            if (isPast) return true;
+
+                                                            if (activeAvailability) {
+                                                                const dayOfWeek = date.getDay();
+                                                                const hasSlot = activeAvailability.time_slots.some(s => s.day_of_week === dayOfWeek);
+                                                                return !hasSlot;
+                                                            }
+                                                            return false;
+                                                        }}
                                                         initialFocus
                                                     />
                                                 </PopoverContent>
@@ -275,8 +305,12 @@ export function CTA(props: CTAProps) {
                                     render={({ field }) => (
                                         <FormItem className="flex flex-col">
                                             <FormLabel>Meeting Time</FormLabel>
-                                            <div className="grid grid-cols-3 gap-2">
-                                                {availableTimes.map((time) => (
+                                            <div className="grid grid-cols-3 gap-2 max-h-60 overflow-y-auto">
+                                                {generatedTimes.length === 0 ? (
+                                                    <div className="col-span-3 text-center text-sm text-muted-foreground py-4">
+                                                        No available times for this date
+                                                    </div>
+                                                ) : generatedTimes.map((time) => (
                                                     <Button
                                                         key={time}
                                                         type="button"
