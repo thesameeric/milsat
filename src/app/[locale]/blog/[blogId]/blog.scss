@@ -11,6 +11,14 @@
         grid-template-columns: 1fr;
         gap: 2rem;
     }
+
+    &.no-sidebar {
+        grid-template-columns: minmax(0, 1fr);
+        
+        article.blog_post {
+            margin: 0 auto;
+        }
+    }
 }
 
 // Table of Contents Sidebar

@@ -123,7 +123,7 @@ export default function Try() {
                     <div className="text-center mb-8">
                         <Image src={'/ai.gif'} alt={"ai gif"} width={100} height={100} className="mx-auto" />
                         <p className="text-gray-600 dark:text-gray-400">
-                            Ask Loci about AMAC
+                            Ask Loci about Abuja Municipal Area Council (AMAC)
                         </p>
                     </div>
 

@@ -99,16 +99,16 @@
     "product": "Product",
     "company": "Company",
     "legal": "Legal",
-    "dataCollection": "Data Collection",
-    "dataIntegration": "Data Integration",
-    "dataIntelligence": "Data Intelligence",
+    "dataCollection": "Collection",
+    "dataIntegration": "Integration",
+    "dataIntelligence": "Intelligence",
     "about": "About",
     "caseStudies": "Case Studies",
     "contact": "Contact Us",
     "privacy": "Privacy Policy",
     "blog": "Blog",
     "aspirantProgram": "Milsat Aspirant Program",
-    "copyright": "© 2025 Milsat. All rights reserved."
+    "copyright": "© 2026 Milsat. All rights reserved."
   },
   "about": {
     "subtitle": "By Africans",

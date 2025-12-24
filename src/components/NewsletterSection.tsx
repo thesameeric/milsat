@@ -14,13 +14,13 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { useCollection } from "@/lib/sdk";
+import { useSubscribers } from "@/lib/sdk";
 import { useTranslations } from 'next-intl';
 
 export default function NewsletterSection() {
   const t = useTranslations('newsletter');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const newsletterCollection = useCollection("newsletter");
+  const subscribers = useSubscribers();
 
   const formSchema = z.object({
     email: z.string().email(t('invalidEmail')),
@@ -36,9 +36,9 @@ export default function NewsletterSection() {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
     try {
-      await newsletterCollection.add({
+      await subscribers.add({
         email: values.email,
-        subscribed_at: new Date().toISOString(),
+        source: "newsletter_section",
       });
 
       toast.success(t('successTitle'), {
@@ -47,9 +47,8 @@ export default function NewsletterSection() {
 
       form.reset();
     } catch (error: any) {
-      toast.error(t('errorTitle'), {
-        description: error.message || t('errorDescription'),
-      });
+      console.error(error);
+      toast.error(error.message || t('errorDescription'));
     } finally {
       setIsSubmitting(false);
     }

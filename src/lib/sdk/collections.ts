@@ -97,6 +97,7 @@ export interface Post {
   published_at?: string
   is_pinned: boolean
   is_featured: boolean
+  tags?: string[]
 }
 
 export interface CreatePostOptions {
@@ -109,6 +110,7 @@ export interface CreatePostOptions {
   published?: boolean
   is_pinned?: boolean
   is_featured?: boolean
+  tags?: string[]
 }
 
 export interface UpdatePostOptions {
@@ -121,6 +123,7 @@ export interface UpdatePostOptions {
   published?: boolean
   is_pinned?: boolean
   is_featured?: boolean
+  tags?: string[]
 }
 
 export interface PostListResponse {

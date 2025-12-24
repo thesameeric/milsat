@@ -93,7 +93,7 @@ function BlogPostContent() {
     <div className="container mx-auto py-20">
 
       {/* Content with TOC */}
-      <div className="blog-layout">
+      <div className={`blog-layout ${headers.length === 0 ? 'no-sidebar' : ''}`}>
         {headers.length > 0 && (
           <aside className="toc-sidebar">
             <TableOfContents headers={headers} />

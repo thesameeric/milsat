@@ -75,7 +75,7 @@ function BlogList() {
             {post.header_image && <Image src={post?.header_image} objectFit="contain" width={100} height={150} alt={post.title} className='rounded-sm w-full h-[200px] sm:h-[250px] object-cover overflow-hidden' />}
             <span className='flex items-center gap-x-3 sm:gap-x-5 text-sm py-3'>
               <p className='text-xs text-gray-300 uppercase tracking-widest'>{dayjs(post.created_at).format('MMMM DD, YYYY')}</p>
-              <p className='text-xs text-[#08C4DE] hover:underline'>Gis</p>
+              {post.tags?.[0] && <p className='text-xs text-[#08C4DE] hover:underline'>{post.tags[0]}</p>}
             </span>
             <Link className='inline-block font-semibold hover:text-[#08C4DE] hover:underline text-lg sm:text-xl pb-5 break-words' href={`/blog/${post.slug}`}>{post.title}</Link>
             <span>

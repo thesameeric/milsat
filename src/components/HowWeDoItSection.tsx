@@ -66,6 +66,12 @@ export default function HowWeDoItSection() {
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
     if (!item1Ref.current || !item2Ref.current || !item3Ref.current) return;
 
+    // Use a small threshold to ensure the last item is selected when scrolled to bottom
+    if (latest > 0.99) {
+      setActiveItem(3);
+      return;
+    }
+
     const item1Rect = item1Ref.current.getBoundingClientRect();
     const item2Rect = item2Ref.current.getBoundingClientRect();
     const item3Rect = item3Ref.current.getBoundingClientRect();
@@ -102,7 +108,7 @@ export default function HowWeDoItSection() {
             ref={item1Ref}
             className={cn(
               "item-1 transition-colors duration-300 min-h-[250px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col",
-              activeItem === 1 ? "text-white" : "text-gray-500"
+              activeItem === 1 ? "text-white" : "text-white lg:text-gray-500"
             )}
           >
             <div className="w-12 h-12 sm:w-16 sm:h-16 mb-4 flex items-center justify-center">
@@ -113,7 +119,7 @@ export default function HowWeDoItSection() {
             <h3 className="text-2xl sm:text-3xl font-medium mb-3 sm:mb-4">{t('dataCollection.title')}</h3>
             <p className={cn(
               "mb-6 sm:mb-10 transition-colors duration-300 text-base sm:text-lg",
-              activeItem === 1 ? "text-gray-400" : "text-gray-600"
+              activeItem === 1 ? "text-gray-400" : "text-gray-400 lg:text-gray-600"
             )}>
               {t('dataCollection.description')}
             </p>
@@ -121,7 +127,7 @@ export default function HowWeDoItSection() {
               "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
               activeItem === 1
                 ? "text-blue-500 hover:underline"
-                : "text-gray-500 border-gray-500"
+                : "text-blue-500 hover:underline lg:text-gray-500 lg:border-gray-500 lg:hover:no-underline"
             )}>
               {common('learnMore')} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
             </Link>
@@ -131,7 +137,7 @@ export default function HowWeDoItSection() {
             ref={item2Ref}
             className={cn(
               "item-2 transition-colors duration-300 min-h-[250px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col justify-start",
-              activeItem === 2 ? "text-white" : "text-gray-500"
+              activeItem === 2 ? "text-white" : "text-white lg:text-gray-500"
             )}
           >
             <div className="w-12 h-12 sm:w-16 sm:h-16 mb-4 flex items-center justify-center">
@@ -142,7 +148,7 @@ export default function HowWeDoItSection() {
             <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{t('dataIntegration.title')}</h3>
             <p className={cn(
               "mb-6 transition-colors duration-300 text-base sm:text-lg",
-              activeItem === 2 ? "text-gray-400" : "text-gray-600"
+              activeItem === 2 ? "text-gray-400" : "text-gray-400 lg:text-gray-600"
             )}>
               {t('dataIntegration.description')}
             </p>
@@ -150,7 +156,7 @@ export default function HowWeDoItSection() {
               "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
               activeItem === 2
                 ? "text-blue-500 hover:underline"
-                : "text-gray-500 border-gray-500"
+                : "text-blue-500 hover:underline lg:text-gray-500 lg:border-gray-500 lg:hover:no-underline"
             )}>
               {common('learnMore')} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
             </Link>
@@ -160,7 +166,7 @@ export default function HowWeDoItSection() {
             ref={item3Ref}
             className={cn(
               "item-3 transition-colors duration-300 min-h-[250px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col justify-start",
-              activeItem === 3 ? "text-white" : "text-gray-500"
+              activeItem === 3 ? "text-white" : "text-white lg:text-gray-500"
             )}
           >
             <div className="w-12 h-12 sm:w-16 sm:h-16 mb-4 flex items-center justify-center">
@@ -171,7 +177,7 @@ export default function HowWeDoItSection() {
             <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{t('dataIntelligence.title')}</h3>
             <p className={cn(
               "mb-6 transition-colors duration-300 text-base sm:text-lg",
-              activeItem === 3 ? "text-gray-400" : "text-gray-600"
+              activeItem === 3 ? "text-gray-400" : "text-gray-400 lg:text-gray-600"
             )}>
               {t('dataIntelligence.description')}
             </p>
@@ -179,7 +185,7 @@ export default function HowWeDoItSection() {
               "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
               activeItem === 3
                 ? "text-blue-500 hover:underline"
-                : "text-gray-500 border-gray-500"
+                : "text-blue-500 hover:underline lg:text-gray-500 lg:border-gray-500 lg:hover:no-underline"
             )}>
               {common('learnMore')} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
             </Link>
