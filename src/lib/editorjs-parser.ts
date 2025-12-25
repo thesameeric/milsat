@@ -44,6 +44,14 @@ function parseHeader(block: EditorJSBlock): string {
 }
 
 /**
+ * EditorJS list item interface
+ */
+interface ListItem {
+  content: string;
+  items: ListItem[];
+}
+
+/**
  * Parse EditorJS list block
  */
 function parseList(block: EditorJSBlock): string {
@@ -51,8 +59,56 @@ function parseList(block: EditorJSBlock): string {
   const style = block.data.style || 'unordered';
   const tag = style === 'ordered' ? 'ol' : 'ul';
 
-  const listItems = items.map((item: string) => `<li>${item}</li>`).join('');
-  return `<${tag}>${listItems}</${tag}>`;
+  const renderItem = (item: string | ListItem): string => {
+    if (typeof item === 'string') {
+      return `<li>${item}</li>`;
+    }
+
+    // It's an object with content and potentially nested items
+    let html = `<li>${item.content || ''}`;
+
+    if (item.items && Array.isArray(item.items) && item.items.length > 0) {
+      html += `<${tag}>${item.items.map(subItem => renderItem(subItem)).join('')}</${tag}>`;
+    }
+
+    html += `</li>`;
+    return html;
+  };
+
+  const listItems = items.map((item: string | ListItem) => renderItem(item)).join('');
+
+  // Add specific classes for styling
+  const className = style === 'ordered' ? 'list-decimal pl-5' : 'list-disc pl-5';
+
+  return `<${tag} class="${className}">${listItems}</${tag}>`;
+}
+
+/**
+ * Parse EditorJS link block
+ */
+function parseLink(block: EditorJSBlock): string {
+  const link = block.data.link || '';
+  const meta = block.data.meta || {};
+
+  // If we have rich metadata, render a card
+  if (meta.title) {
+    return `<a href="${link}" target="_blank" rel="noopener noreferrer" class="link-tool-card w-full block border rounded-lg overflow-hidden hover:bg-muted/50 transition-colors my-4 no-underline">
+            <div class="flex items-center">
+                <div class="p-4 flex-1 min-w-0">
+                    <h3 class="text-base font-semibold truncate text-foreground mb-1">${meta.title}</h3>
+                    ${meta.description ? `<p class="text-sm text-muted-foreground line-clamp-2 mb-2">${meta.description}</p>` : ''}
+                    <span class="text-xs text-muted-foreground block truncate">${new URL(link).hostname}</span>
+                </div>
+                ${meta.image && meta.image.url ? `
+                <div class="w-[120px] h-[100px] relative shrink-0 border-l bg-muted">
+                     <img src="${meta.image.url}" alt="${meta.title}" class="w-full h-full object-cover" />
+                </div>` : ''}
+            </div>
+        </a>`;
+  }
+
+  // Fallback to simple link
+  return `<a href="${link}" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline break-all">${link}</a>`;
 }
 
 /**
@@ -141,6 +197,8 @@ export function parseEditorJS(data: EditorJSData): string {
         return parseHeader(block);
       case 'list':
         return parseList(block);
+      case 'link':
+        return parseLink(block);
       case 'quote':
         return parseQuote(block);
       case 'code':
@@ -187,7 +245,10 @@ export function extractPlainText(data: EditorJSData): string {
       case 'header':
         return block.data.text || '';
       case 'list':
-        return (block.data.items || []).join(' ');
+        // Handle object items or string items
+        return (block.data.items || []).map((item: string | ListItem) =>
+          typeof item === 'string' ? item : item.content
+        ).join(' ');
       case 'quote':
         return block.data.text || '';
       case 'code':
