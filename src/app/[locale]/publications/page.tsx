@@ -120,15 +120,6 @@ export default function Publications() {
                                             </p>
                                         ))}
                                     </div>
-                                    <a
-                                        href={paper.doc.url}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="flex items-center gap-x-2 text-xs sm:text-sm font-semibold hover:text-primary transition-colors w-fit"
-                                    >
-                                        <ArrowDownCircle className="w-4 h-4" color="#27272a" />
-                                        <span>Download Paper</span>
-                                    </a>
                                 </div>
                                 <div className="mb-4 sm:mb-6">
                                     <Link

@@ -39,7 +39,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="border-t border-white/10 mt-8 sm:mt-12 pt-6 sm:pt-8 text-xs sm:text-sm text-gray-400">
-          <p>{t('copyright')}</p>
+          <p>{t('copyright', { year: new Date().getFullYear() })}</p>
         </div>
       </div>
     </footer>

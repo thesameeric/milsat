@@ -8,6 +8,8 @@ import React from "react";
 import { ArrowLeft, Download } from "lucide-react";
 import Link from "next/link";
 
+import { DownloadGateModal } from "@/components/DownloadGateModal";
+
 interface PaperDoc {
     hash: string;
     name: string;
@@ -33,6 +35,19 @@ export default function PublicationPage({ params }: { params: Promise<{ publicat
     const [paper, setPaper] = useState<Paper | null>(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+
+    const handleDownload = () => {
+        if (paper?.doc.url) {
+            const link = document.createElement('a');
+            link.href = paper.doc.url;
+            link.target = '_blank';
+            link.download = paper.doc.name || 'document';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    };
 
     useEffect(() => {
         async function fetchPaper() {
@@ -140,18 +155,13 @@ export default function PublicationPage({ params }: { params: Promise<{ publicat
                         </div>
                         <div className="lg:w-4/12">
                             <div className="flex flex-col items-center lg:items-start gap-6 sm:gap-8 p-6 sm:p-8 bg-neutral-900 rounded-lg border border-neutral-800">
-                                <a
-                                    href={paper.doc.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    download
-                                    className="w-full"
+                                <Button
+                                    onClick={() => setIsDownloadModalOpen(true)}
+                                    className="w-full cursor-pointer border hover:text-gray-400 text-sm sm:text-base"
                                 >
-                                    <Button className="w-full cursor-pointer border hover:text-gray-400 text-sm sm:text-base">
-                                        <Download className="mr-2 h-4 w-4" />
-                                        Download Paper
-                                    </Button>
-                                </a>
+                                    <Download className="mr-2 h-4 w-4" />
+                                    Download Paper
+                                </Button>
                                 <div className="text-center lg:text-left w-full">
                                     <p className="text-xs sm:text-sm text-gray-400 mb-2">Research Area</p>
                                     <p className="font-semibold text-sm sm:text-base">{paper.field}</p>
@@ -166,6 +176,13 @@ export default function PublicationPage({ params }: { params: Promise<{ publicat
                         </div>
                     </div>
                 </section>
+
+                <DownloadGateModal
+                    isOpen={isDownloadModalOpen}
+                    onOpenChange={setIsDownloadModalOpen}
+                    onSuccess={handleDownload}
+                    itemName={paper.Title}
+                />
             </div>
         </div>
     );

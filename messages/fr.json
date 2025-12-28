@@ -97,7 +97,7 @@
     "contact": "Contact",
     "privacy": "Confidentialité",
     "terms": "Conditions",
-    "copyright": "© 2025 Milsat. Tous droits réservés."
+    "copyright": "© {year} Milsat. Tous droits réservés."
   },
   "about": {
     "subtitle": "Par des Africains",

@@ -108,7 +108,7 @@
     "privacy": "Privacy Policy",
     "blog": "Blog",
     "aspirantProgram": "Milsat Aspirant Program",
-    "copyright": "© 2026 Milsat. All rights reserved."
+    "copyright": "© {year} Milsat. All rights reserved."
   },
   "about": {
     "subtitle": "By Africans",
