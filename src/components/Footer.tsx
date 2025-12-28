@@ -1,6 +1,7 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import Image from 'next/image';
 
 export default function Footer() {
   const t = useTranslations('footer');
@@ -9,6 +10,9 @@ export default function Footer() {
     <footer className="border-t border-white/10">
       <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
+          <div>
+            <Image width={200} height={100} src={'/ndpr.png'} alt={''}></Image>
+          </div>
           <div>
             <h3 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Milsat</h3>
             <p className="text-gray-400 text-sm sm:text-base">
@@ -21,6 +25,7 @@ export default function Footer() {
               <li><Link href="/data/collection" className="hover:text-white transition-colors">{t('dataCollection')}</Link></li>
               <li><Link href="/data/integration" className="hover:text-white transition-colors">{t('dataIntegration')}</Link></li>
               <li><Link href="/data/sharing" className="hover:text-white transition-colors">{t('dataIntelligence')}</Link></li>
+              <li><a href="https://aspirant.milsat.africa" target='_blank' className="hover:text-white transition-colors">{t('aspirantProgram')}</a></li>
             </ul>
           </div>
           <div>
@@ -28,13 +33,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm sm:text-base text-gray-400">
               <li><Link href="/about" className="hover:text-white transition-colors">{t('about')}</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">{t('blog')}</Link></li>
-              <li><a href="https://aspirant.milsat.africa" target='_blank' className="hover:text-white transition-colors">{t('aspirantProgram')}</a></li>
               <li><a href="#" className="hover:text-white transition-colors">{t('contact')}</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 className="font-semibold text-sm sm:text-base mb-3 sm:mb-4">{t('legal')}</h4>
-            <ul className="space-y-2 text-sm sm:text-base text-gray-400">
               <li><Link href="privacy-policy" className="hover:text-white transition-colors">{t('privacy')}</Link></li>
             </ul>
           </div>

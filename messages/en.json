@@ -34,15 +34,15 @@
   "howWeDoIt": {
     "title": "How We do it",
     "dataCollection": {
-      "title": "Data Collection",
+      "title": "Collection",
       "description": "Actionable insights delivered through 10k+ trained field agents with a balanced spread across 40+ cities in Nigeria"
     },
     "dataIntegration": {
-      "title": "Data Integration",
+      "title": "Integration",
       "description": "ntegration-ready APIs to connect hyperlocal insights with your internal databases, work tools, and CRMs, making data usable for daily operations"
     },
     "dataIntelligence": {
-      "title": "Data Intelligence",
+      "title": "Intelligence",
       "description": "Impact-ready insights derived from accurately acquired superlocal data that help you simulate outcomes, forecast needs, and plan resources with precision."
     }
   },
