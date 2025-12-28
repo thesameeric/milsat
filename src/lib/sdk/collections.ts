@@ -80,6 +80,13 @@ export interface PostMetadata {
   seo_tags?: string[]
 }
 
+export interface Author {
+  _id: string
+  name: string
+  email: string
+  image?: string
+}
+
 export interface Post {
   id: string
   created_at: string
@@ -93,6 +100,7 @@ export interface Post {
   header_image?: string
   metadata?: PostMetadata
   author_id: string
+  author?: Author
   published: boolean
   published_at?: string
   is_pinned: boolean

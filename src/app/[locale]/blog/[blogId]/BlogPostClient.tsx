@@ -112,14 +112,54 @@ function BlogPostContent() {
             <div className="space-y-4">
               <h1 className="tex-3xl md:text-[2.5rem]">{post.title}</h1>
 
-              <div className="flex items-center text-sm text-gray-400">
-                <span className="uppercase font-medium tracking-wider">
-                  {new Date(post.published_at || post.created_at).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                  })}
-                </span>
+              <div className="flex items-center gap-4 mt-6">
+                {post.author?.image && (
+                  <div className="relative h-12 w-12 overflow-hidden rounded-full bg-gray-100">
+                    <img
+                      src={post.author.image}
+                      alt={post.author.name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                )}
+
+                <div className="flex flex-col gap-1">
+                  {post.author?.name && (
+                    <span className="text-base font-semibold text-gray-900">
+                      {post.author.name}
+                    </span>
+                  )}
+
+                  <div className="flex items-center text-sm text-gray-400">
+                    <span className="uppercase font-medium tracking-wider">
+                      {new Date(post.published_at || post.created_at).toLocaleDateString("en-US", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                      })}
+                    </span>
+
+                    {(() => {
+                      const displayTags = post.metadata?.seo_tags || post.tags || [];
+                      return displayTags.length > 0 ? (
+                        <>
+                          <span className="mx-2">•</span>
+                          <div className="flex flex-wrap gap-2">
+                            {displayTags.map((tag, idx) => (
+                              <Link
+                                key={idx}
+                                href={`/blog/tags/${tag}`}
+                                className="text-[#08C4DE] hover:underline uppercase font-medium tracking-wider"
+                              >
+                                {tag}
+                              </Link>
+                            ))}
+                          </div>
+                        </>
+                      ) : null;
+                    })()}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -132,6 +172,9 @@ function BlogPostContent() {
               </div>
             )}
           </article>
+
+          {/* Tags */}
+
         </div>
       </div>
     </div>
