@@ -11,9 +11,6 @@ export default function Footer() {
       <div className="container mx-auto px-4 sm:px-6 md:px-8 py-8 sm:py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           <div>
-            <Image width={200} height={100} src={'/ndpr.png'} alt={''}></Image>
-          </div>
-          <div>
             <h3 className="font-bold text-base sm:text-lg mb-3 sm:mb-4">Milsat</h3>
             <p className="text-gray-400 text-sm sm:text-base">
               {t('tagline')}
@@ -36,6 +33,9 @@ export default function Footer() {
               <li><a href="#" className="hover:text-white transition-colors">{t('contact')}</a></li>
               <li><Link href="privacy-policy" className="hover:text-white transition-colors">{t('privacy')}</Link></li>
             </ul>
+          </div>
+          <div>
+            <Image width={200} height={100} src={'/ndpr.png'} alt={''} className='rounded-lg'></Image>
           </div>
         </div>
         <div className="border-t border-white/10 mt-8 sm:mt-12 pt-6 sm:pt-8 text-xs sm:text-sm text-gray-400">
