@@ -6,13 +6,17 @@ import ReadyToStart from "@/components/ReadyToStart";
 import NewsletterSection from "@/components/NewsletterSection";
 import LandingPageHero from "@/components/landingPageHero";
 import { NewsItem } from "@/components/News";
+import CustomersLogoSection from "@/components/CustomersLogoSection";
+import CaseStudiesSection from "@/components/CaseStudiesSection";
 
 export default function Home() {
   return (
     <div className="min-h-screen text-white">
       <LandingPageHero />
+      <CustomersLogoSection />
       <WhyWeExistSection />
-      <CustomersSection />
+      {/* <CustomersSection /> */}
+      <CaseStudiesSection />
       <HowWeDoItSection />
       <ReadyToStart />
       <TestimonialsSection autoplay={true} />

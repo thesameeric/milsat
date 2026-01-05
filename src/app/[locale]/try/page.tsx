@@ -186,7 +186,7 @@ export default function Try() {
                     )}
 
                     {/* Input Section */}
-                    <div className="w-full">
+                    <div className="w-full flex justify-center">
                         <form onSubmit={handleSubmit}>
                             <AiInput
                                 ref={inputRef}

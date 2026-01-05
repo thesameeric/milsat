@@ -3,43 +3,87 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import Image from 'next/image';
-import { useCollection } from "@/lib/sdk";
+import CaseStudyContent from "./CaseStudyContent";
 
-type CaseStudy = {
-  content: string;
-  logo: string;
-};
+
+const tabs = [
+  {
+    title: "Statistics Sierra Leone",
+    value: "Statistics Sierra Leone",
+    image: '/clients/sls.png',
+    content: (
+      <CaseStudyContent
+        title="Census and Enumeration Area Declination"
+        description="Country-wide deployment of custom geo app, algorithms and web tools for national census planning, settlement identification and full digital creation of enumeration area boundaries, building footprints and Point of Interest."
+      />
+    ),
+  },
+  {
+    title: "National Population Commission",
+    value: "National Population Commission",
+    image: '/clients/npc.png',
+    content: (
+      <CaseStudyContent
+        title="Enumeration Area Delineation and Baseline Mapping"
+        description="Field technology customization and support for Nigeria's first digital nation-wide mapping of over 100 million geospatial datasets consisting of localities, buildings, roads and population estimate."
+      />
+    ),
+  },
+  {
+    title: "Nigeria Postcode Service",
+    value: "Nigeria Postcode Service",
+    image: '/clients/nipost2.jpg',
+    content: (
+      <CaseStudyContent
+        title="Nigeria's First Digital Postcode System"
+        description="Providing technology and geospatial modelling support for the generation of 60million+ digital alphanumeric postcode system to support national addressing system, logistics and delivery precision."
+      />
+    ),
+  },
+  {
+    title: "Ekiti State Internal Revenue Service",
+    value: "Ekiti State Internal Revenue Service",
+    image: '/clients/ekrs.png',
+    content: (
+      <CaseStudyContent
+        title="Property Mapping for Equitable Taxation"
+        description="LGA-wide property mapping of 170000+ buildings with classification and annotation to maximize tax coverage and enhance revenue growth through improved digital billing, tracking, and revenue collection."
+      />
+    ),
+  },
+  {
+    title: "United Nations Development Program",
+    value: "United Nations Development Program",
+    image: '/clients/undp.png',
+    content: (
+      <CaseStudyContent
+        title="Enumeration and Profiling of Artisanal Miners in Africa"
+        description="Structured identification and enumeration of artisanal miners for a needs assessment, enabling health insurance, financial inclusion, access to equipment, and climate resilience through service partnerships."
+      />
+    ),
+  },
+  {
+    title: "Sabi",
+    value: "Sabi",
+    image: '/clients/sabi.svg',
+    content: (
+      <CaseStudyContent
+        title="Farmers and aggregators profiling for cocoa ESG traceability"
+        description="Acquisition of verified field data on farms, farmers, aggregators, and aggregation methods, along with accurate ESG ratings, to understand the traceability of cocoa movement from farms to processing across the cocoa value chain."
+      />
+    ),
+  }
+];
 
 export default function CaseStudiesSection({ autoplay = false }: { autoplay?: boolean }) {
-  const caseStudiesCollection = useCollection("case_study");
-  const [usecases, setUsecases] = useState<CaseStudy[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [active, setActive] = useState(0);
 
-  useEffect(() => {
-    async function fetchCaseStudies() {
-      try {
-        const result = await caseStudiesCollection.list(1, 50);
-        const mappedCaseStudies = result.data.map((entry: any) => ({
-          content: entry.content || "",
-          logo: entry.logo?.url || "",
-        }));
-        setUsecases(mappedCaseStudies);
-      } catch (err) {
-        console.error("Error fetching case studies:", err);
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    fetchCaseStudies();
-  }, [caseStudiesCollection]);
-
   const handleNext = () => {
-    setActive((prev) => (prev + 1) % usecases.length);
+    setActive((prev) => (prev + 1) % tabs.length);
   };
 
   const handlePrev = () => {
-    setActive((prev) => (prev - 1 + usecases.length) % usecases.length);
+    setActive((prev) => (prev - 1 + tabs.length) % tabs.length);
   };
 
   const isActive = (index: number) => {
@@ -47,38 +91,23 @@ export default function CaseStudiesSection({ autoplay = false }: { autoplay?: bo
   };
 
   useEffect(() => {
-    if (autoplay && usecases.length > 0) {
+    if (autoplay && tabs.length > 0) {
       const interval = setInterval(handleNext, 5000);
       return () => clearInterval(interval);
     }
-  }, [autoplay, usecases.length]);
+  }, [autoplay]);
 
-  const randomRotateY = () => {
-    return Math.floor(Math.random() * 21) - 10;
-  };
-
-  if (isLoading) {
-    return (
-      <section className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-8 sm:mb-10 md:mb-12">
-          Case Studies
-        </h2>
-        <div className="bg-[#150040] rounded-lg p-12 sm:p-16 md:p-20 flex justify-center items-center">
-          <div className="animate-pulse text-gray-400">Loading case studies...</div>
-        </div>
-      </section>
-    );
-  }
-
-  if (usecases.length === 0) {
+  if (tabs.length === 0) {
     return null;
   }
 
   return (
     <section className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20">
-      <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-8 sm:mb-10 md:mb-12">
-        Case Studies
-      </h2>
+      <div className="md:max-w-5/12">
+        <h2 className="text-2xl sm:text-3xl md:text-3xl lg:text-4xl mb-8 sm:mb-10 md:mb-12">
+          Customers using our expertise to solve real problems
+        </h2>
+      </div>
 
       <div className="bg-[#150040] rounded-lg p-6 sm:p-10 md:p-16 lg:p-20 relative overflow-hidden">
         <div className="relative z-10 grid grid-cols-1 md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-center">
@@ -99,28 +128,14 @@ export default function CaseStudiesSection({ autoplay = false }: { autoplay?: bo
                 </button>
               </div>
             </div>
-            <motion.div>
-              <p className="text-sm sm:text-base md:text-lg lg:text-xl mb-6 sm:mb-8 leading-relaxed">
-                {usecases[active].content.split(' ').slice(0, 50).join(' ')}
-                {usecases[active].content.split(' ').length > 50 ? '...' : ''}
-              </p>
-              {/* <div className="grid grid-cols-3 gap-8 mb-15">
-                <div>
-                  <div className="text-4xl font-bold mb-1">5K+</div>
-                  <div className="text-sm text-gray-200">Field Agents</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold mb-1">50K+</div>
-                  <div className="text-sm text-gray-200">Polling Units</div>
-                </div>
-                <div>
-                  <div className="text-4xl font-bold mb-1">100%</div>
-                  <div className="text-sm text-gray-200">Accuracy</div>
-                </div>
-              </div> */}
-              <a href="#" className="bg-white text-xs sm:text-sm text-slate-900 px-5 py-2 sm:px-6 sm:py-2.5 rounded-lg inline-block font-medium hover:bg-white/70 transition-colors">
-                View Case Study
-              </a>
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {tabs[active].content}
             </motion.div>
           </div>
           <div className="flex justify-center mt-8 md:mt-0">
@@ -160,7 +175,7 @@ export default function CaseStudiesSection({ autoplay = false }: { autoplay?: bo
                 </defs>
               </svg>
               <span className="text-6xl sm:text-7xl md:text-8xl z-100 -ml-6 sm:-ml-8 md:-ml-10">
-                <Image src={usecases[active].logo} width={180} height={180} alt={"usecase"} className="sm:w-[220px] sm:h-[220px] md:w-[250px] md:h-[250px]"></Image>
+                <Image src={tabs[active].image} width={180} height={180} alt={"usecase"} className="sm:w-[220px] sm:h-[220px] md:w-[250px] md:h-[250px] object-contain"></Image>
               </span>
             </div>
           </div>
