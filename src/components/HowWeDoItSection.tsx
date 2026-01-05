@@ -98,7 +98,7 @@ export default function HowWeDoItSection() {
 
   return (
     <section id="how-it-works" className="container mx-auto px-4 sm:px-6 md:px-8 py-12 sm:py-16 md:py-20" ref={containerRef}>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl mt-20 sm:mt-32 md:mt-40">
+      <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl">
         {t('title')}
       </h2>
 
@@ -148,7 +148,7 @@ const HowItWorksTextSection = ({ ref, link, image, title, description, isActive,
           <Image src={image} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"collection"}></Image>
         </span>
       </div>
-      <h3 className="text-xl sm:text-4xl font-medium mb-3 sm:mb-8">{title}</h3>
+      <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-3 sm:mb-8">{title}</h3>
       <p className={cn(
         "mb-6 sm:mb-10 transition-colors duration-300 text-base md:text-2xl",
         isActive ? "text-gray-400" : "text-gray-400 lg:text-gray-600"
