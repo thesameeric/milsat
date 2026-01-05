@@ -1,15 +1,15 @@
 'use client'
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { useMotionValueEvent, useScroll } from "motion/react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
-import { DataCollectionSvg } from "./DataCollectionSvg";
 import { ArrowLeft } from "lucide-react";
-import DataIntegrationSvg from "./svg/DataIntegration";
-import DataSharingSvg from "./svg/DataSharing";
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/routing';
+import DataCollectionIpad from "./svg/collectionIpad";
+import IntegrationIpad from "./svg/IntegrationIpad";
+import IntelligenceIpad from "./svg/IntelligenceIpad";
 
 const screenContent = [
   {
@@ -19,7 +19,7 @@ const screenContent = [
     description: "Multi-modal data acquisition through 5k+ trained field agents",
     sticky: (
       <div className="screen w-full h-full flex flex-col items-center justify-center">
-        <img width={400} src={'./illustration-01-deploy.svg'} />
+        <DataCollectionIpad />
       </div>
     )
   },
@@ -30,7 +30,7 @@ const screenContent = [
     description: "Seamlessly connect collected data to your databases and tools",
     sticky: (
       <div className="screen w-full h-full flex flex-col items-center justify-center">
-        <img width={400} src={'./integration.svg'} />
+        <IntegrationIpad />
       </div>
     )
   },
@@ -41,7 +41,7 @@ const screenContent = [
     description: "Transform data into revenue & impact assets",
     sticky: (
       <div className="screen w-full h-full flex flex-col items-center justify-center">
-        <img width={400} src={'./illustration-04-monitor.svg'} />
+        <IntelligenceIpad />
       </div>
     )
 
@@ -104,92 +104,9 @@ export default function HowWeDoItSection() {
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 mt-12 sm:mt-20 md:mt-40 relative">
         <div className="w-full lg:w-[500px] mt-12 sm:mt-20 md:mt-40">
-          <div
-            ref={item1Ref}
-            className={cn(
-              "item-1 transition-colors duration-300 min-h-[250px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col",
-              activeItem === 1 ? "text-white" : "text-white lg:text-gray-500"
-            )}
-          >
-            <div className="w-12 h-12 sm:w-16 sm:h-16 mb-4 flex items-center justify-center">
-              <span className="text-xl sm:text-2xl">
-                <Image src={'/collection.png'} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"collection"}></Image>
-              </span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-medium mb-3 sm:mb-4">{t('dataCollection.title')}</h3>
-            <p className={cn(
-              "mb-6 sm:mb-10 transition-colors duration-300 text-base sm:text-lg",
-              activeItem === 1 ? "text-gray-400" : "text-gray-400 lg:text-gray-600"
-            )}>
-              {t('dataCollection.description')}
-            </p>
-            <Link href={'/data/collection'} className={cn(
-              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
-              activeItem === 1
-                ? "text-blue-500 hover:underline"
-                : "text-blue-500 hover:underline lg:text-gray-500 lg:border-gray-500 lg:hover:no-underline"
-            )}>
-              {common('learnMore')} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
-            </Link>
-          </div>
-
-          <div
-            ref={item2Ref}
-            className={cn(
-              "item-2 transition-colors duration-300 min-h-[250px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col justify-start",
-              activeItem === 2 ? "text-white" : "text-white lg:text-gray-500"
-            )}
-          >
-            <div className="w-12 h-12 sm:w-16 sm:h-16 mb-4 flex items-center justify-center">
-              <span className="text-xl sm:text-2xl">
-                <Image src={'/integration.png'} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"integration"}></Image>
-              </span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{t('dataIntegration.title')}</h3>
-            <p className={cn(
-              "mb-6 transition-colors duration-300 text-base sm:text-lg",
-              activeItem === 2 ? "text-gray-400" : "text-gray-400 lg:text-gray-600"
-            )}>
-              {t('dataIntegration.description')}
-            </p>
-            <Link href={'/data/integration'} className={cn(
-              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
-              activeItem === 2
-                ? "text-blue-500 hover:underline"
-                : "text-blue-500 hover:underline lg:text-gray-500 lg:border-gray-500 lg:hover:no-underline"
-            )}>
-              {common('learnMore')} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
-            </Link>
-          </div>
-
-          <div
-            ref={item3Ref}
-            className={cn(
-              "item-3 transition-colors duration-300 min-h-[250px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col justify-start",
-              activeItem === 3 ? "text-white" : "text-white lg:text-gray-500"
-            )}
-          >
-            <div className="w-12 h-12 sm:w-16 sm:h-16 mb-4 flex items-center justify-center">
-              <span className="text-xl sm:text-2xl">
-                <Image src={'/sharing.png'} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"sharing"}></Image>
-              </span>
-            </div>
-            <h3 className="text-2xl sm:text-3xl font-bold mb-3 sm:mb-4">{t('dataIntelligence.title')}</h3>
-            <p className={cn(
-              "mb-6 transition-colors duration-300 text-base sm:text-lg",
-              activeItem === 3 ? "text-gray-400" : "text-gray-400 lg:text-gray-600"
-            )}>
-              {t('dataIntelligence.description')}
-            </p>
-            <Link href={'/data/intelligence'} className={cn(
-              "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
-              activeItem === 3
-                ? "text-blue-500 hover:underline"
-                : "text-blue-500 hover:underline lg:text-gray-500 lg:border-gray-500 lg:hover:no-underline"
-            )}>
-              {common('learnMore')} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
-            </Link>
-          </div>
+          <HowItWorksTextSection ref={item1Ref} image={'/collection.png'} title={t('dataCollection.title')} description={t('dataCollection.description')} isActive={activeItem === 1} learnMore={common('learnMore')} link={"/data/collection"} />
+          <HowItWorksTextSection ref={item2Ref} image={'/integration.png'} title={t('dataIntegration.title')} description={t('dataIntegration.description')} isActive={activeItem === 2} learnMore={common('learnMore')} link={"/data/integration"} />
+          <HowItWorksTextSection ref={item3Ref} image={'/sharing.png'} title={t('dataIntelligence.title')} description={t('dataIntelligence.description')} isActive={activeItem === 3} learnMore={common('learnMore')} link={"/data/intelligence"} />
         </div>
 
         {/* Sticky Screen - Right Column */}
@@ -207,4 +124,45 @@ export default function HowWeDoItSection() {
       </div>
     </section>
   );
+}
+
+const HowItWorksTextSection = ({ ref, link, image, title, description, isActive, learnMore }: {
+  image: string;
+  title: string;
+  description: string;
+  isActive: boolean;
+  learnMore: string;
+  link: string;
+  ref: any
+}) => {
+  return <>
+    <div
+      ref={ref}
+      className={cn(
+        "item-1 transition-colors duration-300 min-h-[250px] sm:min-h-[600px] lg:min-h-[800px] flex flex-col",
+        isActive ? "text-white" : "text-white lg:text-gray-500"
+      )}
+    >
+      <div className="w-12 h-12 sm:w-16 sm:h-16 mb-4 flex items-center justify-center">
+        <span className="text-xl sm:text-2xl">
+          <Image src={image} width={40} height={40} className="sm:w-[50px] sm:h-[50px]" alt={"collection"}></Image>
+        </span>
+      </div>
+      <h3 className="text-xl sm:text-4xl font-medium mb-3 sm:mb-8">{title}</h3>
+      <p className={cn(
+        "mb-6 sm:mb-10 transition-colors duration-300 text-base md:text-2xl",
+        isActive ? "text-gray-400" : "text-gray-400 lg:text-gray-600"
+      )}>
+        {description}
+      </p>
+      <Link href={link} className={cn(
+        "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
+        isActive
+          ? "text-blue-500 hover:underline"
+          : "text-blue-500 hover:underline lg:text-gray-500 lg:border-gray-500 lg:hover:no-underline"
+      )}>
+        {learnMore} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
+      </Link>
+    </div>
+  </>
 }
