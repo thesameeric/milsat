@@ -21,7 +21,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm sm:text-base text-gray-400">
               <li><Link href="/data/collection" className="hover:text-white transition-colors">{t('dataCollection')}</Link></li>
               <li><Link href="/data/integration" className="hover:text-white transition-colors">{t('dataIntegration')}</Link></li>
-              <li><Link href="/data/sharing" className="hover:text-white transition-colors">{t('dataIntelligence')}</Link></li>
+              <li><Link href="/data/intelligence" className="hover:text-white transition-colors">{t('dataIntelligence')}</Link></li>
               <li><a href="https://aspirant.milsat.africa" target='_blank' className="hover:text-white transition-colors">{t('aspirantProgram')}</a></li>
             </ul>
           </div>
@@ -30,7 +30,7 @@ export default function Footer() {
             <ul className="space-y-2 text-sm sm:text-base text-gray-400">
               <li><Link href="/about" className="hover:text-white transition-colors">{t('about')}</Link></li>
               <li><Link href="/blog" className="hover:text-white transition-colors">{t('blog')}</Link></li>
-              <li><a href="#" className="hover:text-white transition-colors">{t('contact')}</a></li>
+              <li><Link href="/contact" className="hover:text-white transition-colors">{t('contact')}</Link></li>
               <li><Link href="privacy-policy" className="hover:text-white transition-colors">{t('privacy')}</Link></li>
             </ul>
           </div>
