@@ -2,7 +2,7 @@
   "common": {
     "readMore": "En savoir plus",
     "getStarted": "Commencer",
-    "learnMore": "Apprendre davantage",
+    "learnMore": "En savoir plus",
     "contactUs": "Nous contacter"
   },
   "nav": {
@@ -23,37 +23,37 @@
     "papers": "Publications"
   },
   "hero": {
-    "title": "L'Afrique que les Autres ne Voient Pas",
-    "seeHowItWorks": "Voir comment ça marche",
-    "talkToExpert": "Parler à un expert"
+    "title": "Nous facilitons la recherche de données pour la prise de décision en Afrique",
+    "seeHowItWorks": "Commencer",
+    "talkToExpert": "Réserver une démo"
   },
   "whyWeExist": {
     "title": "Pourquoi nous existons",
-    "description": "Pendant trop longtemps, comprendre l'Afrique a signifié s'appuyer sur des cartes obsolètes et des hypothèses étrangères. Nous travaillons à l'intersection de l'intelligence locale et de la technologie de pointe pour capturer chaque impulsion de la véritable réalité du continent. Avec des données terrain et un contexte hyperlocal, une image plus claire du potentiel de l'Afrique émerge maintenant. Bienvenue chez Milsat."
+    "description": "L'Afrique abrite plus de 1,3 milliard de personnes réparties dans des milliers de communautés diverses, chacune ayant des comportements, des activités et des mouvements dynamiques. Pourtant, les gouvernements, les ONG et les entreprises peinent encore à accéder à des réalités de terrain quantifiables et actualisées. Nous existons pour combler ce fossé. Nous permettons aux dirigeants de prendre des décisions fondées sur des preuves, et non sur des hypothèses."
   },
   "howWeDoIt": {
     "title": "Comment nous procédons",
     "dataCollection": {
-      "title": "Collecte de Données",
-      "description": "Acquisition de données multimodales grâce à plus de 5000 agents de terrain formés, capteurs IoT pour les zones inaccessibles, et IA pour l'extrapolation intelligente"
+      "title": "Collecte",
+      "description": "Des informations exploitables fournies par plus de 10 000 agents de terrain formés, répartis de manière équilibrée dans plus de 40 villes au Nigeria"
     },
     "dataIntegration": {
-      "title": "Intégration de Données",
-      "description": "Connectez de manière transparente les données collectées à vos bases de données, outils (PowerBI, CRM) et plateformes orientées client pour une valeur opérationnelle"
+      "title": "Intégration",
+      "description": "Des API prêtes à l'intégration pour connecter des informations hyperlocales à vos bases de données internes, outils de travail et CRM, rendant les données utilisables pour les opérations quotidiennes"
     },
     "dataIntelligence": {
-      "title": "Intelligence de Données",
-      "description": "Transformez les données en actifs de revenus et d'impact via un partage sécurisé par blockchain pour la monétisation, la recherche et le bien social"
+      "title": "Intelligence",
+      "description": "Des informations prêtes pour l'impact, dérivées de données super-locales acquises avec précision, qui vous aident à simuler des résultats, prévoir les besoins et planifier les ressources avec précision."
     }
   },
   "solutions": {
     "bankingFinance": {
       "title": "Banque & Finance",
-      "description": "Intelligence de localisation pour KYC, conformité AML et réduction de la fraude"
+      "description": "Intelligence de localisation pour le KYC, la conformité AML et la réduction de la fraude"
     },
     "logistics": {
       "title": "Logistique & Livraison",
-      "description": "Solutions intelligentes de localisation pour la livraison optimisée et la gestion de flotte"
+      "description": "Solutions intelligentes de localisation pour l'optimisation de la livraison et la gestion de flotte"
     },
     "publicHealth": {
       "title": "Santé Publique",
@@ -66,11 +66,21 @@
     "manufacturing": {
       "title": "Fabrication",
       "description": "Acquisition de données IoT pour l'optimisation des machines et de la production"
+    },
+    "government": {
+      "title": "Gouvernement & Politique",
+      "description": "Dénombrement numérique et intelligence géospatiale pour une planification nationale précise"
     }
   },
   "readyToStart": {
     "title": "Prêt à commencer ?",
-    "description": "Rejoignez des milliers d'utilisateurs qui exploitent notre plateforme pour transformer leurs données en informations exploitables et en résultats percutants."
+    "description": "Rejoignez des milliers d'utilisateurs qui exploitent notre plateforme pour transformer leurs données en informations exploitables et en résultats percutants.",
+    "marketResearch": "Étude de Marché",
+    "marketResearchDescription": "Données et acquisition de données sur le comportement des consommateurs, la distribution au détail, l'expansion commerciale et les opportunités émergentes pour maximiser les revenus et simplifier vos stratégies",
+    "govtResearch": "Recherche Gouvernementale",
+    "govtResearchDescription": "Outils et infrastructures géospatiaux pour soutenir des processus numériques personnalisés pour des projets à l'échelle nationale tels que la fourniture de fonds de carte, la cartographie de recensement, la génération de codes postaux et la taxation foncière automatisée",
+    "impactResearch": "Recherche d'Impact",
+    "impactResearchDescription": "Données provenant de zones difficiles d'accès grâce à des stratégies d'identification et de dénombrement pour soutenir la prestation d'aide, la microplanification des interventions et à travers la population cible"
   },
   "newsletter": {
     "title": "Restez Informé",
@@ -89,14 +99,15 @@
     "product": "Produit",
     "company": "Entreprise",
     "legal": "Légal",
-    "dataCollection": "Collecte de Données",
-    "dataIntegration": "Intégration de Données",
-    "dataSharing": "Partage de Données",
+    "dataCollection": "Collecte",
+    "dataIntegration": "Intégration",
+    "dataIntelligence": "Intelligence",
     "about": "À propos",
     "caseStudies": "Études de Cas",
-    "contact": "Contact",
-    "privacy": "Confidentialité",
-    "terms": "Conditions",
+    "contact": "Nous Contacter",
+    "privacy": "Politique de Confidentialité",
+    "blog": "Blog",
+    "aspirantProgram": "Programme Aspirant Milsat",
     "copyright": "© {year} Milsat. Tous droits réservés."
   },
   "about": {
@@ -140,28 +151,36 @@
   },
   "dataPages": {
     "collection": {
-      "title": "Collecte de Données",
-      "subtitle": "Nous transformons chaque coin d'Afrique en intelligence exploitable. Des schémas de circulation à Lagos aux rendements agricoles à Nairobi—nous capturons ce que les autres manquent",
-      "howWeDoIt": "Comment nous procédons",
-      "howWeDoItDescription": "Notre cadre automatisé de collecte de données orchestre de manière transparente les réseaux d'intelligence humaine, les capteurs IoT, la cartographie par drone et les flux satellites en flux unifiés en temps réel. Au lieu d'attendre des mois pour des rapports obsolètes, les entreprises obtiennent une intelligence continue et vérifiée de chaque coin du continent.",
-      "aerialTitle": "Intelligence Aérienne Là Où Les Routes Se Terminent",
-      "aerialDescription": "Lorsque le terrain devient impraticable et que l'infrastructure n'existe pas, nos drones prennent leur envol. De la cartographie des schémas d'inondation dans les zones humides reculées à l'arpentage des rendements agricoles dans les régions montagneuses, notre flotte aérienne capture une intelligence haute résolution des environnements les plus difficiles d'Afrique.",
-      "realInsightTitle": "Informations Réelles de Vraies Personnes, en Temps Réel",
-      "realInsightDescription": "Ce ne sont pas seulement des recenseurs, ce sont des agents de renseignement locaux qui comprennent les nuances culturelles, parlent les langues maternelles et établissent la confiance là où les étrangers ne le peuvent pas. Lorsque vous avez besoin de données provenant d'endroits qui n'apparaissent pas sur la plupart des cartes, nos équipes sont déjà là."
+      "title": "Dénombrez partout, et ne manquez rien",
+      "subtitle": "Des établissements urbains denses aux endroits les plus reculés, nous crowdsourçons des données de terrain en utilisant un réseau de plus de 7000 agents et des technologies de collecte de données personnalisées pour assurer une couverture complète, une haute précision et une validation en temps réel à travers l'Afrique.",
+      "fieldTaskTitle": "Attribution de Tâches sur le Terrain",
+      "fieldTaskDescription": "Chaque agent reçoit des tâches spécifiques à l'emplacement dans des géobarrières prédéfinies. Cela élimine les chevauchements, améliore la responsabilité et assure une couverture complète de l'établissement ou de la localité.",
+      "baselineTitle": "Données de base pour un délai d'exécution rapide",
+      "baselineDescription": "Nous combinons des données de terrain avec des images satellites, des limites administratives, des ensembles de données existants et des vérifications algorithmiques d'une seule communauté à plusieurs états ou pays entiers, tout en maintenant la vitesse, la rentabilité et une fiabilité vérifiée.",
+      "realInsightTitle": "Réseau d'Agents de Terrain Distribué",
+      "realInsightDescription": "Nous activons un réseau vérifié de plus de 7 000 agents de terrain formés, stratégiquement situés dans les villes, les bourgs et les communautés rurales. Cela nous donne une portée instantanée et une couverture fiable à travers divers terrains."
     },
     "integration": {
-      "title": "Intégration de Données",
-      "subtitle": "Les données sans intégration sont comme du carburant sans moteur—pleines de potentiel mais incapables de créer du mouvement. Nous veillons à ce que vos données collectées s'intègrent de manière transparente dans votre écosystème existant, amplifiant leur valeur et leur impact.",
-      "ownershipTitle": "Propriété et Contrôle de la Base de Données",
-      "ownershipDescription": "Nous croyons fermement que celui qui possède le stockage possède les données. C'est pourquoi nous priorisons l'intégration des informations collectées directement dans vos bases de données internes. Vous maintenez une souveraineté complète sur vos actifs de données pendant que nous gérons les complexités techniques de normalisation, de formatage et de transfert sécurisé. Cette approche garantit que vous construisez une intelligence organisationnelle à long terme, sans créer de dépendances vis-à-vis de plateformes externes.",
-      "toolsTitle": "Amélioration des Outils et Processus",
-      "toolsDescription": "Votre organisation utilise déjà des outils spécifiques—PowerBI pour l'analyse, ArcGIS pour la cartographie, des CRM pour la gestion client, des portails de paiement pour les transactions, des logiciels de reporting d'impact pour la communication avec les parties prenantes. Nous ne vous demandons pas de les changer. Au lieu de cela, nous construisons des ponts qui permettent à nos données collectées de s'intégrer naturellement dans ces systèmes existants. Cette intégration transforme des outils statiques en plateformes dynamiques et riches en données qui fournissent des informations en temps réel et permettent une prise de décision basée sur les données sans perturber les flux de travail établis."
+      "title": "Vos données unifiées, et prêtes à l'emploi",
+      "subtitle": "Nous connectons les données de terrain, les systèmes internes et les sources supplémentaires dans une structure unique et harmonisée, en utilisant des API prêtes à l'intégration et des pipelines automatisés qui rendent vos informations utilisables immédiatement pour les opérations quotidiennes.",
+      "ownershipTitle": "Du Terrain aux Systèmes Internes",
+      "ownershipDescription": "Nos API se connectent directement à vos outils internes, tels que les tableaux de bord Power BI, Zoho CRM, les applications personnalisées et autres systèmes opérationnels, vous permettant d'automatiser le flux de données du terrain au bureau et d'éliminer les transmissions manuelles lors de l'échange",
+      "toolsTitle": "Synchronisation & Mises à Jour Continues",
+      "toolsDescription": "Nos systèmes fournissent une vérification et une validation des données en déplacement, garantissant que les nouvelles découvertes et mises à jour sont automatiquement reflétées dans vos outils opérationnels et analytiques intégrés",
+      "geographicAtt": "Lien Géographique & Attributs",
+      "geographicAttDescription": "Nous relions les caractéristiques géographiques (bâtiments, ménages, entreprises, rues) avec les attributs et métadonnées pertinents, y compris la description des prospects, permettant des informations plus riches et une prise de décision tenant compte de la localisation"
     },
     "intelligence": {
-      "title": "Faire de Vos Données un Actif",
-      "subtitle": "Dans l'économie moderne, les données sont une monnaie—mais seulement si elles peuvent être partagées de manière sécurisée et bénéfique. Nous avons construit des cadres avancés qui transforment vos données d'un centre de coûts en générateur de revenus et multiplicateur d'impact.",
-      "researchTitle": "Facilitation de la Recherche",
-      "researchDescription": "La recherche académique et commerciale prospère grâce à des données de qualité. Nous facilitons les co-publications où vos données contribuent à des études révolutionnaires, en assurant une attribution et une citation appropriées. Vos ensembles de données peuvent former des modèles d'IA de nouvelle génération spécifiquement conçus pour les contextes africains, soutenir des études de référence pour la mesure d'impact, ou permettre des recherches longitudinales qui ne seraient pas possibles sans des données cohérentes et de qualité. Chaque application de recherche améliore la réputation de votre organisation en tant que leader d'opinion et pionnier des données tout en générant des frais de licence ou des opportunités de collaboration."
+      "title": "Voyez ce qui se passe, et ce qui arrive ensuite",
+      "subtitle": "Nous convertissons les données terrain et intégrées en intelligence exploitable qui révèle des modèles, prédit des résultats et guide votre prochain mouvement avec clarté. De la planification à l'exécution, vous obtenez une visibilité qui génère des résultats",
+      "dynamicDashboardTitle": "Tableaux de Bord Dynamiques & Visualisation",
+      "dynamicDashboardDescription": "Nous construisons des tableaux de bord interactifs qui transforment des données complexes en informations visuelles intuitives. Les utilisateurs peuvent explorer des cartes, des graphiques et des KPI en temps réel, permettant une prise de décision plus rapide entre les équipes et les départements.",
+      "aiTitle": "IA Texte-vers-Insight",
+      "aiDescription": "Nous développons des systèmes d'IA texte-vers-insight qui résument instantanément de grands ensembles de données, des rapports et des preuves de terrain en récits clairs et exploitables, permettant aux équipes de récupérer des informations, des résumés de tendances et des notes de décision en quelques secondes.",
+      "impactTitle": "Mesure d'Impact & Suivi des Progrès",
+      "impactDescription": "Pour les ONG, les gouvernements et les partenaires de développement, nous convertissons les preuves brutes en indicateurs mesurables qui suivent le changement, quantifient l'impact et soutiennent les rapports, les audits et le suivi des programmes.",
+      "decisionTitle": "Outils d'Aide à la Décision & Rapports",
+      "decisionDescription": "Nous générons des rapports exécutifs automatisés, des résumés spatiaux et des recommandations opérationnelles, aidant les équipes de direction à agir de manière décisive et à planifier stratégiquement en utilisant une intelligence vérifiée."
     }
   },
   "solutionPages": {
@@ -214,6 +233,16 @@
       "savingsDescription": "Surveillez l'énergie, la puissance et la santé des équipements via des capteurs IoT et des tableaux de bord pour identifier les opportunités d'économie de coûts et optimiser vos opérations de fabrication",
       "monitoringTitle": "Surveillance des Actifs en Direct",
       "monitoringDescription": "Suivez les équipements à distance avec un simple tableau de bord en direct, réduisez les visites sur site et prévenez les pannes surprises avec une surveillance continue et des alertes en temps réel"
+    },
+    "government": {
+      "badge": "Gouvernement",
+      "title": "Dénombrement numérique et intelligence géospatiale pour une planification nationale précise",
+      "censusTitle": "Cartographie de Recensement Numérique",
+      "censusDescription": "Chargez des fonds de carte haute résolution, des images satellites et des couches de peuplement directement dans notre application EAD numérique, accessible hors ligne pour toutes les équipes de terrain afin de garantir que chaque limite de peuplement et de localité est correctement identifiée, vérifiée et prête à être utilisée lors des opérations de recensement.",
+      "postcodesTitle": "Génération de Codes Postaux Numériques",
+      "postcodesDescription": "Nous capturons et harmonisons des ensembles de données nationaux, des bâtiments, des rues, des limites de peuplement et des couches administratives, en utilisant des outils géospatiaux avancés et des données de terrain vérifiées, créant l'épine dorsale spatiale pour un système de codes postaux moderne et intégrable construit sur la géographie locale aux normes mondiales.",
+      "propertyTaxationTitle": "Taxation Foncière Automatisée",
+      "propertyTaxationDescription": "Déployez un géo-portail immobilier tout-en-un qui permet aux gestionnaires fiscaux d'annoter l'utilisation des sols, de valider le géocodage des propriétés, de surveiller la génération des factures, la livraison et le statut de paiement. Suivez de manière transparente la couverture et l'impact de la conformité fiscale."
     }
   },
   "whyChooseUs": {
