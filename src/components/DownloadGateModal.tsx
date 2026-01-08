@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { useCollection } from "@/lib/sdk"
+import { useCollection } from "@letterhead/core/react"
 import {
     Dialog,
     DialogContent,

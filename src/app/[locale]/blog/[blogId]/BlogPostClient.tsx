@@ -2,9 +2,9 @@
 
 import { parseEditorJS, extractHeaders } from "@/lib/editorjs-parser"
 import TableOfContents from "@/components/TableOfContents"
-import { usePosts } from "@/lib/sdk"
+import { usePosts } from "@letterhead/core/react"
 import { useEffect, useState } from "react"
-import { Post } from "@/lib/sdk/collections"
+import { Post } from "@letterhead/core"
 import { useParams } from "next/navigation"
 import Link from "next/link"
 import './blog.scss'

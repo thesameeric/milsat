@@ -31,7 +31,7 @@ import {
     DialogTrigger,
 } from "@/components/ui/dialog";
 import { useState, useEffect } from "react";
-import { useSDK } from "@/lib/sdk";
+import { useSDK } from "@letterhead/core/react";
 import { toast } from "sonner";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";

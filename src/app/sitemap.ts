@@ -1,9 +1,9 @@
 import { MetadataRoute } from 'next'
-import { createDataCollectionSDK } from '@/lib/sdk'
+import { createDataCollectionSDK } from '@letterhead/core'
 
 // Create SDK instance for server-side use
 const sdk = createDataCollectionSDK({
-  apiUrl: "http://localhost:8080",
+  apiUrl: process.env.NEXT_PUBLIC_API_URL ?? "https://api.letterhead.cloud",
   organizationId: "690fa6b7173674214101016b",
   apiKey: 'gol_15f04352ccc6e6de5ff8a8bc7fa33d6ed40946e36b921edecfd722f91fe7c99d',
 })

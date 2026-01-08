@@ -31,7 +31,9 @@ const nextConfig: NextConfig = {
         hostname: 'd3htjribhyrfpy.cloudfront.net',
       },
     ],
+
   },
+  transpilePackages: ['@letterhead/core'],
 };
 
 export default withNextIntl(nextConfig);

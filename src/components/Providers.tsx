@@ -1,6 +1,6 @@
 "use client"
 
-import { SDKProvider } from "@/lib/sdk"
+import { SDKProvider } from "@letterhead/core/react"
 
 export function Providers({ children }: { children: React.ReactNode }) {
   return (

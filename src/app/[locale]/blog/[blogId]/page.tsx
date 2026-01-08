@@ -1,6 +1,6 @@
 import { Metadata } from "next"
 import BlogPostClient from "./BlogPostClient"
-import { createDataCollectionSDK } from "@/lib/sdk"
+import { createDataCollectionSDK } from "@letterhead/core"
 
 type Props = {
   params: Promise<{ blogId: string }>
