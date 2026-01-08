@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useState } from "react";
-import { useSubscribers } from "@/lib/sdk";
+import { useSubscribers } from "@letterhead/core/react";
 import { useTranslations } from 'next-intl';
 
 export default function NewsletterSection() {

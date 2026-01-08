@@ -1,8 +1,8 @@
 "use client";
 import { Carousel, Card } from "@/components/ui/apple-cards-carousel";
-import { usePosts } from "@/lib/sdk";
+import { usePosts } from "@letterhead/core/react";
 import { useEffect, useState } from "react";
-import { Post } from "@/lib/sdk/collections";
+import { Post } from "@letterhead/core";
 import { parseEditorJS } from "@/lib/editorjs-parser";
 
 export function NewsItem() {

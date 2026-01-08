@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react"
-import { useSubscribers } from "@/lib/sdk/provider"
+import { useSubscribers } from "@letterhead/core/react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"

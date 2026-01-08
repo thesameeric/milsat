@@ -2,7 +2,7 @@
 
 import { ArrowDownCircle } from "lucide-react";
 import Link from "next/link";
-import { useCollection } from "@/lib/sdk";
+import { useCollection } from "@letterhead/core/react";
 import { useEffect, useState } from "react";
 
 interface PaperDoc {

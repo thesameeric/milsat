@@ -3,7 +3,7 @@ import { IconArrowLeft, IconArrowRight } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import Image from 'next/image';
-import { useCollection } from "@/lib/sdk";
+import { useCollection } from "@letterhead/core/react";
 import CaseStudyContent from "./CaseStudyContent";
 
 type CaseStudy = {

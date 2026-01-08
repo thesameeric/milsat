@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import dayjs from 'dayjs';
-import { useCollection } from "@/lib/sdk";
+import { useCollection } from "@letterhead/core/react";
 import { useEffect, useState } from "react";
 import React from "react";
 import { ArrowLeft, Download } from "lucide-react";

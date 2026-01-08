@@ -1,8 +1,8 @@
 "use client"
 
-import { usePosts } from "@/lib/sdk"
+import { usePosts } from "@letterhead/core/react"
 import { useEffect, useState } from "react"
-import { Post } from "@/lib/sdk/collections"
+import { Post } from "@letterhead/core"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import Link from "next/link"
 import dayjs from "dayjs"

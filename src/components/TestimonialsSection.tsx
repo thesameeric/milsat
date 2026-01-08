@@ -3,7 +3,7 @@ import Image from "next/image";
 import { motion } from "motion/react";
 import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
-import { useCollection } from "@/lib/sdk";
+import { useCollection } from "@letterhead/core/react";
 
 export type Testimonial = {
   message: string;

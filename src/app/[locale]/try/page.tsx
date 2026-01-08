@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { FormEventHandler, useRef, useState } from "react";
 import { AiInput, AiInputRef } from "@/components/AiInput";
-import { createRAGQuerySDK, type TokenUsage } from "@/lib/sdk";
+import { createRAGQuerySDK, type TokenUsage } from "@letterhead/core";
 import { Streamdown } from 'streamdown';
 
 

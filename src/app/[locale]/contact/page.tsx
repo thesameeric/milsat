@@ -23,7 +23,7 @@ import {
     PopoverTrigger,
 } from "@/components/ui/popover";
 import { useState } from "react";
-import { useCollection } from "@/lib/sdk";
+import { useCollection } from "@letterhead/core/react";
 import { toast } from "sonner";
 import { useTranslations } from 'next-intl';
 

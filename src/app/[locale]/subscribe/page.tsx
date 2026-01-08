@@ -1,12 +1,14 @@
-import { SDKProvider } from "@/lib/sdk/provider"
+"use client"
+
+import { SDKProvider } from "@letterhead/core/react"
 import { SubscribeForm } from "@/components/subscribe-form"
 
 export default function SubscribePage() {
   // Configure the SDK
   const sdkConfig = {
-    apiUrl: "http://localhost:8080",
-    organizationId: "69061b402f28f82ad0e678c1",
-    apiKey: 'gol_4c4c7a31118ff97c301eb8989fc563109bf5746807f7a912a2785e590485a730', // Optional: Only needed for authenticated API routes
+    apiUrl: process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8080",
+    organizationId: process.env.NEXT_PUBLIC_ORG_ID ?? "",
+    apiKey: process.env.NEXT_PUBLIC_LETTERHEAD_API,
   }
 
   return (
@@ -106,7 +108,7 @@ export default function SubscribePage() {
             </div>
             <div className="bg-muted p-6 rounded-lg">
               <pre className="text-sm overflow-x-auto">
-                <code>{`import { SDKProvider } from "@/lib/sdk/provider"
+                <code>{`import { SDKProvider } from "@letterhead/core/react"
 import { SubscribeForm } from "@/components/subscribe-form"
 
 export default function Page() {
