@@ -43,4 +43,8 @@ next-env.d.ts
 # AI 
 CLAUDE.md
 Grok.md
+.claude
+.grok
+.gemini
+.cursor
 
