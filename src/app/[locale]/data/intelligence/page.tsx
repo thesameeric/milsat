@@ -22,11 +22,11 @@ export default function DataIntelligence() {
         <FeatureSection
             title={t('dynamicDashboardTitle')}
             description={t('dynamicDashboardDescription')}
-            imageSrc="/enb.png"
+            imageSrc="/en-dashboard.png"
             imageAlt="research enablement"
             imageWidth={563}
             imageHeight={844}
-            className="pb-40"
+            className="pt-0 md:pt-0 md:pb-0"
         />
         <FeatureSection
             title={t('aiTitle')}
@@ -40,6 +40,7 @@ export default function DataIntelligence() {
             description={t('impactDescription')}
             imageSrc="/impact.png"
             imageAlt="tool enhancement"
+            className="md:pt-0"
         />
         <FeatureSection
             title={t('decisionTitle')}
@@ -47,6 +48,7 @@ export default function DataIntelligence() {
             imageSrc="/report.jpg"
             imageAlt="tool enhancement"
             imagePosition="left"
+            className="md:pt-0"
         />
     </div>
 }

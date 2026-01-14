@@ -49,6 +49,7 @@ export default function DataCollection() {
             imageWidth={671}
             imageHeight={475}
             imagePosition="left"
+            className="md:pt-0 md:pb-10"
         />
     </div>;
 }

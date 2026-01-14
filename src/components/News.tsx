@@ -80,7 +80,7 @@ export function NewsItem() {
     });
 
     return (
-        <div className="w-full h-full py-40">
+        <div className="w-full h-full py-10">
             <h2 className="max-w-7xl pl-4 mx-auto text-xl md:text-5xl">
                 As seen on the News
             </h2>

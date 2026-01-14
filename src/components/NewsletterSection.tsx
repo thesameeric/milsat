@@ -55,7 +55,7 @@ export default function NewsletterSection() {
   }
 
   return (
-    <section className="w-full flex items-center py-16 sm:py-20 md:py-24">
+    <section className="w-full flex items-center py-5 mb-10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center max-w-3xl mx-auto text-center">
           <h2 className="text-3xl sm:text-4xl md:text-5xl mb-4">

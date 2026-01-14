@@ -38,6 +38,7 @@ export default function DataIntegration() {
             imageSrc="/geoattr.jpg"
             imageAlt="tool enhancement"
             imageClassName="w-[550px] h-[400px]"
+            className="md:pt-0 md:pb-20"
         />
     </div>;
 }
