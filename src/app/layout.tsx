@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     description: "Milsat provides accurate, locally-sourced data and intelligence across Africa. Transform your operations with our field mapping, data collection, and geospatial intelligence services.",
     images: [
       {
-        url: "/og-image.png",
+        url: "https://milsat.vercel.app/logo.png",
         width: 1200,
         height: 630,
         alt: "Milsat - African Data Intelligence",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Milsat - Revealing Africa's True Landscape Through Local Data",
     description: "Milsat provides accurate, locally-sourced data and intelligence across Africa. Transform your operations with our field mapping, data collection, and geospatial intelligence services.",
-    images: ["/og-image.png"],
+    images: ["https://milsat.vercel.app/logo.png"],
     creator: "@milsatafrica",
   },
   robots: {
