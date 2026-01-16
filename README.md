@@ -7,7 +7,7 @@ Official website for Milsat, built with Next.js and Letterhead.
 This project is built using modern web technologies:
 
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
-- **CMS & Data**: [Letterhead](https://letterhead.ai) (Core SDK & React Components)
+- **CMS & Data**: [Letterhead](https://letterhead.cloud) (Core SDK & React Components)
 - **Styling**: [Tailwind CSS v4](https://tailwindcss.com/)
 - **Animations**: [Motion](https://motion.dev/)
 - **Icons**: [Lucide React](https://lucide.dev/) & [Tabler Icons](https://tabler-icons.io/)
