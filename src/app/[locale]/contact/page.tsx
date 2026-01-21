@@ -22,28 +22,76 @@ import {
     PopoverContent,
     PopoverTrigger,
 } from "@/components/ui/popover";
-import { useState } from "react";
-import { useCollection } from "@letterhead/core/react";
+import { useState, useEffect } from "react";
+import { useSDK } from "@letterhead/core/react";
 import { toast } from "sonner";
 import { useTranslations } from 'next-intl';
 
-const availableTimes = [
-    "09:00 AM",
-    "10:00 AM",
-    "11:00 AM",
-    "12:00 PM",
-    "01:00 PM",
-    "02:00 PM",
-    "03:00 PM",
-    "04:00 PM",
-    "05:00 PM",
-];
+interface TimeSlot {
+    day_of_week: number;
+    start_time: string;
+    end_time: string;
+}
+
+interface Availability {
+    id: string;
+    duration: number;
+    time_slots: TimeSlot[];
+    timezone: string;
+}
 
 export default function ContactUs() {
     const t = useTranslations('contact');
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const contactCollection = useCollection("contact_us");
+    const [activeAvailability, setActiveAvailability] = useState<Availability | null>(null);
+    const [generatedTimes, setGeneratedTimes] = useState<string[]>([]);
+    const sdk = useSDK();
+
+    // Fetch default availability
+    useEffect(() => {
+        const orgId = sdk.organizationId;
+        if (orgId && !activeAvailability) {
+            sdk.scheduling.list(orgId).then((res) => {
+                if (res.data && res.data.length > 0) {
+                    setActiveAvailability(res.data[0]);
+                }
+            }).catch(console.error);
+        }
+    }, [sdk, activeAvailability]);
+
+    // Generate time slots when date is selected
+    useEffect(() => {
+        if (!selectedDate || !activeAvailability) {
+            setGeneratedTimes([]);
+            return;
+        }
+
+        const dayOfWeek = selectedDate.getDay();
+        const slotConfig = activeAvailability.time_slots.find(s => s.day_of_week === dayOfWeek);
+
+        if (!slotConfig) {
+            setGeneratedTimes([]);
+            return;
+        }
+
+        const times: string[] = [];
+        const [startHour, startMinute] = slotConfig.start_time.split(':').map(Number);
+        const [endHour, endMinute] = slotConfig.end_time.split(':').map(Number);
+
+        let current = new Date(selectedDate);
+        current.setHours(startHour, startMinute, 0, 0);
+
+        const end = new Date(selectedDate);
+        end.setHours(endHour, endMinute, 0, 0);
+
+        while (current < end) {
+            times.push(format(current, "hh:mm a"));
+            current.setMinutes(current.getMinutes() + activeAvailability.duration);
+        }
+
+        setGeneratedTimes(times);
+    }, [selectedDate, activeAvailability]);
 
     const formSchema = z.object({
         fullName: z.string().min(2, t('validation.fullNameMin')),
@@ -69,12 +117,28 @@ export default function ContactUs() {
     async function onSubmit(values: z.infer<typeof formSchema>) {
         setIsSubmitting(true);
         try {
-            await contactCollection.add({
-                full_name: values.fullName,
-                email: values.email,
-                phone: values.phone,
-                meeting_date: values.meetingDate.toISOString(),
-                meeting_time: values.meetingTime,
+            if (!activeAvailability) {
+                throw new Error("No availability found");
+            }
+
+            // Parse time string (e.g., "09:00 AM") and combine with date
+            const [timeStr, period] = values.meetingTime.split(" ");
+            let [hours, minutes] = timeStr.split(":").map(Number);
+
+            if (period === "PM" && hours !== 12) hours += 12;
+            if (period === "AM" && hours === 12) hours = 0;
+
+            const startTime = new Date(values.meetingDate);
+            startTime.setHours(hours, minutes, 0, 0);
+
+            await sdk.scheduling.book({
+                availability_id: activeAvailability.id,
+                attendee_name: values.fullName,
+                attendee_email: values.email,
+                attendee_phone: values.phone,
+                start_time: startTime.toISOString(),
+                timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+                notes: "Scheduled via Contact Page",
             });
 
             toast.success(t('successTitle'), {
@@ -242,9 +306,17 @@ export default function ContactUs() {
                                                                     field.onChange(date);
                                                                     setSelectedDate(date);
                                                                 }}
-                                                                disabled={(date) =>
-                                                                    date < new Date() || date < new Date("1900-01-01")
-                                                                }
+                                                                disabled={(date) => {
+                                                                    const isPast = date < new Date() || date < new Date("1900-01-01");
+                                                                    if (isPast) return true;
+
+                                                                    if (activeAvailability) {
+                                                                        const dayOfWeek = date.getDay();
+                                                                        const hasSlot = activeAvailability.time_slots.some(s => s.day_of_week === dayOfWeek);
+                                                                        return !hasSlot;
+                                                                    }
+                                                                    return false;
+                                                                }}
                                                                 initialFocus
                                                                 className="bg-[#01191D] text-white rounded-md border border-white/10"
                                                             />
@@ -269,7 +341,9 @@ export default function ContactUs() {
                                                                 value={field.value || ""}
                                                             >
                                                                 <option value="" disabled>Select time</option>
-                                                                {availableTimes.map((time) => (
+                                                                {generatedTimes.length === 0 ? (
+                                                                    <option value="" disabled>No available times</option>
+                                                                ) : generatedTimes.map((time) => (
                                                                     <option key={time} value={time} className="bg-zinc-900 text-white">
                                                                         {time}
                                                                     </option>

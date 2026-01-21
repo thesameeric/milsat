@@ -1,6 +1,4 @@
 'use client';
-import Image from "next/image";
-import TalkToAnExpert from "@/components/TalkToAnExpert";
 import { useTranslations } from 'next-intl';
 import { HeroSection } from '@/components/HeroSection';
 import { FeatureSection } from '@/components/FeatureSection';
