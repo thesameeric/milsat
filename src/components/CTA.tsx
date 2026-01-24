@@ -80,42 +80,56 @@ export function CTA(props: CTAProps) {
         }
     }, [isOpen, activeAvailability, sdk]);
 
-    // Generate time slots when date is selected
+    // Fetches available slots from backend
     useEffect(() => {
-        if (!selectedDate || !activeAvailability) {
+        let iscancelled = false;
+        async function fetchSlots() {
+            if (!selectedDate || !activeAvailability) {
+                setGeneratedTimes([]);
+                return;
+            }
+
+            // Clear times while loading
             setGeneratedTimes([]);
-            return;
+
+            try {
+                const start = new Date(selectedDate);
+                start.setHours(0, 0, 0, 0);
+
+                const end = new Date(selectedDate);
+                end.setHours(23, 59, 59, 999);
+
+                const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+                const availabilityId = activeAvailability.id;
+
+                const res = await fetch(`${apiUrl}/api/v1/scheduling/slots?availabilityId=${availabilityId}&from=${start.toISOString()}&to=${end.toISOString()}`);
+
+                if (!res.ok) {
+                    throw new Error('Failed to fetch slots');
+                }
+
+                const data = await res.json();
+                if (!iscancelled && data.slots) {
+                    // Format slots to "hh:mm a"
+                    const formattedTimes = data.slots.map((slot: string) => format(new Date(slot), "hh:mm a"));
+                    setGeneratedTimes(formattedTimes);
+                }
+            } catch (error) {
+                console.error("Error fetching slots:", error);
+                if (!iscancelled) setGeneratedTimes([]);
+            }
         }
 
-        const dayOfWeek = selectedDate.getDay();
-        const slotConfig = activeAvailability.time_slots.find(s => s.day_of_week === dayOfWeek);
+        fetchSlots();
 
-        if (!slotConfig) {
-            setGeneratedTimes([]);
-            return;
+        return () => {
+            iscancelled = true;
         }
-
-        const times: string[] = [];
-        const [startHour, startMinute] = slotConfig.start_time.split(':').map(Number);
-        const [endHour, endMinute] = slotConfig.end_time.split(':').map(Number);
-
-        let current = new Date(selectedDate);
-        current.setHours(startHour, startMinute, 0, 0);
-
-        const end = new Date(selectedDate);
-        end.setHours(endHour, endMinute, 0, 0);
-
-        while (current < end) {
-            times.push(format(current, "hh:mm a"));
-            current.setMinutes(current.getMinutes() + activeAvailability.duration);
-        }
-
-        setGeneratedTimes(times);
     }, [selectedDate, activeAvailability]);
 
     const formSchema = z.object({
         fullName: z.string().min(2, "Full name must be at least 2 characters"),
-        email: z.string().email("Please enter a valid email address"),
+        email: z.email("Please enter a valid email address"),
         phone: z.string().min(10, "Phone number must be at least 10 digits"),
         meetingDate: z.date({
             message: "Please select a meeting date",
