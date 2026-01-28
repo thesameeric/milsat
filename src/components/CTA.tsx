@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { format } from "date-fns";
-import { CalendarIcon } from "lucide-react";
+import { CalendarIcon, Loader2, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -34,7 +34,6 @@ import { useState, useEffect } from "react";
 import { useSDK } from "@letterhead/core/react";
 import { toast } from "sonner";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 
 interface TimeSlot {
     day_of_week: number;
@@ -64,6 +63,7 @@ export function CTA(props: CTAProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [activeAvailability, setActiveAvailability] = useState<Availability | null>(null);
     const [generatedTimes, setGeneratedTimes] = useState<string[]>([]);
+    const [loadingSlots, setLoadingSlots] = useState(false);
     const sdk = useSDK();
 
     // Fetch default availability if not provided
@@ -89,7 +89,7 @@ export function CTA(props: CTAProps) {
                 return;
             }
 
-            // Clear times while loading
+            setLoadingSlots(true);
             setGeneratedTimes([]);
 
             try {
@@ -117,6 +117,8 @@ export function CTA(props: CTAProps) {
             } catch (error) {
                 console.error("Error fetching slots:", error);
                 if (!iscancelled) setGeneratedTimes([]);
+            } finally {
+                if (!iscancelled) setLoadingSlots(false);
             }
         }
 
@@ -320,7 +322,11 @@ export function CTA(props: CTAProps) {
                                         <FormItem className="flex flex-col">
                                             <FormLabel>Meeting Time</FormLabel>
                                             <div className="grid grid-cols-3 gap-2 max-h-60 overflow-y-auto">
-                                                {generatedTimes.length === 0 ? (
+                                                {loadingSlots ? (
+                                                    <div className="col-span-3 flex justify-center py-4">
+                                                        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+                                                    </div>
+                                                ) : generatedTimes.length === 0 ? (
                                                     <div className="col-span-3 text-center text-sm text-muted-foreground py-4">
                                                         No available times for this date
                                                     </div>

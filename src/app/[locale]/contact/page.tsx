@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { format } from "date-fns";
-import { CalendarIcon, Mail, MapPin, Clock } from "lucide-react";
+import { CalendarIcon, Mail, MapPin, Clock, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -46,6 +46,7 @@ export default function ContactUs() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [activeAvailability, setActiveAvailability] = useState<Availability | null>(null);
     const [generatedTimes, setGeneratedTimes] = useState<string[]>([]);
+    const [loadingSlots, setLoadingSlots] = useState(false);
     const sdk = useSDK();
 
     // Fetch default availability
@@ -60,37 +61,55 @@ export default function ContactUs() {
         }
     }, [sdk, activeAvailability]);
 
-    // Generate time slots when date is selected
+    // Fetches available slots from backend
     useEffect(() => {
-        if (!selectedDate || !activeAvailability) {
+        let iscancelled = false;
+        async function fetchSlots() {
+            if (!selectedDate || !activeAvailability) {
+                setGeneratedTimes([]);
+                return;
+            }
+
+            // Clear times while loading
+            setLoadingSlots(true);
             setGeneratedTimes([]);
-            return;
+
+            try {
+                const start = new Date(selectedDate);
+                start.setHours(0, 0, 0, 0);
+
+                const end = new Date(selectedDate);
+                end.setHours(23, 59, 59, 999);
+
+                const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080';
+                const availabilityId = activeAvailability.id;
+
+                const res = await fetch(`${apiUrl}/api/v1/scheduling/slots?availabilityId=${availabilityId}&from=${start.toISOString()}&to=${end.toISOString()}`);
+
+                if (!res.ok) {
+                    throw new Error('Failed to fetch slots');
+                }
+
+                const data = await res.json();
+                if (!iscancelled && data.slots) {
+                    // Format slots to "hh:mm a"
+                    // The backend returns ISO strings, we format them to match the UI expectation
+                    const formattedTimes = data.slots.map((slot: string) => format(new Date(slot), "hh:mm a"));
+                    setGeneratedTimes(formattedTimes);
+                }
+            } catch (error) {
+                console.error("Error fetching slots:", error);
+                if (!iscancelled) setGeneratedTimes([]);
+            } finally {
+                if (!iscancelled) setLoadingSlots(false);
+            }
         }
 
-        const dayOfWeek = selectedDate.getDay();
-        const slotConfig = activeAvailability.time_slots.find(s => s.day_of_week === dayOfWeek);
+        fetchSlots();
 
-        if (!slotConfig) {
-            setGeneratedTimes([]);
-            return;
+        return () => {
+            iscancelled = true;
         }
-
-        const times: string[] = [];
-        const [startHour, startMinute] = slotConfig.start_time.split(':').map(Number);
-        const [endHour, endMinute] = slotConfig.end_time.split(':').map(Number);
-
-        let current = new Date(selectedDate);
-        current.setHours(startHour, startMinute, 0, 0);
-
-        const end = new Date(selectedDate);
-        end.setHours(endHour, endMinute, 0, 0);
-
-        while (current < end) {
-            times.push(format(current, "hh:mm a"));
-            current.setMinutes(current.getMinutes() + activeAvailability.duration);
-        }
-
-        setGeneratedTimes(times);
     }, [selectedDate, activeAvailability]);
 
     const formSchema = z.object({
@@ -333,15 +352,21 @@ export default function ContactUs() {
                                                 name="meetingTime"
                                                 render={({ field }) => (
                                                     <FormItem className="flex flex-col">
-                                                        <FormLabel className="text-base text-gray-300">{t('meetingTime')}</FormLabel>
+                                                        <FormLabel className="text-base text-gray-300 flex items-center gap-2">
+                                                            {t('meetingTime')}
+                                                            {loadingSlots && <Loader2 className="h-4 w-4 animate-spin text-teal-400" />}
+                                                        </FormLabel>
                                                         <FormControl>
                                                             <select
                                                                 onChange={(e) => field.onChange(e.target.value)}
                                                                 className="h-12 w-full rounded-md border border-white/10 bg-white/5 px-3 py-2 text-sm text-white focus:border-teal-500/50 focus:ring-teal-500/20 focus:outline-none"
                                                                 value={field.value || ""}
+                                                                disabled={loadingSlots}
                                                             >
                                                                 <option value="" disabled>Select time</option>
-                                                                {generatedTimes.length === 0 ? (
+                                                                {loadingSlots ? (
+                                                                    <option value="" disabled>Loading availability...</option>
+                                                                ) : generatedTimes.length === 0 ? (
                                                                     <option value="" disabled>No available times</option>
                                                                 ) : generatedTimes.map((time) => (
                                                                     <option key={time} value={time} className="bg-zinc-900 text-white">
