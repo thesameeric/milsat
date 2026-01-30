@@ -18,7 +18,7 @@ export function HeroSection({
   children,
 }: HeroSectionProps) {
   return (
-    <section className={cn("container flex flex-col md:flex-row items-center justify-between mx-auto my-20 md:my-40 px-5 md:px-0 gap-10", className)}>
+    <section className={cn("container flex flex-col-reverse md:flex-row items-center justify-between mx-auto my-20 md:my-40 px-5 md:px-0 gap-10", className)}>
       <div className="w-full md:w-6/12">
         <h1 className="text-5xl md:text-7xl">{title}</h1>
         <span className="flex mt-6 md:mt-10">

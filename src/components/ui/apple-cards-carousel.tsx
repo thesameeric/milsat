@@ -239,9 +239,9 @@ export const Card = ({
       <motion.button
         layoutId={layout ? `card-${card.title}` : undefined}
         onClick={handleOpen}
-        className="relative z-10 flex h-80 w-56 flex-col items-start justify-start overflow-hidden rounded-3xl md:h-[30rem] md:w-96 bg-neutral-900 group"
+        className="relative z-10 flex w-56 flex-col items-start justify-start overflow-hidden rounded-3xl h-full md:w-96 bg-neutral-900 group"
       >
-        <div className="relative h-1/2 w-full overflow-hidden">
+        <div className="relative flex-1 w-full overflow-hidden">
           <BlurImage
             src={card.src}
             alt={card.title}
@@ -249,7 +249,7 @@ export const Card = ({
             className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         </div>
-        <div className="flex h-1/2 flex-col justify-start p-6">
+        <div className="flex flex-1 flex-col justify-start p-6">
           <motion.p
             layoutId={layout ? `category-${card.category}` : undefined}
             className="text-left font-sans text-sm font-medium"
@@ -258,7 +258,7 @@ export const Card = ({
           </motion.p>
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
-            className="mt-2 text-left font-sans text-xl font-semibold md:text-2xl"
+            className="mt-2 text-left font-sans text-base font-semibold md:text-2xl"
           >
             {card.title}
           </motion.p>

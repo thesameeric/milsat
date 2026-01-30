@@ -59,6 +59,7 @@ interface CTAProps {
 export function CTA(props: CTAProps) {
     const { getStartedHref = "/try", getStartedText = "Get Started", talkToExpertText = "Talk to an Expert", className = "", availabilityId = process.env.NEXT_PUBLIC_SCHEDULING_AVAILABILITY_ID } = props;
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [activeAvailability, setActiveAvailability] = useState<Availability | null>(null);
@@ -197,7 +198,7 @@ export function CTA(props: CTAProps) {
     }
 
     return (
-        <div className={cn("flex flex-col sm:flex-row gap-4 items-center justify-center", className)}>
+        <div className={cn("flex sm:flex-row gap-4 items-center justify-center", className)}>
             <Link href={getStartedHref}>
                 <Button size="sm" variant={'outline'} className="group px-8 py-6 cursor-pointer">
                     {getStartedText}
@@ -267,7 +268,7 @@ export function CTA(props: CTAProps) {
                                     render={({ field }) => (
                                         <FormItem className="flex flex-col">
                                             <FormLabel>Meeting Date</FormLabel>
-                                            <Popover>
+                                            <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                                                 <PopoverTrigger asChild>
                                                     <FormControl>
                                                         <Button
@@ -293,6 +294,7 @@ export function CTA(props: CTAProps) {
                                                         onSelect={(date) => {
                                                             field.onChange(date);
                                                             setSelectedDate(date);
+                                                            setIsCalendarOpen(false);
                                                         }}
                                                         disabled={(date) => {
                                                             const isPast = date < new Date() || date < new Date("1900-01-01");
