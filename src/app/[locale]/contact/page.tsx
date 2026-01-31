@@ -43,6 +43,7 @@ interface Availability {
 export default function ContactUs() {
     const t = useTranslations('contact');
     const [selectedDate, setSelectedDate] = useState<Date | undefined>();
+    const [isCalendarOpen, setIsCalendarOpen] = useState(false);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [activeAvailability, setActiveAvailability] = useState<Availability | null>(null);
     const [generatedTimes, setGeneratedTimes] = useState<string[]>([]);
@@ -298,7 +299,7 @@ export default function ContactUs() {
                                             render={({ field }) => (
                                                 <FormItem className="flex flex-col">
                                                     <FormLabel className="text-base text-gray-300">{t('meetingDate')}</FormLabel>
-                                                    <Popover>
+                                                    <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                                                         <PopoverTrigger asChild>
                                                             <FormControl>
                                                                 <Button
@@ -324,6 +325,7 @@ export default function ContactUs() {
                                                                 onSelect={(date) => {
                                                                     field.onChange(date);
                                                                     setSelectedDate(date);
+                                                                    setIsCalendarOpen(false);
                                                                 }}
                                                                 disabled={(date) => {
                                                                     const isPast = date < new Date() || date < new Date("1900-01-01");
