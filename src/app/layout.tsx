@@ -15,8 +15,10 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://milsat.africa';
+
 export const metadata: Metadata = {
-  metadataBase: new URL('https://milsat.africa'),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Milsat - Revealing Africa's True Landscape Through Local Data",
     template: "%s | Milsat"
@@ -45,13 +47,13 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://milsat.africa",
+    url: siteUrl,
     siteName: "Milsat",
     title: "Milsat - Revealing Africa's True Landscape Through Local Data",
     description: "Milsat provides accurate, locally-sourced data and intelligence across Africa. Transform your operations with our field mapping, data collection, and geospatial intelligence services.",
     images: [
       {
-        url: "https://milsat.vercel.app/logo.png",
+        url: `${siteUrl}/logo.png`,
         width: 1200,
         height: 630,
         alt: "Milsat - African Data Intelligence",
@@ -62,7 +64,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Milsat - Revealing Africa's True Landscape Through Local Data",
     description: "Milsat provides accurate, locally-sourced data and intelligence across Africa. Transform your operations with our field mapping, data collection, and geospatial intelligence services.",
-    images: ["https://milsat.vercel.app/logo.png"],
+    images: [`${siteUrl}/logo.png`],
     creator: "@milsatafrica",
   },
   robots: {
