@@ -40,7 +40,7 @@ export default function MarketingSolutionPage() {
                 </div>
                 <div>
                     <Image
-                        src="/customer-understanding.jpg"
+                        src="/1001146246.png"
                         alt="Customer Understanding"
                         width={600}
                         height={400}
