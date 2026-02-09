@@ -150,8 +150,8 @@ const HowItWorksTextSection = ({ ref, link, image, title, description, isActive,
       </div>
       <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl mb-3 sm:mb-8">{title}</h3>
       <p className={cn(
-        "mb-6 sm:mb-10 transition-colors duration-300 text-base md:text-2xl",
-        isActive ? "text-gray-400" : "text-gray-400 lg:text-gray-600"
+        "mb-6 sm:mb-10 transition-colors duration-300 text-base md:text-xl",
+        isActive ? "text-gray-200" : "text-gray-400 lg:text-gray-600"
       )}>
         {description}
       </p>
