@@ -28,7 +28,7 @@ export default function Header() {
     <header className="sticky top-0 left-0 bg-black w-full z-[999]">
       <div className="container mx-auto flex justify-between items-center py-4 px-4 sm:px-6 md:px-8">
         <div className="flex-shrink-0">
-          <Link href={'/'}>
+          <Link href={'/'} aria-label="Milsat home">
             <Logo />
           </Link>
         </div>

@@ -155,12 +155,15 @@ const HowItWorksTextSection = ({ ref, link, image, title, description, isActive,
       )}>
         {description}
       </p>
-      <Link href={link} className={cn(
-        "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
-        isActive
-          ? "text-blue-500 hover:underline"
-          : "text-blue-500 hover:underline lg:text-gray-500 lg:border-gray-500 lg:hover:no-underline"
-      )}>
+      <Link
+        href={link}
+        aria-label={`${learnMore} about ${title}`}
+        className={cn(
+          "py-2 rounded-md inline-block transition-colors duration-300 w-fit text-base sm:text-lg",
+          isActive
+            ? "text-blue-500 hover:underline"
+            : "text-blue-500 hover:underline lg:text-gray-500 lg:border-gray-500 lg:hover:no-underline"
+        )}>
         {learnMore} <ArrowLeft className="inline-block ml-2 mb-1 rotate-145" size={16} />
       </Link>
     </div>

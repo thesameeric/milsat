@@ -24,7 +24,7 @@ export default function LandingPageHero() {
             <div
                 className='absolute top-0 left-0 w-full h-full -z-20 md:hidden'
                 style={{
-                    backgroundImage: 'url(/bg-img.png)',
+                    backgroundImage: 'url(/bg-img.webp)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',
@@ -38,7 +38,7 @@ export default function LandingPageHero() {
             <div
                 className='absolute top-0 left-0 w-full h-full -z-20 hidden md:block'
                 style={{
-                    backgroundImage: 'url(/bg-img.png)',
+                    backgroundImage: 'url(/bg-img.webp)',
                     backgroundSize: 'cover',
                     backgroundPosition: 'center',
                     backgroundRepeat: 'no-repeat',

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import { Providers } from "@/components/Providers";
 import { Toaster } from "@/components/ui/sonner";
 import CookieConsent from "@/components/CookieConsent";
@@ -94,19 +95,6 @@ export default async function RootLayout({
 
   return (
     <html lang={locale || 'en'}>
-      <head>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-09L72TDE3P"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-09L72TDE3P');
-            `,
-          }}
-        />
-      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -115,6 +103,18 @@ export default async function RootLayout({
           <Toaster />
           <CookieConsent />
         </Providers>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-09L72TDE3P"
+          strategy="afterInteractive"
+        />
+        <Script id="gtag-init" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-09L72TDE3P');
+          `}
+        </Script>
       </body>
     </html>
   );

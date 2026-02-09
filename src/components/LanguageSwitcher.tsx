@@ -27,6 +27,7 @@ export default function LanguageSwitcher() {
         value={locale}
         onChange={(e) => handleLanguageChange(e.target.value)}
         disabled={isPending}
+        aria-label="Select language"
         className="appearance-none bg-transparent border border-gray-600 rounded-lg px-3 py-2 pr-8 text-sm text-white hover:border-gray-400 focus:border-[#00FFA3] focus:outline-none transition-colors cursor-pointer disabled:opacity-50"
       >
         {languages.map((lang) => (

@@ -137,6 +137,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
             onClick={scrollLeft}
             disabled={!canScrollLeft}
+            aria-label="Scroll left"
           >
             <IconArrowNarrowLeft className="h-6 w-6 text-gray-500" />
           </button>
@@ -144,6 +145,7 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
             className="relative z-40 flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 disabled:opacity-50"
             onClick={scrollRight}
             disabled={!canScrollRight}
+            aria-label="Scroll right"
           >
             <IconArrowNarrowRight className="h-6 w-6 text-gray-500" />
           </button>
@@ -216,6 +218,7 @@ export const Card = ({
               <button
                 className="sticky top-4 cursor-pointer right-0 ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-black"
                 onClick={handleClose}
+                aria-label="Close"
               >
                 <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
               </button>

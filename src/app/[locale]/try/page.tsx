@@ -70,7 +70,6 @@ export default function Try() {
                     },
                     onContent: (content, accumulated) => {
                         assistantMessage = accumulated;
-                        console.log('LOGGGG: :::::::::', assistantMessage);
 
                         setMessages(prev => {
                             const newMessages = [...prev];

@@ -93,12 +93,14 @@ export default function CaseStudiesSection({ autoplay = false }: { autoplay?: bo
           <div className="flex gap-3 sm:gap-4 pt-0 mb-6 sm:mb-8 md:mb-10">
             <button
               onClick={handlePrev}
+              aria-label="Previous case study"
               className="group/button flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800 hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors"
             >
               <IconArrowLeft className="h-4 w-4 sm:h-5 sm:w-5 text-black transition-transform duration-300 group-hover/button:rotate-12 dark:text-neutral-400" />
             </button>
             <button
               onClick={handleNext}
+              aria-label="Next case study"
               className="group/button flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800 hover:bg-gray-200 dark:hover:bg-neutral-700 transition-colors"
             >
               <IconArrowRight className="h-4 w-4 sm:h-5 sm:w-5 text-black transition-transform duration-300 group-hover/button:-rotate-12 dark:text-neutral-400" />
