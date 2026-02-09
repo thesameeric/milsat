@@ -210,7 +210,6 @@ export function parseEditorJS(data: EditorJSData): string {
       case 'table':
         return parseTable(block);
       default:
-        console.warn(`Unknown block type: ${block.type}`);
         return '';
     }
   }).join('\n');

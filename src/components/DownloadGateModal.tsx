@@ -56,7 +56,6 @@ export function DownloadGateModal({
             onSuccess()
             onOpenChange(false)
         } catch (err) {
-            console.error("Failed to submit download interest:", err)
             setError("Something went wrong. Please try again.")
         } finally {
             setIsSubmitting(false)

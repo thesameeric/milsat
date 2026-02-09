@@ -28,7 +28,6 @@ export default function TagClient({ tag }: { tag: string }) {
                 setBlogPosts(filtered)
             } catch (err: any) {
                 setError(err.message || "Failed to load posts")
-                console.error("Error fetching posts:", err)
             } finally {
                 setIsLoading(false)
             }

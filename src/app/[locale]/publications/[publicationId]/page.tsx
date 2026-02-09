@@ -56,7 +56,6 @@ export default function PublicationPage({ params }: { params: Promise<{ publicat
                 setPaper(result?.data as Paper);
             } catch (err: any) {
                 setError(err.message || "Failed to load publication");
-                console.error("Error fetching paper:", err);
             } finally {
                 setIsLoading(false);
             }

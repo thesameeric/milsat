@@ -21,7 +21,6 @@ function BlogList() {
         setBlogPosts(result.posts)
       } catch (err: any) {
         setError(err.message || "Failed to load posts")
-        console.error("Error fetching posts:", err)
       } finally {
         setIsLoading(false)
       }

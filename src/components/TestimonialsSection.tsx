@@ -32,7 +32,6 @@ export default function TestimonialsSection({ autoplay }: {
         }));
         setTestimonials(mappedTestimonials);
       } catch (err) {
-        console.error("Error fetching testimonials:", err);
       } finally {
         setIsLoading(false);
       }

@@ -99,7 +99,6 @@ export default function ContactUs() {
                     setGeneratedTimes(formattedTimes);
                 }
             } catch (error) {
-                console.error("Error fetching slots:", error);
                 if (!iscancelled) setGeneratedTimes([]);
             } finally {
                 if (!iscancelled) setLoadingSlots(false);

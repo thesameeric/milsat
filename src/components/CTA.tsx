@@ -116,7 +116,6 @@ export function CTA(props: CTAProps) {
                     setGeneratedTimes(formattedTimes);
                 }
             } catch (error) {
-                console.error("Error fetching slots:", error);
                 if (!iscancelled) setGeneratedTimes([]);
             } finally {
                 if (!iscancelled) setLoadingSlots(false);
@@ -188,7 +187,6 @@ export function CTA(props: CTAProps) {
             setSelectedDate(undefined);
             setIsOpen(false);
         } catch (error: any) {
-            console.error(error);
             toast.error("Something went wrong", {
                 description: error.message || "Please try again later.",
             });

@@ -26,7 +26,6 @@ function BlogPostContent() {
         setPost(fetchedPost)
       } catch (err: any) {
         setError(err.message || "Failed to load post")
-        console.error("Error fetching post:", err)
       } finally {
         setIsLoading(false)
       }
@@ -85,7 +84,6 @@ function BlogPostContent() {
       parsedContent = parseEditorJS(contentData)
     }
   } catch (err) {
-    console.error("Error parsing content:", err)
     parsedContent = post.content
   }
 

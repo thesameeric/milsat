@@ -42,7 +42,6 @@ export default function Publications() {
                 setPapers(result.data as Paper[]);
             } catch (err: any) {
                 setError(err.message || "Failed to load publications");
-                console.error("Error fetching papers:", err);
             } finally {
                 setIsLoading(false);
             }
