@@ -1,6 +1,6 @@
 export default function IntelligenceIpad() {
     return (
-        <svg width="1382" height="1057" viewBox="0 0 1382 1057" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
+        <svg width="800" height="500" viewBox="0 0 1382 1057" fill="none" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink">
             <rect x="7.58301" y="1052.38" width="1044.8" height="1369.3" rx="53.0738" transform="rotate(-90 7.58301 1052.38)" fill="#0B0B0B" />
             <rect x="5.30842" y="1054.65" width="1049.35" height="1373.85" rx="55.3484" transform="rotate(-90 5.30842 1054.65)" stroke="url(#paint0_linear_25_22)" strokeWidth="4.54919" />
             <g clipPath="url(#clip0_25_22)">

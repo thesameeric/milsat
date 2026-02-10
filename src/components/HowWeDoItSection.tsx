@@ -110,7 +110,7 @@ export default function HowWeDoItSection() {
         </div>
 
         {/* Sticky Screen - Right Column */}
-        <div className="hidden lg:block sticky top-20 sm:top-32 md:top-40 h-[250px] sm:h-[500px] md:h-[600px] flex items-center justify-center">
+        <div className="hidden lg:block sticky top-20 sm:top-32 md:top-40 h-[250px] sm:h-[500px] md:h-[600px] items-center justify-center">
           <motion.div
             key={activeItem}
             initial={{ opacity: 0, scale: 0.9 }}
